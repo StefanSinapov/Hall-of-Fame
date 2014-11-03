@@ -6,6 +6,7 @@
     using System.Web;
     using System.Web.Mvc;
 
+    using HallOfFame.Models;
     using HallOfFame.Web.Models;
 
     using Microsoft.AspNet.Identity;
@@ -25,6 +26,7 @@
         }
 
         private ApplicationUserManager _userManager;
+
         public ApplicationUserManager UserManager
         {
             get
@@ -328,7 +330,7 @@
             }
         }
 
-        private async Task SignInAsync(ApplicationUser user, bool isPersistent)
+        private async Task SignInAsync(User user, bool isPersistent)
         {
             this.AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie, DefaultAuthenticationTypes.TwoFactorCookie);
             this.AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = isPersistent }, await user.GenerateUserIdentityAsync(this.UserManager));

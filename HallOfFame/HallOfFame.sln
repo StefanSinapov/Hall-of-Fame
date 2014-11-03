@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HallOfFame.Web", "HallOfFam
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HallOfFame.Common", "HallOfFame.Common\HallOfFame.Common.csproj", "{6A51F342-28E3-43BA-A748-B88DC0C77245}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HallOfFame.Models", "HallOfFame.Models\HallOfFame.Models.csproj", "{6CB75BAB-E60C-4FB4-BA39-001B13D1BD02}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HallOfFame.Data", "HallOfFame.Data\HallOfFame.Data.csproj", "{0F883B57-3041-4B44-979B-4C7FBB37F6D2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{6A51F342-28E3-43BA-A748-B88DC0C77245}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6A51F342-28E3-43BA-A748-B88DC0C77245}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6A51F342-28E3-43BA-A748-B88DC0C77245}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6CB75BAB-E60C-4FB4-BA39-001B13D1BD02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CB75BAB-E60C-4FB4-BA39-001B13D1BD02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CB75BAB-E60C-4FB4-BA39-001B13D1BD02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CB75BAB-E60C-4FB4-BA39-001B13D1BD02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0F883B57-3041-4B44-979B-4C7FBB37F6D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0F883B57-3041-4B44-979B-4C7FBB37F6D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0F883B57-3041-4B44-979B-4C7FBB37F6D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0F883B57-3041-4B44-979B-4C7FBB37F6D2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
