@@ -2,6 +2,7 @@
 using Owin;
 
 [assembly: OwinStartupAttribute(typeof(HallOfFame.Web.Startup))]
+
 namespace HallOfFame.Web
 {
     public partial class Startup
