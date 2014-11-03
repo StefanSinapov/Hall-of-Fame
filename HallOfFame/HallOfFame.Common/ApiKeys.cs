@@ -2,7 +2,7 @@
 {
     public class ApiKeys
     {
-        public const string EverliveKey = "";
+        public const string EverliveAppKey = "7syJVKUQCuKgrzVP";
 
         public const string FacebookAppId = "653575498097070";
 
