@@ -1,14 +1,107 @@
 ﻿namespace HallOfFame.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;    
     using System.Security.Claims;
     using System.Threading.Tasks;
+
+    using HallOfFame.Models.Enums;
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class User : IdentityUser
     {
+        private ICollection<Project> projects;
+
+        private ICollection<Comment> comments;
+
+        private ICollection<Like> likes;
+
+        public User()
+        {
+            this.projects = new HashSet<Project>();
+            this.comments = new HashSet<Comment>();
+            this.likes = new HashSet<Like>();
+        }
+
+        [Required]
+        [MinLength(3)]
+        [MaxLength(20)]
+        public string FirstName { get; set; }
+
+        [Required]
+        [MinLength(3)]
+        [MaxLength(20)]
+        public string LastName { get; set; }
+
+        public Gender Gender { get; set; }
+
+        public DateTime BirthDate { get; set; }
+
+        public string AboutMe { get; set; }
+
+        [Required]
+        public DateTime DateRegistered { get; set; }
+
+        public string AvatarUrl { get; set; }
+
+        public string Website { get; set; }
+
+        public string SkypeName { get; set; }
+
+        public string FacebookProfile { get; set; }
+
+        public string GooglePlusProfile { get; set; }
+
+        public string LinkedInProfile { get; set; }
+
+        public string TwitterProfile { get; set; }
+
+        public string GitHubProfile { get; set; }
+
+        public string TelerikAcademyProfile { get; set; }
+
+        public virtual ICollection<Project> Projects
+        {
+            get
+            {
+                return this.projects;
+            }
+
+            set
+            {
+                this.projects = value;
+            }
+        }
+
+        public virtual ICollection<Comment> Comments
+        {
+            get
+            {
+                return this.comments;
+            }
+
+            set
+            {
+                this.comments = value;
+            }
+        }
+
+        public virtual ICollection<Like> Likes
+        {
+            get
+            {
+                return this.likes;
+            }
+
+            set
+            {
+                this.likes = value;
+            }
+        }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {
             // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
