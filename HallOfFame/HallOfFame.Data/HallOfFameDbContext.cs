@@ -31,6 +31,5 @@ namespace HallOfFame.Data
         {
             return new HallOfFameDbContext();
         }
-      
     }
 }
