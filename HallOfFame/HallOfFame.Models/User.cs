@@ -6,6 +6,7 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
 
+    using HallOfFame.Common;
     using HallOfFame.Models.Enums;
 
     using Microsoft.AspNet.Identity;
@@ -21,6 +22,8 @@
 
         public User()
         {
+            this.AvatarUrl = GlobalConstants.DefaultAvatarUrl;
+            this.DateRegistered = DateTime.Now;
             this.projects = new HashSet<Project>();
             this.comments = new HashSet<Comment>();
             this.likes = new HashSet<Like>();
@@ -38,7 +41,7 @@
 
         public Gender Gender { get; set; }
 
-        public DateTime BirthDate { get; set; }
+        public DateTime? BirthDate { get; set; }
 
         public string AboutMe { get; set; }
 
