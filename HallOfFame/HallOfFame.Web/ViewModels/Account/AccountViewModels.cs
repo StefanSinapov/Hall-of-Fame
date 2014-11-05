@@ -1,4 +1,4 @@
-﻿namespace HallOfFame.Web.Models
+﻿namespace HallOfFame.Web.ViewModels.Account
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
