@@ -6,6 +6,7 @@
 
     using HallOfFame.Data.Contracts;
     using HallOfFame.Data.Repositories;
+    using HallOfFame.Models;
 
     public class HallOfFameData : IHallOfFameData
     {
@@ -23,6 +24,59 @@
             this.context = context;
         }
 
+        public IRepository<User> Users
+        {
+            get
+            {
+                return this.GetRepository<User>();
+            }
+        }
+
+        public IRepository<Project> Projects
+        {
+            get
+            {
+                return this.GetRepository<Project>();
+            }
+        }
+
+        public IRepository<Category> Categories
+        {
+            get
+            {
+                return this.GetRepository<Category>();
+            }
+        }
+
+        public IRepository<Comment> Comments
+        {
+            get
+            {
+                return this.GetRepository<Comment>();
+            }
+        }
+
+        public IRepository<Course> Courses
+        {
+            get
+            {
+                return this.GetRepository<Course>();
+            }
+        }
+
+        public IRepository<Like> Likes
+        {
+            get
+            {
+                return this.GetRepository<Like>();
+            }
+        }
+
+        public int SaveChanges()
+        {
+            return this.context.SaveChanges();
+        }
+
         public void Dispose()
         {
             this.Dispose(true);
@@ -38,7 +92,6 @@
                 }
             }
         }
-
 
         private IRepository<T> GetRepository<T>() where T : class
         {

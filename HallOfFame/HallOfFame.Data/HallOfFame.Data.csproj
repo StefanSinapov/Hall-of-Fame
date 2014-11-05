@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IHallOfFameData.cs" />
+    <Compile Include="Contracts\IHallOfFameDbContext.cs" />
     <Compile Include="Contracts\IRepository.cs" />
     <Compile Include="HallOfFameData.cs" />
     <Compile Include="HallOfFameDbContext.cs" />
