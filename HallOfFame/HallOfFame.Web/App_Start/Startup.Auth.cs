@@ -2,6 +2,7 @@
 {
     using System;
 
+    using HallOfFame.Common;
     using HallOfFame.Data;
     using HallOfFame.Models;
     using HallOfFame.Web.Models;
@@ -39,7 +40,7 @@
                         validateInterval: TimeSpan.FromMinutes(30),
                         regenerateIdentity: (manager, user) => user.GenerateUserIdentityAsync(manager))
                 }
-            });            
+            });
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
             // Enables the application to temporarily store user information when they are verifying the second factor in the two-factor authentication process.
@@ -59,15 +60,15 @@
             // consumerKey: "",
             // consumerSecret: "");
 
-            // app.UseFacebookAuthentication(
-            // appId: "",
-            // appSecret: "");
+            app.UseFacebookAuthentication(
+            appId: ApiKeys.FacebookAppId,
+            appSecret: ApiKeys.FacebookAppSecret);
 
-            // app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
-            // {
-            // ClientId = "",
-            // ClientSecret = ""
-            // });
+            app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
+            {
+                ClientId = ApiKeys.GoogleClientId,
+                ClientSecret = ApiKeys.GoogleClientSecret
+            });
         }
     }
 }

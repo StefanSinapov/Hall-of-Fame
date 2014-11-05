@@ -292,6 +292,10 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HallOfFame.Common\HallOfFame.Common.csproj">
+      <Project>{6A51F342-28E3-43BA-A748-B88DC0C77245}</Project>
+      <Name>HallOfFame.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HallOfFame.Data\HallOfFame.Data.csproj">
       <Project>{0F883B57-3041-4B44-979B-4C7FBB37F6D2}</Project>
       <Name>HallOfFame.Data</Name>
