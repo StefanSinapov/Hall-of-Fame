@@ -15,9 +15,10 @@
         [EmailAddress]
         public string Email { get; set; }
 
-        [Required]
         [DataType(DataType.MultilineText)]
         [Display(Name = "Message")]
+        [Required(ErrorMessage = "{0} is required")]
+        [StringLength(int.MaxValue, MinimumLength = 10, ErrorMessage = "{ {0} length must be at least {1}")]
         public string Message { get; set; }
     }
 }
