@@ -2,10 +2,11 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
 
     public class Project
     {
-        private ICollection<User> contributors;
+        private ICollection<User> team;
 
         private ICollection<Comment> comments;
 
@@ -13,7 +14,7 @@
 
         public Project()
         {
-            this.contributors = new HashSet<User>();
+            this.team = new HashSet<User>();
             this.comments = new HashSet<Comment>();
             this.likes = new HashSet<Like>();
         }
@@ -22,8 +23,12 @@
         public int Id { get; set; }
 
         [Required]
+        [Index(IsUnique = true)]
         [MaxLength(30)]
         public string Name { get; set; }
+
+        [MaxLength(120)]
+        public string Info { get; set; }
 
         public string Description { get; set; }
 
@@ -33,16 +38,22 @@
 
         public string GooglePlusLink { get; set; }
 
-        public virtual ICollection<User> Contributors
+        public string TeamName { get; set; }
+
+        public int CourseId { get; set; }
+
+        public virtual Course Course { get; set; }
+
+        public virtual ICollection<User> Team
         {
             get
             {
-                return this.contributors;
+                return this.team;
             }
 
             set
             {
-                this.contributors = value;
+                this.team = value;
             }
         }
 
