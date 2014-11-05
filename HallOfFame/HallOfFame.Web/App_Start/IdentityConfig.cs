@@ -10,7 +10,6 @@
 
     using HallOfFame.Data;
     using HallOfFame.Models;
-    using HallOfFame.Web.Models;
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;

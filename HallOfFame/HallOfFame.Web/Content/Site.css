@@ -19,6 +19,7 @@
     -ms-background-clip: initial;
     background-clip: initial;
     background-color: rgb(18, 21, 100);
+    color: white;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -47,6 +48,16 @@ a:hover {
     text-decoration: none;
 }
 
+/* Transparent background */
+.content-block  {
+    background: #000000;
+    background: rgba(0,0,0,0.4);
+    padding: 20px;
+    border-top: 1px solid #414383;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    border-bottom: 1px solid #ffffff;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
 
 /*
  Footer styles

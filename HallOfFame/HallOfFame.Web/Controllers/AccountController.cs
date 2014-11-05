@@ -9,7 +9,6 @@
     using System.Web.Mvc;
 
     using HallOfFame.Models;
-    using HallOfFame.Web.Models;
     using HallOfFame.Web.ViewModels.Account;
 
     using Microsoft.AspNet.Identity;
