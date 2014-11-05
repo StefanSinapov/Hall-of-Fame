@@ -1,6 +1,24 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    /* Body background (image) */
+    background-image: url("../Img/background.jpg");
+    -moz-background-position-x: 50%;
+    -o-background-position-x: 50%;
+    background-position-x: 50%;
+    -moz-background-position-y: 0;
+    -o-background-position-y: 0;
+    background-position-y: 0;
+    -ms-background-size: cover;
+    background-size: cover;
+    background-repeat-x: no-repeat;
+    background-repeat-y: no-repeat;
+    background-attachment: fixed;
+    -ms-background-origin: initial;
+    background-origin: initial;
+    -ms-background-clip: initial;
+    background-clip: initial;
+    background-color: rgb(18, 21, 100);
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -22,3 +40,150 @@ select,
 textarea {
     max-width: 280px;
 }
+
+
+a:hover {
+    color: #555;
+    text-decoration: none;
+}
+
+
+/*
+ Footer styles
+*/
+
+.footer {
+    margin-top: 40px;
+    padding: 0 30px 30px 30px;
+    /*background: #000 url('../Img/stressed_linen.png') repeat;
+    background-color: transparent;*/
+    background: #000000;
+    background: rgba(0,0,0,0.8);
+}
+
+    .footer .footer-head {
+        color: #fff;
+        margin-top: -10px;
+    }
+
+        .footer .footer-head .item {
+            list-style-type: none;
+            padding-left: 0;
+            width: 100%;
+        }
+
+            .footer .footer-head .item li {
+                display: block;
+                float: left;
+                width: 33.3%;
+                padding: 25px 20px;
+            }
+
+                .footer .footer-head .item li h3 {
+                    margin: 0;
+                    margin-bottom: 5px;
+                    font-size: 23px;
+                    letter-spacing: 0.02em;
+                }
+
+                    .footer .footer-head .item li h3 a {
+                        display: inline-block;
+                        color: #fff;
+                    }
+
+                        .footer .footer-head .item li h3 a i {
+                            display: inline-block;
+                            width: 20px;
+                            text-align: center;
+                        }
+
+                .footer .footer-head .item li p {
+                    font-size: 13px;
+                    margin-left: 35px;
+                }
+
+    .footer .footer-widget {
+        margin: 0 20px;
+        padding-top: 30px;
+        color: #ccc;
+    }
+
+        .footer .footer-widget h4 {
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+            color: #fff;
+            border-bottom: 1px solid #222;
+        }
+
+        .footer .footer-widget ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+            .footer .footer-widget ul li {
+                padding-bottom: 10px;
+            }
+
+        .footer .footer-widget p .mute {
+            font-weight: normal;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 13px;
+            color: #b5b5b5;
+        }
+
+        .footer .footer-widget ul li a,
+        .footer .footer-widget p a,
+        .footer .footer-widget .footer-rp .item h3 a,
+        .footer .copy p a,
+        .footer .copy a {
+            color: #aaa;
+        }
+
+            .footer .footer-widget ul li a:hover,
+            .footer .footer-widget p a:hover,
+            .footer .footer-widget .footer-rp .item h3 a:hover,
+            .footer .copy p a:hover,
+            .footer .copy a:hover {
+                color: #eee;
+            }
+
+        .footer .footer-widget span {
+            font-size: 17px;
+            font-family: 'Open Sans Condensed', sans-serif;
+            font-weight: 700;
+        }
+
+        .footer .footer-widget p {
+            font-size: 13px;
+        }
+
+        .footer .footer-widget .footer-rp {
+            margin-bottom: 20px;
+        }
+
+            .footer .footer-widget .footer-rp img {
+                max-width: 35px;
+            }
+
+            .footer .footer-widget .footer-rp .item {
+                margin-top: -30px;
+                margin-left: 40px;
+                padding-left: 10px;
+            }
+
+                .footer .footer-widget .footer-rp .item h3 {
+                    font-family: 'Open Sans', sans-serif;
+                    margin: 0;
+                    font-size: 13px;
+                    line-height: 20px;
+                    font-weight: normal;
+                    font-style: italic;
+                }
+
+    .footer .copy {
+        margin-top: 15px;
+        padding-top: 25px;
+        text-align: center;
+        color: #ccc;
+        border-top: 1px solid #222;
+    }
