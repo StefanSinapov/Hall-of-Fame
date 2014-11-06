@@ -9,17 +9,11 @@
 
     public class EfRepository<T> : IRepository<T> where T : class
     {
-        private readonly HallOfFameDbContext context;
+        private readonly IHallOfFameDbContext context;
 
         private readonly IDbSet<T> set;
 
-        // TODO: remove after ninject added
-        public EfRepository()
-            : this(new HallOfFameDbContext())
-        {
-        }
-
-        public EfRepository(HallOfFameDbContext context)
+        public EfRepository(IHallOfFameDbContext context)
         {
             if (context == null)
             {

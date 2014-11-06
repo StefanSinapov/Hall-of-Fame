@@ -16,7 +16,7 @@ namespace HallOfFame.Data
         {
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<HallOfFameDbContext, Configuration>());
         }
-
+      
         public IDbSet<Project> Projects { get; set; }
 
         public IDbSet<Category> Categories { get; set; }
@@ -30,6 +30,11 @@ namespace HallOfFame.Data
         public static HallOfFameDbContext Create()
         {
             return new HallOfFameDbContext();
+        }
+
+        public new IDbSet<TEntity> Set<TEntity>() where TEntity : class
+        {
+            return base.Set<TEntity>();
         }
     }
 }
