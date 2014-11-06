@@ -1,14 +1,54 @@
-﻿@model HallOfFame.Web.Areas.Users.ViewModels.UserProfileViewModel
+﻿@using Mvc.RazorTools.FontAwesome
+@model HallOfFame.Web.Areas.Users.ViewModels.UserProfileViewModel
 
 @{
     ViewBag.Title = Model.UserName;
 }
 
 <div class="container">
-    <h2>
-        @if (!string.IsNullOrEmpty(Model.FirstName) || !string.IsNullOrEmpty(Model.LastName))
-        {
-            <text>(@Model.FirstName @Model.LastName)</text>
-        }
-    </h2>
+    @* <h2>
+            @if (!string.IsNullOrEmpty(Model.FirstName) || !string.IsNullOrEmpty(Model.LastName))
+            {
+                <text>(@Model.FirstName @Model.LastName)</text>
+            }
+        </h2>*@
+
+    <div class="row">
+        <div class="col-md-3">
+
+            <div class="content-block">
+                <img src="@Model.AvatarUrl" alt="Avatar" class="img-responsive img-rounded" width="230" height="230" />
+                <h4>
+                    <strong>@Model.FirstName @Model.LastName</strong>
+                   
+                </h4>
+                <div>@Model.UserName</div>
+                <hr />
+                <ul class="vcard-details">
+                    <li class="vcard-detail">
+                        @Html.FontAwesome("fa fa-user")
+                        @Model.UserName
+                    </li>
+                    <li class="vcard-detail">
+                        @Html.FontAwesome("fa fa-envelope")
+                        <a href="mailto:@Model.Email">@Model.Email</a>
+                    </li>
+                    <li class="vcard-detail">
+                        @Html.FontAwesome("fa fa-clock-o")
+                        Joined on @Model.DateRegistered.ToShortDateString()
+                    </li>
+                </ul>
+                <hr/>
+                <div class="vcard-social">
+                    <a href="#" class="btn-group fa fa-github-square git fa-2x"></a>
+                    <a href="#" class="btn-group linkedin fa fa-linkedin-square fa-2x"></a>
+                    <a href="#" class="btn-group twitter fa fa-twitter fa-2x"></a>
+                    <a href="#" class="btn-group facebook fa fa-facebook fa-2x"></a>
+                    <a href="#" class="btn-group google-plus fa fa-google-plus fa-2x"></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9"></div>
+    </div>
 </div>

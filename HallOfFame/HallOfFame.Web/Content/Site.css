@@ -68,6 +68,57 @@ a {
     border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
+
+.vcard-details {
+    list-style: none;
+    padding-left: 0;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.vcard-detail {
+    width: 100%;
+    overflow-x: hidden;
+    white-space: nowrap;
+    font-size: 14px;
+    text-overflow: ellipsis;
+}
+ .vcard-detail .fa {
+       /* float: left;*/
+        width: 20px;
+        text-align: center;
+    }
+
+ .vcard-social {
+     
+ }
+
+ .vcard-social .git {
+ /* color: black;*/
+  color: #eee;
+  cursor: pointer;
+  margin-left: 10px;
+}
+ .vcard-social .twitter {
+  color: #19C4FF;
+  cursor: pointer;
+  margin-left: 10px;
+}
+ .vcard-social .google-plus {
+  color: #DD4B39;
+  cursor: pointer;
+  margin-left: 10px;
+}
+ .vcard-social .facebook {
+  color: #007BB6;
+  cursor: pointer;
+  margin-left: 10px;
+}
+ .vcard-social .linkedin {
+  color: #007BB6;
+  cursor: pointer;
+  margin-left: 10px;
+}
 /*
  Footer styles
 */
@@ -222,12 +273,12 @@ a {
         margin-bottom: 10px;
     }
 
-    .footer .social a{
+    .footer .social a {
         color: #aaa;
         text-decoration: none;
     }
 
-    .footer .social a:hover{
-        color: #eee;
-        text-decoration: none;
-    }
+        .footer .social a:hover {
+            color: #eee;
+            text-decoration: none;
+        }
