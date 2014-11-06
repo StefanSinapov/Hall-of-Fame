@@ -4,7 +4,7 @@
 
     //using Resource = Resources.Feedback.ViewModels.FeedbackViewModels;
 
-    public class FeedbackInputModel
+    public class FeedbackViewModel
     {
         [Required]
         [Display(Name = "Name")]
@@ -18,7 +18,6 @@
         [DataType(DataType.MultilineText)]
         [Display(Name = "Message")]
         [Required(ErrorMessage = "{0} is required")]
-        [StringLength(int.MaxValue, MinimumLength = 10, ErrorMessage = "{ {0} length must be at least {1}")]
         public string Message { get; set; }
     }
 }

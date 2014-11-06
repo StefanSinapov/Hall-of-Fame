@@ -6,9 +6,9 @@
 
     public class BaseController : Controller
     {
-        public BaseController(IHallOfFameData provider)
+        public BaseController(IHallOfFameData data)
         {
-            this.Data = provider;
+            this.Data = data;
         }
 
         public IHallOfFameData Data { get; set; }

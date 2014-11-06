@@ -53,7 +53,7 @@ a:hover {
 }
 
 /* Transparent background */
-.content-block  {
+.content-block {
     background: #000000;
     background: rgba(0,0,0,0.4);
     padding: 20px;
@@ -201,4 +201,18 @@ a:hover {
         text-align: center;
         color: #ccc;
         border-top: 1px solid #222;
+    }
+
+
+    .footer .contact input[type="text"], .footer .contact input[type="email"], .footer .contact input[type="tel"], .footer .contact textarea {
+        border: none;
+        /*background-color: #1f1f21;*/
+        color: #000000;
+        padding: 8px 20px;
+        border-radius: 3px;
+        font-size: 14px;
+        width: 95%;
+        -webkit-transition: background-color .2s linear;
+        -moz-transition: background-color .2s linear;
+        margin-bottom: 10px;
     }
