@@ -8,7 +8,7 @@
 // ***
 // *** Add @Mvc.RazorTools.BundleManager.Scripts.Render() to the bottom of your pages
 // *** or to your layout view.
-// ***
+//// ***
 
 namespace Mvc.RazorTools.FontAwesome
 {

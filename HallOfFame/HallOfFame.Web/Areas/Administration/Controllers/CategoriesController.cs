@@ -8,13 +8,7 @@
 
     public class CategoriesController : AdministrationController
     {
-        // TODO: Remove after ninject
-        public CategoriesController()
-            : this(new HallOfFameData(new HallOfFameDbContext()))
-        {
-        }
-
-        public CategoriesController(IHallOfFameData data)
+       public CategoriesController(IHallOfFameData data)
             : base(data)
         {
         }

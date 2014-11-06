@@ -1,12 +1,8 @@
 ﻿namespace HallOfFame.Web
 {
     using System;
-    using System.Collections.Generic;
-    using System.Data.Entity;
-    using System.Linq;
     using System.Security.Claims;
     using System.Threading.Tasks;
-    using System.Web;
 
     using HallOfFame.Data;
     using HallOfFame.Models;

@@ -13,6 +13,12 @@
         {
         }
 
+        [HttpGet]
+        public ActionResult Index()
+        {
+            return this.View();
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(FeedbackViewModel model)

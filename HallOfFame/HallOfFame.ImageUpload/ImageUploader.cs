@@ -3,7 +3,6 @@
     using System;
     using System.IO;
 
-    using HallOfFame.Common;
     using HallOfFame.ImageUpload.Contracts;
 
     using Telerik.Everlive.Sdk.Core;
@@ -12,12 +11,6 @@
     public class ImageUploader : IImageUploader
     {
         private readonly EverliveApp app;
-
-        // TODO: remove after ninject
-        public ImageUploader()
-            : this(new EverliveApp(ApiKeys.EverliveAppKey))
-        {
-        }
 
         public ImageUploader(EverliveApp everliveApp)
         {

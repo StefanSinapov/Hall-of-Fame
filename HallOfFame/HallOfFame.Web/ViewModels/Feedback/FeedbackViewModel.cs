@@ -2,8 +2,6 @@
 {
     using System.ComponentModel.DataAnnotations;
 
-    //using Resource = Resources.Feedback.ViewModels.FeedbackViewModels;
-
     public class FeedbackViewModel
     {
         [Required]
@@ -17,7 +15,7 @@
 
         [DataType(DataType.MultilineText)]
         [Display(Name = "Message")]
-        [Required(ErrorMessage = "{0} is required")]
+        [Required]
         public string Message { get; set; }
     }
 }
