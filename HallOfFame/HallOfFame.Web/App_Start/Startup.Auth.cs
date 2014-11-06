@@ -58,7 +58,6 @@
             // app.UseTwitterAuthentication(
             // consumerKey: "",
             // consumerSecret: "");
-
             app.UseFacebookAuthentication(
             appId: ApiKeys.FacebookAppId,
             appSecret: ApiKeys.FacebookAppSecret);
