@@ -77,9 +77,12 @@
                 return this.View(model);
             }
 
+            var user = await this.UserManager.FindByEmailAsync(model.UsernameOrEmail)
+                       ?? await this.UserManager.FindByNameAsync(model.UsernameOrEmail);
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await this.SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = user == null ? SignInStatus.Failure : await this.SignInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -164,7 +167,13 @@
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new User
+                               {
+                                   UserName = model.UserName, 
+                                   Email = model.Email,
+                                   FirstName = model.FirstName,
+                                   LastName = model.LastName
+                               };
                 var result = await this.UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -375,7 +384,13 @@
                     return this.View("ExternalLoginFailure");
                 }
 
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new User
+                {
+                    UserName = model.Email,
+                    Email = model.Email,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName
+                };
                 var result = await this.UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
