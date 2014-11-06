@@ -8,5 +8,13 @@
 
         public const string DefaultAvatarUrl =
             "http://bs1.cdn.telerik.com/v1/7syJVKUQCuKgrzVP/066b5760-63a1-11e4-8638-39d391c80554";
+
+
+        #region Controllers
+
+        public const string Index = "Index";
+
+        #endregion
+
     }
 }

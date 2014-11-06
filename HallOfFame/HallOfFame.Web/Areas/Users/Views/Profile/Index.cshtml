@@ -1,0 +1,14 @@
+﻿@model HallOfFame.Web.Areas.Users.ViewModels.UserProfileViewModel
+
+@{
+    ViewBag.Title = Model.UserName;
+}
+
+<div class="container">
+    <h2>
+        @if (!string.IsNullOrEmpty(Model.FirstName) || !string.IsNullOrEmpty(Model.LastName))
+        {
+            <text>(@Model.FirstName @Model.LastName)</text>
+        }
+    </h2>
+</div>

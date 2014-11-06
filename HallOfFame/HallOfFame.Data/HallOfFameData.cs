@@ -14,11 +14,6 @@
 
         private readonly IDictionary<Type, object> repositories = new Dictionary<Type, object>();
 
-        public HallOfFameData()
-            : this(new HallOfFameDbContext())
-        {
-        }
-
         public HallOfFameData(DbContext context)
         {
             this.context = context;

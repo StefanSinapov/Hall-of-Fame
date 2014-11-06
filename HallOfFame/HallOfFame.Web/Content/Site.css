@@ -46,11 +46,16 @@ textarea {
     max-width: 280px;
 }
 
-
-a:hover {
-    color: #555;
+a {
+    color: #fdcef8;
     text-decoration: none;
 }
+
+    a:hover {
+        color: #fb9df1;
+        text-decoration: none;
+    }
+
 
 /* Transparent background */
 .content-block {
@@ -215,4 +220,14 @@ a:hover {
         -webkit-transition: background-color .2s linear;
         -moz-transition: background-color .2s linear;
         margin-bottom: 10px;
+    }
+
+    .footer .social a{
+        color: #aaa;
+        text-decoration: none;
+    }
+
+    .footer .social a:hover{
+        color: #eee;
+        text-decoration: none;
     }
