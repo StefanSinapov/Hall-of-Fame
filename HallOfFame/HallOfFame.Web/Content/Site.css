@@ -15,8 +15,12 @@
     background-repeat-y: no-repeat;
     background-attachment: fixed;
     -ms-background-origin: initial;
+    -moz-background-origin: initial;
+    -webkit-background-origin: initial;
     background-origin: initial;
     -ms-background-clip: initial;
+    -moz-background-clip: initial;
+    -webkit-background-clip: initial;
     background-clip: initial;
     background-color: rgb(18, 21, 100);
     color: white;
