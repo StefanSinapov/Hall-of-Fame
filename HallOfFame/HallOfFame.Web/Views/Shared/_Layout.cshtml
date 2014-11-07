@@ -13,7 +13,7 @@
     <meta name="description" content="Hall of Fame for Teamwork Projects" />
 </head>
 <body>
-    <div class="navbar navbar-nav  navbar-default navbar-fixed-top">
+    <div class="navbar navbar-default">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -30,7 +30,7 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
                 <div class="col-sm-3 col-md-3">
-                    <form class="navbar-form" role="search" action="/Search">
+                    <form class="navbar-form search-form" role="search" action="/Search">
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Search" @* placeholder=@Resource.Search*@ name="q">
                             <div class="input-group-btn">

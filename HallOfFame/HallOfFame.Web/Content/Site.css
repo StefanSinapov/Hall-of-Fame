@@ -1,5 +1,5 @@
 ﻿body {
-    padding-top: 50px;
+    /*padding-top: 50px;*/
     padding-bottom: 20px;
     /* Body background (image) */
     background-image: url("../Img/background.jpg");
@@ -56,6 +56,9 @@ a {
         text-decoration: none;
     }
 
+.search-form {
+    line-height: 16px;
+}
 
 /* Transparent background */
 .content-block {
@@ -130,6 +133,7 @@ hr {
         cursor: pointer;
         margin-left: 10px;
     }
+
     .vcard-social .skype {
         color: #12A5F4;
         cursor: pointer;
