@@ -26,11 +26,11 @@
                "Users_current_user_profile",
                "Users/Profile/Settings/{action}",
                new { controller = "Settings", action = GlobalConstants.Index, username = UrlParameter.Optional });
-            /*
-                        context.MapRoute(
-                            "Users_settings",
-                            "Users/Settings/{action}",
-                            new { controller = "Settings", action = GlobalConstants.Index, username = UrlParameter.Optional });*/
+
+            context.MapRoute(
+                "Users_settings",
+                "Users/Settings/{action}",
+                new { controller = "Settings", action = GlobalConstants.Index, username = UrlParameter.Optional });
 
             context.MapRoute(
                 "Users_profile",

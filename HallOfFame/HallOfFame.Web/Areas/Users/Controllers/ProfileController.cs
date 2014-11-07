@@ -1,5 +1,6 @@
 ﻿namespace HallOfFame.Web.Areas.Users.Controllers
 {
+    using System;
     using System.Linq;
     using System.Net;
     using System.Web;
@@ -8,7 +9,6 @@
     using AutoMapper.QueryableExtensions;
 
     using HallOfFame.Data.Contracts;
-    using HallOfFame.Models;
     using HallOfFame.Web.Areas.Users.ViewModels;
     using HallOfFame.Web.Controllers;
 
@@ -37,12 +37,6 @@
             }
 
             return this.View(profile);
-        }
-
-        [HttpGet]
-        public ActionResult Settings()
-        {
-            
         }
     }
 }

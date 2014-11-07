@@ -6,34 +6,27 @@
 }
 
 <div class="container">
-    @* <h2>
-            @if (!string.IsNullOrEmpty(Model.FirstName) || !string.IsNullOrEmpty(Model.LastName))
-            {
-                <text>(@Model.FirstName @Model.LastName)</text>
-            }
-        </h2>*@
-
     <div class="row">
         <div class="col-md-3">
             <div class="content-block">
                 <img src="@Model.AvatarUrl" alt="Avatar" class="img-responsive img-rounded" width="230" height="230" />
                 <h4>
-                    <strong>@Model.FirstName @Model.LastName</strong>
+                    <strong>@Html.DisplayFor(m => m.FirstName) @Html.DisplayFor(m => m.LastName)</strong>
                 </h4>
-                <div>@Model.UserName</div>
+                <div>@Html.DisplayFor(m => m.UserName)</div>
                 <hr />
                 <ul class="vcard-details">
                     <li class="vcard-detail">
                         @Html.FontAwesome("fa fa-user")
-                        @Model.UserName
+                        @Html.DisplayFor(m => m.UserName)
                     </li>
                     <li class="vcard-detail">
                         @Html.FontAwesome("fa fa-envelope")
-                        <a href="mailto:@Model.Email" target="_blank">@Model.Email</a>
+                        @Html.DisplayFor(m => m.Email)
                     </li>
                     <li class="vcard-detail">
                         @Html.FontAwesome("fa fa-clock-o")
-                        Joined on @Model.DateRegistered.ToShortDateString().ToString(System.Globalization.CultureInfo.InvariantCulture)
+                        Joined on @Html.DisplayFor(m => m.DateRegistered)
                     </li>
                     @if (!string.IsNullOrEmpty(Model.Website))
                     {
@@ -46,9 +39,10 @@
                     {
                         <li class="vcard-detail">
                             <img src="~/Img/telerik-academy.ico" alt="telerik" width="20" class="telerik" />
-                            <a href="http://www.telerikacademy.com/users/@Model.TelerikAcademyProfile">@Model.TelerikAcademyProfile</a>
+                            <a href="http://www.telerikacademy.com/users/@Model.TelerikAcademyProfile">@Html.DisplayFor(m => m.TelerikAcademyProfile)</a>
                         </li>
                     }
+
                 </ul>
                 <hr />
                 <div class="vcard-social">
@@ -91,10 +85,10 @@
 
         <div class="col-md-9">
             <h2 class="page-header content-block">
-               @Html.FontAwesome("fa fa-code") Projects
+                @Html.FontAwesome("fa fa-code") Projects
             </h2>
             <div class="row">
-                
+
             </div>
         </div>
     </div>
