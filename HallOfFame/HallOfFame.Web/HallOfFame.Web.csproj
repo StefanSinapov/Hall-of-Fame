@@ -65,6 +65,9 @@
     <Reference Include="Glimpse.Mvc5">
       <HintPath>..\packages\Glimpse.Mvc5.1.5.3\lib\net45\Glimpse.Mvc5.dll</HintPath>
     </Reference>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\External Libraries\Kendo.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Owin, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -182,6 +185,9 @@
     <Reference Include="Telerik.Everlive.Sdk">
       <HintPath>..\HallOfFame.ImageUpload\EverliveSDK.Windows\Telerik.Everlive.Sdk.dll</HintPath>
     </Reference>
+    <Reference Include="TelerikContestSystem.DAL">
+      <HintPath>..\External Libraries\TelerikContestSystem.DAL.dll</HintPath>
+    </Reference>
     <Reference Include="WebActivatorEx">
       <HintPath>..\packages\WebActivatorEx.2.0.5\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
@@ -227,9 +233,13 @@
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Administration\Models\Categories\ListCategoryViewModel.cs" />
     <Compile Include="Areas\Projects\ProjectsAreaRegistration.cs" />
+    <Compile Include="Areas\Projects\ViewModels\ProjectInfoViewModel.cs" />
     <Compile Include="Areas\Users\Controllers\ProfileController.cs" />
+    <Compile Include="Areas\Users\Controllers\SettingsController.cs" />
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
+    <Compile Include="Areas\Users\ViewModels\BaseUserViewModel.cs" />
     <Compile Include="Areas\Users\ViewModels\UserProfileViewModel.cs" />
+    <Compile Include="Areas\Users\ViewModels\UserSettingsViewModel.cs" />
     <Compile Include="Controllers\AccountController.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
@@ -279,6 +289,66 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\kendo\2014.2.716\Bootstrap\editor.png" />
+    <Content Include="Content\kendo\2014.2.716\Bootstrap\imagebrowser.png" />
+    <Content Include="Content\kendo\2014.2.716\Bootstrap\indeterminate.gif" />
+    <Content Include="Content\kendo\2014.2.716\Bootstrap\loading-image.gif" />
+    <Content Include="Content\kendo\2014.2.716\Bootstrap\loading.gif" />
+    <Content Include="Content\kendo\2014.2.716\Bootstrap\loading_2x.gif" />
+    <Content Include="Content\kendo\2014.2.716\Bootstrap\markers.png" />
+    <Content Include="Content\kendo\2014.2.716\Bootstrap\markers_2x.png" />
+    <Content Include="Content\kendo\2014.2.716\Bootstrap\slider-h.gif" />
+    <Content Include="Content\kendo\2014.2.716\Bootstrap\slider-v.gif" />
+    <Content Include="Content\kendo\2014.2.716\Bootstrap\sprite.png" />
+    <Content Include="Content\kendo\2014.2.716\Bootstrap\sprite_2x.png" />
+    <Content Include="Content\kendo\2014.2.716\images\back.png" />
+    <Content Include="Content\kendo\2014.2.716\images\kendoui.svg" />
+    <Content Include="Content\kendo\2014.2.716\images\wp8_icons.png" />
+    <Content Include="Content\kendo\2014.2.716\images\wp8_inverseicons.png" />
+    <Content Include="Content\kendo\2014.2.716\kendo.common.min.css" />
+    <Content Include="Content\kendo\2014.2.716\kendo.metro.min.css" />
+    <Content Include="Content\kendo\2014.2.716\Metro\editor.png" />
+    <Content Include="Content\kendo\2014.2.716\Metro\imagebrowser.png" />
+    <Content Include="Content\kendo\2014.2.716\Metro\indeterminate.gif" />
+    <Content Include="Content\kendo\2014.2.716\Metro\loading-image.gif" />
+    <Content Include="Content\kendo\2014.2.716\Metro\loading.gif" />
+    <Content Include="Content\kendo\2014.2.716\Metro\loading_2x.gif" />
+    <Content Include="Content\kendo\2014.2.716\Metro\markers.png" />
+    <Content Include="Content\kendo\2014.2.716\Metro\markers_2x.png" />
+    <Content Include="Content\kendo\2014.2.716\Metro\slider-h.gif" />
+    <Content Include="Content\kendo\2014.2.716\Metro\slider-v.gif" />
+    <Content Include="Content\kendo\2014.2.716\Metro\sprite.png" />
+    <Content Include="Content\kendo\2014.2.716\Metro\sprite_2x.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\brushed-metal.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\dots1.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\dots10.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\dots11.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\dots12.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\dots13.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\dots2.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\dots3.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\dots4.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\dots5.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\dots6.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\dots7.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\dots8.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\dots9.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\glass-lighter.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\glass.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\highlight.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\hsv-gradient.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\hue.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\leather1.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\leather2.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\noise.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\stripe1.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\stripe2.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\stripe3.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\stripe4.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\stripe5.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\stripe6.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\transparency.png" />
+    <Content Include="Content\kendo\2014.2.716\textures\transtexture.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -300,20 +370,31 @@
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="Areas\Users\Views\Profile\Index.cshtml" />
+    <Content Include="Areas\Users\Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Areas\Users\Views\Settings\Index.cshtml" />
+    <Content Include="Content\kendo\2014.2.716\images\kendoui.woff" />
+    <Content Include="Content\kendo\2014.2.716\images\kendoui.ttf" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Img\background.jpg" />
     <Content Include="Img\loader.gif" />
     <Content Include="Img\stressed_linen.png" />
+    <Content Include="Img\telerik-academy.ico" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\kendo\2014.2.716\kendo.aspnetmvc.js" />
+    <Content Include="Scripts\kendo\2014.2.716\cultures\kendo.culture.bg-BG.min.js" />
+    <Content Include="Scripts\kendo\2014.2.716\cultures\kendo.culture.en-GB.min.js" />
+    <Content Include="Scripts\kendo\2014.2.716\kendo.web.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
@@ -359,6 +440,15 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_FeedbackPartial.cshtml" />
     <Content Include="Views\Feedback\Index.cshtml" />
+    <Content Include="Views\Shared\_ProjectPartial.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\MultilineText.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Enum.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\ImageUrl.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
+    <Content Include="Scripts\kendo\2014.2.716\kendo.web.min.js.map" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -370,10 +460,8 @@
     <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Areas\Administration\Views\Users\" />
     <Folder Include="Areas\Projects\Controllers\" />
-    <Folder Include="Areas\Projects\Models\" />
     <Folder Include="Areas\Projects\Views\Shared\" />
     <Folder Include="Areas\Users\Models\" />
-    <Folder Include="Areas\Users\Views\Shared\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
