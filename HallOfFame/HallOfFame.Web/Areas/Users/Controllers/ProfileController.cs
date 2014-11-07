@@ -19,6 +19,7 @@
         {
         }
 
+        [HttpGet]
         public ActionResult Index(string username)
         {
             if (string.IsNullOrEmpty(username))
@@ -36,6 +37,12 @@
             }
 
             return this.View(profile);
+        }
+
+        [HttpGet]
+        public ActionResult Settings()
+        {
+            
         }
     }
 }

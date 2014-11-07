@@ -68,6 +68,9 @@ a {
     border-bottom: 1px solid rgba(255,255,255,0.2);
 }
 
+hr {
+    margin: 10px 0;
+}
 
 .vcard-details {
     list-style: none;
@@ -83,42 +86,55 @@ a {
     font-size: 14px;
     text-overflow: ellipsis;
 }
- .vcard-detail .fa {
-       /* float: left;*/
+
+    .vcard-detail .fa {
+        /* float: left;*/
         width: 20px;
         text-align: center;
     }
 
- .vcard-social {
-     
- }
+    .vcard-detail .telerik {
+        width: 20px;
+    }
 
- .vcard-social .git {
- /* color: black;*/
-  color: #eee;
-  cursor: pointer;
-  margin-left: 10px;
+.vcard-social {
 }
- .vcard-social .twitter {
-  color: #19C4FF;
-  cursor: pointer;
-  margin-left: 10px;
-}
- .vcard-social .google-plus {
-  color: #DD4B39;
-  cursor: pointer;
-  margin-left: 10px;
-}
- .vcard-social .facebook {
-  color: #007BB6;
-  cursor: pointer;
-  margin-left: 10px;
-}
- .vcard-social .linkedin {
-  color: #007BB6;
-  cursor: pointer;
-  margin-left: 10px;
-}
+
+    .vcard-social .git {
+        /* color: black;*/
+        color: #eee;
+        cursor: pointer;
+        margin-left: 5px;
+    }
+
+    .vcard-social .twitter {
+        color: #19C4FF;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    .vcard-social .google-plus {
+        color: #DD4B39;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    .vcard-social .facebook {
+        color: #007BB6;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+
+    .vcard-social .linkedin {
+        color: #007BB6;
+        cursor: pointer;
+        margin-left: 10px;
+    }
+    .vcard-social .skype {
+        color: #12A5F4;
+        cursor: pointer;
+        margin-left: 5px;
+    }
 /*
  Footer styles
 */
@@ -278,7 +294,15 @@ a {
         text-decoration: none;
     }
 
-        .footer .social a:hover {
-            color: #eee;
-            text-decoration: none;
-        }
+    .footer .social .google-plus {
+        color: #DD4B39;
+    }
+
+    .footer .social .facebook {
+        color: #007BB6;
+    }
+
+    .footer .social a:hover {
+        color: #eee;
+        text-decoration: none;
+    }
