@@ -1,0 +1,159 @@
+﻿@using HallOfFame.Web.Common
+@using Mvc.RazorTools.FontAwesome
+@model HallOfFame.Web.Areas.Users.ViewModels.UserSettingsViewModel
+
+@{
+    ViewBag.Title = "Settings";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <div class="content-block">
+                <div class="">
+                    <h3>User profile settings</h3>
+                </div>
+                <div class="form-horizontal">
+                    <div class="form-group ">
+                        <div class="col-md-3 col-md-offset-4">
+                            @Html.DisplayFor(m => m.AvatarUrl)
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UserName, new { @class = "col-md-4 control-label" })
+                        <div class="col-md-8">
+                            @Html.DisplayFor(m => m.UserName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span class="control-label col-md-4">Password</span>
+                        <div class="col-md-8">
+                            @Html.ActionLink("[Change password]", "ChangePassword", "Manage", new { area = string.Empty }, null)
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Email, new { @class = "col-md-4 control-label" })
+                        <div class="col-md-8">
+                            @Html.DisplayFor(m => m.Email, new { @class = "form-control" })
+                            | <a href="">[Change]</a>
+                        </div>
+                    </div>
+
+                    @using (@Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <h4>Personal Info.</h4>
+                        <hr />
+                        @Html.ValidationSummary("", new { @class = "text-danger " })
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.FirstName, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(m => m.FirstName, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.LastName, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(m => m.LastName, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.AboutMe, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(m => m.AboutMe, new { @class = "col-md-2 control-label" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Gender, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(m => m.Gender, new { @class = "col-md-2 control-label" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.BirthDate, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(m => m.BirthDate, new { @class = "col-md-2 control-label" })
+                            </div>
+                        </div>
+
+                        <h4>Social Media Info.</h4>
+                        <hr />
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Website, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(m => m.Website, new { @class = "col-md-2 control-label" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.SkypeName, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(m => m.SkypeName, new { @class = "col-md-2 control-label" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.TelerikAcademyProfile, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(m => m.TelerikAcademyProfile, new { @class = "col-md-2 control-label" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.FacebookProfile, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(m => m.FacebookProfile, new { @class = "col-md-2 control-label" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.GitHubProfile, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(m => m.GitHubProfile, new { @class = "col-md-2 control-label" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.GooglePlusProfile, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(m => m.GooglePlusProfile, new { @class = "col-md-2 control-label" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.LinkedInProfile, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(m => m.LinkedInProfile, new { @class = "col-md-2 control-label" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.TwitterProfile, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(m => m.TwitterProfile, new { @class = "col-md-2 control-label" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <input type="submit" class="btn btn-primary" value="Update Profile" />&nbsp;
+                                <a href="@Url.Action(ControllerNames.Index, "Profile")" class="btn btn-default">Cancel</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

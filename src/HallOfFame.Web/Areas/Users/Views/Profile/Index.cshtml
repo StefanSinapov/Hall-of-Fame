@@ -1,0 +1,86 @@
+﻿@using Mvc.RazorTools.FontAwesome
+@model HallOfFame.Web.Areas.Users.ViewModels.UserProfileViewModel
+
+@{
+    ViewBag.Title = Model.UserName;
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="content-block">
+                <img src="@Model.AvatarUrl" alt="Avatar" class="img-responsive img-rounded" width="230" height="230" />
+                <h4>
+                    <strong>@Html.DisplayFor(m => m.FirstName) @Html.DisplayFor(m => m.LastName)</strong>
+                </h4>
+                <div>@Html.DisplayFor(m => m.UserName)</div>
+                <hr />
+                <ul class="vcard-details">
+                    <li class="vcard-detail">
+                        @Html.FontAwesome("fa fa-user")
+                        @Html.DisplayFor(m => m.UserName)
+                    </li>
+                    <li class="vcard-detail">
+                        @Html.FontAwesome("fa fa-envelope")
+                        @Html.DisplayFor(m => m.Email)
+                    </li>
+                    <li class="vcard-detail">
+                        @Html.FontAwesome("fa fa-clock-o")
+                        Joined on @Html.DisplayFor(m => m.DateRegistered)
+                    </li>
+                    @if (!string.IsNullOrEmpty(Model.Website))
+                    {
+                        <li class="vcard-detail">
+                            @Html.FontAwesome("fa fa-globe")
+                            <a href="@Model.Website" target="_blank">@Model.Website</a>
+                        </li>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.TelerikAcademyProfile))
+                    {
+                        <li class="vcard-detail">
+                            <img src="~/Img/telerik-academy.ico" alt="telerik" width="20" class="telerik" />
+                            <a href="http://www.telerikacademy.com/users/@Model.TelerikAcademyProfile" target="_blank" >@Html.DisplayFor(m => m.TelerikAcademyProfile)</a>
+                        </li>
+                    }
+
+                </ul>
+                <hr />
+                <div class="vcard-social">
+                    @if (!string.IsNullOrEmpty(Model.GitHubProfile))
+                    {
+                        <a href="@Model.GitHubProfile" target="_blank" class="btn-group fa fa-github-square git fa-2x"></a>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.LinkedInProfile))
+                    {
+                        <a href="@Model.LinkedInProfile" target="_blank" class="btn-group linkedin fa fa-linkedin-square fa-2x"></a>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.TwitterProfile))
+                    {
+                        <a href="@Model.TwitterProfile" target="_blank" class="btn-group twitter fa fa-twitter fa-2x"></a>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.FacebookProfile))
+                    {
+                        <a href="@Model.FacebookProfile" target="_blank" class="btn-group facebook fa fa-facebook fa-2x"></a>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.GooglePlusProfile))
+                    {
+                        <a href="@Model.GooglePlusProfile" target="_blank" class="btn-group google-plus fa fa-google-plus fa-2x"></a>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.SkypeName))
+                    {
+                        <a href="skype:@Model.SkypeName?chat" target="_blank" class="btn-group skype fa fa-skype fa-2x"></a>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-9">
+            <h2 class="page-header content-block">
+                @Html.FontAwesome("fa fa-code") Projects
+            </h2>
+            <div class="row">
+
+            </div>
+        </div>
+    </div>
+</div>
