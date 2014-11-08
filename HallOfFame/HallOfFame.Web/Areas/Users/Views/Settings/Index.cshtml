@@ -1,4 +1,5 @@
-﻿@using Mvc.RazorTools.FontAwesome
+﻿@using HallOfFame.Common
+@using Mvc.RazorTools.FontAwesome
 @model HallOfFame.Web.Areas.Users.ViewModels.UserSettingsViewModel
 
 @{
@@ -23,6 +24,12 @@
                         @Html.LabelFor(m => m.UserName, new { @class = "col-md-4 control-label" })
                         <div class="col-md-8">
                             @Html.DisplayFor(m => m.UserName, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <span class="control-label col-md-4">Password</span>
+                        <div class="col-md-8">
+                            @Html.ActionLink("[Change password]", "ChangePassword", "Manage", new { area = string.Empty }, null)
                         </div>
                     </div>
                     <div class="form-group">
@@ -77,56 +84,56 @@
 
                         <h4>Social Media Info.</h4>
                         <hr />
-                        
+
                         <div class="form-group">
                             @Html.LabelFor(m => m.Website, new { @class = "col-md-4 control-label" })
                             <div class="col-md-8">
                                 @Html.EditorFor(m => m.Website, new { @class = "col-md-2 control-label" })
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             @Html.LabelFor(m => m.SkypeName, new { @class = "col-md-4 control-label" })
                             <div class="col-md-8">
                                 @Html.EditorFor(m => m.SkypeName, new { @class = "col-md-2 control-label" })
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             @Html.LabelFor(m => m.TelerikAcademyProfile, new { @class = "col-md-4 control-label" })
                             <div class="col-md-8">
                                 @Html.EditorFor(m => m.TelerikAcademyProfile, new { @class = "col-md-2 control-label" })
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             @Html.LabelFor(m => m.FacebookProfile, new { @class = "col-md-4 control-label" })
                             <div class="col-md-8">
                                 @Html.EditorFor(m => m.FacebookProfile, new { @class = "col-md-2 control-label" })
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             @Html.LabelFor(m => m.GitHubProfile, new { @class = "col-md-4 control-label" })
                             <div class="col-md-8">
                                 @Html.EditorFor(m => m.GitHubProfile, new { @class = "col-md-2 control-label" })
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             @Html.LabelFor(m => m.GooglePlusProfile, new { @class = "col-md-4 control-label" })
                             <div class="col-md-8">
                                 @Html.EditorFor(m => m.GooglePlusProfile, new { @class = "col-md-2 control-label" })
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             @Html.LabelFor(m => m.LinkedInProfile, new { @class = "col-md-4 control-label" })
                             <div class="col-md-8">
                                 @Html.EditorFor(m => m.LinkedInProfile, new { @class = "col-md-2 control-label" })
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             @Html.LabelFor(m => m.TwitterProfile, new { @class = "col-md-4 control-label" })
                             <div class="col-md-8">
@@ -137,7 +144,7 @@
                         <div class="form-group">
                             <div class="col-md-offset-2 col-md-8">
                                 <input type="submit" class="btn btn-primary" value="Update Profile" />&nbsp;
-                                <button type="reset" class="btn btn-default">Cancel</button>
+                                <a href="@Url.Action(GlobalConstants.Index, "Profile")" class="btn btn-default">Cancel</a>
                             </div>
                         </div>
                     }

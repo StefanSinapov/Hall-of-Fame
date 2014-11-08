@@ -7,14 +7,9 @@
 
     public class BaseUserViewModel : IMapFrom<User>
     {
-        [StringLength(15, MinimumLength = 5, ErrorMessage = "{0} must be between {1} and {2} symbols")]
-        [Required]
         [Display(Name = "Username")]
-        [RegularExpression(@"^[a-zA-Z]([/._]?[a-zA-Z0-9]+)+$",
-            ErrorMessage = "Username must contain only Latin letters, digits, _ and .")]
         public string UserName { get; set; }
 
-        [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
