@@ -1,6 +1,7 @@
 ﻿namespace HallOfFame.Data.Common.Repositories
 {
     using System;
+    using System.Data.Entity;
     using System.Linq;
     using System.Linq.Expressions;
 
@@ -23,6 +24,8 @@
         void Delete(int id);
 
         void Detach(T entity);
+
+        void ChangeEntityState(T entity, EntityState state);
 
         int SaveChanges();
     }

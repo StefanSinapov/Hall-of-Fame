@@ -233,6 +233,7 @@
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Administration\Models\Categories\ListCategoryViewModel.cs" />
     <Compile Include="Areas\Projects\Controllers\CreateController.cs" />
+    <Compile Include="Areas\Projects\Controllers\DetailsController.cs" />
     <Compile Include="Areas\Projects\ProjectsAreaRegistration.cs" />
     <Compile Include="Areas\Projects\ViewModels\CreateProjectViewModel.cs" />
     <Compile Include="Areas\Projects\ViewModels\ProjectInfoViewModel.cs" />

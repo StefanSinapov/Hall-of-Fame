@@ -42,26 +42,12 @@
 
         public virtual void Add(T entity)
         {
-            DbEntityEntry entry = this.Context.Entry(entity);
-            if (entry.State != EntityState.Detached)
-            {
-                entry.State = EntityState.Added;
-            }
-            else
-            {
-                this.DbSet.Add(entity);
-            }
+            this.ChangeEntityState(entity, EntityState.Added);
         }
 
         public virtual void Update(T entity)
         {
-            DbEntityEntry entry = this.Context.Entry(entity);
-            if (entry.State == EntityState.Detached)
-            {
-                this.DbSet.Attach(entity);
-            }
-
-            entry.State = EntityState.Modified;
+            this.ChangeEntityState(entity, EntityState.Modified);
         }
 
         public virtual void Delete(T entity)
@@ -90,9 +76,18 @@
 
         public virtual void Detach(T entity)
         {
-            DbEntityEntry entry = this.Context.Entry(entity);
+           this.ChangeEntityState(entity, EntityState.Detached);
+        }
 
-            entry.State = EntityState.Detached;
+        public void ChangeEntityState(T entity, EntityState state)
+        {
+            var entry = this.Context.Entry(entity);
+            if (entry.State == EntityState.Detached)
+            {
+                this.DbSet.Attach(entity);
+            }
+
+            entry.State = state;
         }
 
         public int SaveChanges()
