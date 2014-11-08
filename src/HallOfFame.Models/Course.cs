@@ -15,6 +15,7 @@
             this.projects = new HashSet<Project>();
         }
 
+        [Key]
         public int Id { get; set; }
 
         [Required]

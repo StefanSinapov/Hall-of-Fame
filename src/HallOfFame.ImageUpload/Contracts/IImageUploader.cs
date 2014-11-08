@@ -4,8 +4,8 @@
 
     public interface IImageUploader
     {
-        string UrlFromBase64Image(string base64);
+        string UrlFromBase64Image(string base64, string fileType);
 
-        string UrlFromMemoryStream(MemoryStream imageStream);
+        string UrlFromMemoryStream(MemoryStream imageStream, string fileType);
     }
 }

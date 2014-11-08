@@ -1,0 +1,137 @@
+﻿@using Kendo.Mvc.UI
+@model HallOfFame.Web.Areas.Projects.ViewModels.CreateProjectViewModel
+
+@{
+    ViewBag.Title = "New Project";
+}
+
+<h2>New Project</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="content-block">
+                <div class="form-horizontal">
+                    @using (@Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        @Html.ValidationSummary("", new { @class = "text-danger" })
+
+                        <div class="form-group">
+                            <strong>
+                                @Html.LabelFor(m => m.Name, new { @class = "col-md-3 control-label" })
+                            </strong>
+                            <div class="col-md-9">
+                                @Html.EditorFor(m => m.Name, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <strong>
+                                @Html.LabelFor(m => m.Info, new { @class = "col-md-3 control-label" })
+                            </strong>
+                            <div class="col-md-9">
+                                @Html.EditorFor(m => m.Info, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.PhotoUrl, new { @class = "col-md-3 control-label" })
+                            <div class="col-md-9">
+                                @Html.HiddenFor(m => m.PhotoUrl, new { @id = "photo-url-input" })
+                                @(Html.Kendo().Upload()
+                                      .Name("files")
+                                      .HtmlAttributes(new { accept = "image/*" })
+                                      .Multiple(false)
+                                      .Events(events => events
+                                                            .Success("onSuccess")
+                                      )
+                                      .Async(a => a
+                                                      .Save("Save", "Create")
+                                                      .AutoUpload(true)
+                                                     /* .Remove("Remove", "Create")*/
+                                      )
+                                )
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <strong>
+                                @Html.LabelFor(m => m.Description, new { @class = "col-md-3 control-label" })
+                            </strong>
+                            <div class="col-md-9">
+                                @(Html.Kendo().EditorFor(m => m.Description)
+                                      .Name("Description")
+                                      .Encode(false)
+                                )
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <strong>
+                                @Html.LabelFor(m => m.CourseId, new { @class = "col-md-3 control-label" })
+                            </strong>
+                            <div class="col-md-9">
+                                @Html.DropDownListFor(m => m.CourseId, new SelectList(@ViewBag.Courses, "Id", "Name"), new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <strong>
+                                @Html.LabelFor(m => m.TeamName, new { @class = "col-md-3 control-label" })
+                            </strong>
+                            <div class="col-md-9">
+                                @Html.EditorFor(m => m.TeamName, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <strong>
+                                @Html.LabelFor(m => m.GitHubLink, new { @class = "col-md-3 control-label" })
+                            </strong>
+                            <div class="col-md-9">
+                                @Html.EditorFor(m => m.GitHubLink, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <strong>
+                                @Html.LabelFor(m => m.FacebookLink, new { @class = "col-md-3 control-label" })
+                            </strong>
+                            <div class="col-md-9">
+                                @Html.EditorFor(m => m.FacebookLink, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <strong>
+                                @Html.LabelFor(m => m.GooglePlusLink, new { @class = "col-md-3 control-label" })
+                            </strong>
+                            <div class="col-md-9">
+                                @Html.EditorFor(m => m.GooglePlusLink, new { @class = "form-control" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-2 col-md-8">
+                                <input type="submit" class="btn btn-primary" value="Create" />&nbsp;
+                                <input type="reset" class="btn btn-default" value="Reset" />
+                            </div>
+                        </div>
+                    }
+
+                    <script>
+                        function onSuccess(e) {
+                            console.log(e.response.ImageName);
+                            $("#photo-url-input").val(e.response.ImageName);
+                        }
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

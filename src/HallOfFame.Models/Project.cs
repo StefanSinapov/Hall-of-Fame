@@ -35,6 +35,8 @@
 
         public string Description { get; set; }
 
+        public string PhotoUrl { get; set; }
+
         public string GitHubLink { get; set; }
 
         public string FacebookLink { get; set; }
