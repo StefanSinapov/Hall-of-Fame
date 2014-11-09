@@ -25,6 +25,9 @@
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/search").Include(
+                      "~/Scripts/search-box.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                         "~/Scripts/kendo/2014.2.716/kendo.web.min.js",
                         "~/Scripts/kendo/2014.2.716/cultures/kendo.culture.en-GB.min.js",
