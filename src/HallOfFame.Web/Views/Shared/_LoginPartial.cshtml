@@ -1,5 +1,4 @@
-﻿@using System.ServiceModel.Security
-@using HallOfFame.Web.Common
+﻿@using HallOfFame.Web.Common
 @using Microsoft.AspNet.Identity
 @using Mvc.RazorTools.FontAwesome
 @if (Request.IsAuthenticated)
@@ -45,6 +44,11 @@
 else
 {
     <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="@Url.Action(ControllerNames.Index, "Create", new { area = "Projects" })" title="New Project">
+                <i class="fa fa-plus-circle"></i> New Project
+            </a>
+        </li>
         <li>@Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</li>
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
