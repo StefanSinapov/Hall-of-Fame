@@ -22,11 +22,14 @@
     [Authorize]
     public class CreateController : Controller
     {
-        public CreateController(IRepository<Project> projects, IRepository<Course> courses)
+        public CreateController(IRepository<Project> projects, IRepository<Course> courses, IRepository<User> users)
         {
             this.Projects = projects;
             this.Courses = courses;
+            this.Users = users;
         }
+
+        public IRepository<User> Users { get; set; }
 
         public IRepository<Course> Courses { get; set; }
 
@@ -47,6 +50,8 @@
             // TODO: project model, to have collection of photos or collection<string> photoUrl or photoPath in disc
             if (this.ModelState.IsValid)
             {
+                var userId = this.User.Identity.GetUserId();
+                var currentUser = this.Users.Find(userId);
                 var project = new Project
                                   {
                                       Name = model.Name,
@@ -57,9 +62,11 @@
                                       FacebookLink = model.FacebookLink,
                                       GitHubLink = model.GitHubLink,
                                       GooglePlusLink = model.GooglePlusLink,
-                                      PhotoUrl = model.PhotoUrl
+                                      PhotoUrl = model.PhotoUrl,
+                                      Owner = currentUser
                                   };
 
+                project.Team.Add(currentUser);
                 this.Projects.Add(project);
                 this.Projects.SaveChanges();
 

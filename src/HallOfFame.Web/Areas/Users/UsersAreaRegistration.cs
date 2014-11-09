@@ -16,12 +16,6 @@
 
         public override void RegisterArea(AreaRegistrationContext context)
         {
-            /* context.MapRoute(
-                 "Users_default",
-                 "Users/{controller}/{action}/{id}",
-                 new { action = "Index", id = UrlParameter.Optional });*/
-
-            // TODO: uncomment this
             context.MapRoute(
                "Users_current_user_profile",
                "Users/Profile/Settings/{action}",
@@ -36,11 +30,6 @@
                 "Current_Users_profile",
                 "Users/Profile",
                 new { controller = "Profile", action = ControllerNames.Index });
-
-            context.MapRoute(
-                "Users_profile",
-                "Users/{username}",
-                new { controller = "Profile", action = ControllerNames.Index, username = UrlParameter.Optional });
         }
     }
 }

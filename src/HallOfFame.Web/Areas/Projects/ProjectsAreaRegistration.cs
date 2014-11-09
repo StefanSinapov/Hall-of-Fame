@@ -2,6 +2,8 @@
 {
     using System.Web.Mvc;
 
+    using HallOfFame.Web.Common;
+
     public class ProjectsAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
@@ -16,8 +18,13 @@
         {
             context.MapRoute(
                 "Projects_default",
-                "Projects/{controller}/{action}/{id}",
-                new { action = "Index", id = UrlParameter.Optional });
+                "Projects/Create/{action}",
+                new { controller = "Create", action = "Index", id = UrlParameter.Optional });
+
+            context.MapRoute(
+                "Users_profile",
+                "Projects/{name}",
+                new { controller = "Details", action = ControllerNames.Index, name = UrlParameter.Optional });
 
             /* context.MapRoute(
                 "Projects_current_user_profile",

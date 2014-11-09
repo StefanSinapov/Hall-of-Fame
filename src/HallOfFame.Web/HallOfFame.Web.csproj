@@ -235,7 +235,9 @@
     <Compile Include="Areas\Projects\Controllers\CreateController.cs" />
     <Compile Include="Areas\Projects\Controllers\DetailsController.cs" />
     <Compile Include="Areas\Projects\ProjectsAreaRegistration.cs" />
+    <Compile Include="Areas\Projects\ViewModels\BaseProjectViewModel.cs" />
     <Compile Include="Areas\Projects\ViewModels\CreateProjectViewModel.cs" />
+    <Compile Include="Areas\Projects\ViewModels\ProjectDetailsViewModel.cs" />
     <Compile Include="Areas\Projects\ViewModels\ProjectInfoViewModel.cs" />
     <Compile Include="Areas\Users\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Users\Controllers\SettingsController.cs" />
@@ -276,12 +278,15 @@
     <Compile Include="ViewModels\Account\SetPasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyCodeViewModel.cs" />
     <Compile Include="ViewModels\Account\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="ViewModels\Comments\CommentViewModel.cs" />
     <Compile Include="ViewModels\Feedback\FeedbackViewModel.cs" />
     <Compile Include="ViewModels\Account\IndexViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Shared\CourseViewModel.cs" />
+    <Compile Include="ViewModels\Shared\LikeViewModel.cs" />
     <Compile Include="ViewModels\Shared\PaginationViewModel.cs" />
+    <Compile Include="ViewModels\Shared\UserInfoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -377,6 +382,7 @@
     <Content Include="Content\kendo\2014.2.716\images\kendoui.ttf" />
     <Content Include="Areas\Projects\Views\Create\Index.cshtml" />
     <Content Include="Areas\Users\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Projects\Views\Details\Index.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Img\background.jpg" />
     <Content Include="Img\loader.gif" />
