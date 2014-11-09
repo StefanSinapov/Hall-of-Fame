@@ -9,7 +9,7 @@
     using AutoMapper.QueryableExtensions;
 
     using HallOfFame.Common.Constants;
-    using HallOfFame.Data.Common.Repositories;
+    using HallOfFame.Data.Contracts;
     using HallOfFame.ImageUpload;
     using HallOfFame.Models;
     using HallOfFame.Web.Areas.Projects.ViewModels;
@@ -22,18 +22,12 @@
     [Authorize]
     public class CreateController : Controller
     {
-        public CreateController(IRepository<Project> projects, IRepository<Course> courses, IRepository<User> users)
+        public CreateController(IHallOfFameData data)
         {
-            this.Projects = projects;
-            this.Courses = courses;
-            this.Users = users;
+            this.Data = data;
         }
 
-        public IRepository<User> Users { get; set; }
-
-        public IRepository<Course> Courses { get; set; }
-
-        public IRepository<Project> Projects { get; set; }
+        public IHallOfFameData Data { get; set; }
 
         [HttpGet]
         public ActionResult Index()
@@ -51,7 +45,7 @@
             if (this.ModelState.IsValid)
             {
                 var userId = this.User.Identity.GetUserId();
-                var currentUser = this.Users.Find(userId);
+                var currentUser = this.Data.Users.Find(userId);
                 var project = new Project
                                   {
                                       Name = model.Name,
@@ -66,8 +60,8 @@
                                   };
 
                 project.Team.Add(currentUser);
-                this.Projects.Add(project);
-                this.Projects.SaveChanges();
+                this.Data.Projects.Add(project);
+                this.Data.Projects.SaveChanges();
 
                 // TODO: redirect to project view
                 return this.RedirectToAction("Index", "Home", new { area = string.Empty });
@@ -81,7 +75,7 @@
         [HttpPost]
         public JsonResult DoesProjectNameExist(string name)
         {
-            var project = this.Projects.All().Where(p => p.Name == name).Select(p => p.Name).FirstOrDefault();
+            var project = this.Data.Projects.All().Where(p => p.Name == name).Select(p => p.Name).FirstOrDefault();
 
             return this.Json(project == null);
         }
@@ -155,7 +149,7 @@
 
         private List<CourseViewModel> GetCourses()
         {
-            return this.Courses.All().Project().To<CourseViewModel>().ToList();
+            return this.Data.Courses.All().Project().To<CourseViewModel>().ToList();
         }
     }
 }
