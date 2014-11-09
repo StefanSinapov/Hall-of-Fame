@@ -1,7 +1,116 @@
-﻿@model HallOfFame.Web.Areas.Projects.ViewModels.ProjectDetailsViewModel
+﻿@using Mvc.RazorTools.FontAwesome
+@model HallOfFame.Web.Areas.Projects.ViewModels.ProjectDetailsViewModel
 
 @{
     ViewBag.Title = @Model.Name;
 }
 
-<h2>@Model.Name</h2>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="content-block">
+                <h3>
+                    @if (!string.IsNullOrEmpty(Model.TeamName))
+                    {
+                        <span><i class="fa fa-group"></i>&nbsp;</span> @Html.DisplayFor(m => m.TeamName) <span> /</span>
+                    }
+                    @Html.DisplayFor(m => m.Name)
+                </h3>
+                <hr />
+                <div class="row">
+                    <div class="col-md-6">
+                        @Html.DisplayFor(m => m.Title)
+                    </div>
+                    <div class="col-md-5">
+                        @if (!string.IsNullOrEmpty(Model.Website))
+                        {
+                            <span><i class="fa fa-globe"></i>&nbsp;</span>@Html.DisplayFor(m => m.Website)
+                        }
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 vcard-social">
+                        @Html.FontAwesome("fa fa-graduation-cap")&nbsp;<a href="/">@Html.DisplayFor(m => m.CourseName)</a>
+                        @if (!string.IsNullOrEmpty(Model.GitHubLink))
+                        {
+                            <a href="@Html.DisplayFor(m => m.GitHubLink)" target="_blank"><i class="fa fa-github-square fa-2x"></i>&nbsp;</a>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.GooglePlusLink))
+                        {
+                            <a href="@Html.DisplayFor(m => m.GooglePlusLink)" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i>&nbsp;</a>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.FacebookLink))
+                        {
+                            <a href="@Html.DisplayFor(m => m.FacebookLink)" target="_blank"><i class="fa fa-facebook fa-2x"></i>&nbsp;</a>
+                        }
+                    </div>
+                </div>
+                <hr />
+                <style>
+                </style>
+                <div class="row">
+                    <div class="col-md-12">
+                        @if (!string.IsNullOrEmpty(@Model.PhotoUrl))
+                        {
+                            <div class="carousel article-slide" id="article-photo-carousel">
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+
+                                    <div class="item active">
+                                        <img src="@Model.PhotoUrl" alt="@Model.Name cover photo" class="img-responsive" title="Cover photo" />
+                                    </div>
+                                    @*  <div class="item">
+                                            <img alt="" title="" src="http://placehold.it/600x400">
+                                        </div>
+                                        <div class="item">
+                                            <img alt="" title="" src="http://placehold.it/600x400">
+                                        </div>
+                                        <div class="item">
+                                            <img alt="" title="" src="http://placehold.it/600x400">
+                                        </div>*@
+                                </div>
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators">
+                                    <li class="active" data-slide-to="0" data-target="#article-photo-carousel">
+                                        <img src="@Model.PhotoUrl" alt="@Model.Name cover photo" class="media-object img-responsive img-rounded" />
+                                    </li>
+                                    @*  <li class="" data-slide-to="1" data-target="#article-photo-carousel">
+                                            <img alt="" src="http://placehold.it/250x180">
+                                        </li>
+                                        <li class="" data-slide-to="2" data-target="#article-photo-carousel">
+                                            <img alt="" src="http://placehold.it/250x180">
+                                        </li>
+                                        <li class="" data-slide-to="3" data-target="#article-photo-carousel">
+                                            <img alt="" src="http://placehold.it/250x180">
+                                        </li>*@
+                                </ol>
+                            </div>
+                            <hr />
+                        }
+                        <div class="row">
+                            <div class="col-md-12">
+                                @Html.Raw(Model.Description)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="content-block">
+                <div class="row">
+                    <h2>Creators</h2>
+                    @foreach (var user in Model.Team)
+                    {
+                        Html.RenderPartial("_userInfoPartial", user);
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

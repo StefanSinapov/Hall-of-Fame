@@ -31,11 +31,13 @@
         public string Name { get; set; }
 
         [MaxLength(120)]
-        public string Info { get; set; }
+        public string Title { get; set; }
 
         public string Description { get; set; }
 
         public string PhotoUrl { get; set; }
+
+        public string Website { get; set; }
 
         public string GitHubLink { get; set; }
 
@@ -44,10 +46,6 @@
         public string GooglePlusLink { get; set; }
 
         public string TeamName { get; set; }
-
-        public string OwnerId { get; set; }
-
-        public virtual User Owner { get; set; }
 
         public int CourseId { get; set; }
 

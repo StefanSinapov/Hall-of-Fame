@@ -17,6 +17,8 @@
 
         public int LikesCount { get; set; }
 
+        public string CourseName { get; set; }
+
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Project, ProjectDetailsViewModel>()
@@ -24,9 +26,12 @@
                                                                                        {
                                                                                            UserName = t.UserName,
                                                                                            AvatarUrl = t.AvatarUrl
-                                                                                       })));
+                                                                                       }).ToList()));
             configuration.CreateMap<Project, ProjectDetailsViewModel>()
                 .ForMember(m => m.LikesCount, opt => opt.MapFrom(u => u.Likes.Count));
+
+            configuration.CreateMap<Project, ProjectDetailsViewModel>()
+                .ForMember(m => m.CourseName, opt => opt.MapFrom(u => u.Course.Name));
         }
     }
 }

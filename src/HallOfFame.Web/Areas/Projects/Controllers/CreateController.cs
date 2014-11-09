@@ -58,12 +58,11 @@
                                       CourseId = model.CourseId,
                                       Description = model.Description,
                                       TeamName = model.TeamName,
-                                      Info = model.Info,
+                                      Title = model.Title,
                                       FacebookLink = model.FacebookLink,
                                       GitHubLink = model.GitHubLink,
                                       GooglePlusLink = model.GooglePlusLink,
-                                      PhotoUrl = model.PhotoUrl,
-                                      Owner = currentUser
+                                      PhotoUrl = model.PhotoUrl
                                   };
 
                 project.Team.Add(currentUser);

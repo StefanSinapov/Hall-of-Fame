@@ -34,10 +34,6 @@
                         "~/Scripts/kendo/2014.2.716/cultures/kendo.culture.bg-BG.min.js",
                         "~/Scripts/kendo/2014.2.716/kendo.aspnetmvc.js"));
 
-           /* bundles.Add(new StyleBundle("~/Content/KendoUI/kendo").Include(
-                      "~/Content/KendoUI/kendo.common.min.css",
-                      "~/Content/KendoUI/kendo.metro.min.css"));*/
-
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/kendo/2014.2.716/kendo.common.min.css",
                       "~/Content/kendo/2014.2.716/kendo.metro.min.css",

@@ -383,6 +383,7 @@
     <Content Include="Areas\Projects\Views\Create\Index.cshtml" />
     <Content Include="Areas\Users\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Projects\Views\Details\Index.cshtml" />
+    <Content Include="Views\Shared\_userInfoPartial.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Img\background.jpg" />
     <Content Include="Img\loader.gif" />
@@ -460,6 +461,7 @@
     <Content Include="Views\Shared\EditorTemplates\Time.cshtml" />
     <Content Include="Scripts\kendo\2014.2.716\kendo.web.min.js.map" />
     <Content Include="Views\Shared\EditorTemplates\Editor.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
