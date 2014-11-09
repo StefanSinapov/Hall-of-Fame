@@ -45,6 +45,10 @@
 
         public string TeamName { get; set; }
 
+        public string OwnerId { get; set; }
+
+        public virtual User Owner { get; set; }
+
         public int CourseId { get; set; }
 
         public virtual Course Course { get; set; }
