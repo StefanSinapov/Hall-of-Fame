@@ -17,12 +17,12 @@
             this.Courses = courses;
         }
 
+        public IRepository<Course> Courses { get; set; }
+
         public ActionResult Index()
         {
             return this.View();
         }
-
-        public IRepository<Course> Courses { get; set; }
 
         public override IEnumerable GetData()
         {

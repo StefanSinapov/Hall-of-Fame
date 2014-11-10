@@ -49,14 +49,12 @@
                       "~/Content/kendo/2014.2.716/kendo.common.min.css",
                       "~/Content/kendo/2014.2.716/kendo.metro.min.css"));
 
-
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-theme.min.css",
                       "~/Content/font-awesome.css"));
 
             bundles.Add(new StyleBundle("~/Content/custom")
                 .Include("~/Content/site.css"));
-
         }
     }
 }

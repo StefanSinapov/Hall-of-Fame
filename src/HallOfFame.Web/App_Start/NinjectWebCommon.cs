@@ -85,7 +85,6 @@ namespace HallOfFame.Web
 
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
 
-
             kernel.Bind(typeof(ICurrentUser)).To(typeof(CurrentUser));
 
             // Image Upload
