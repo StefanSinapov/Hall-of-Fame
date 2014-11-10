@@ -29,7 +29,7 @@
         {
             entity.IsDeleted = true;
             entity.DeletedOn = DateTime.Now;
-            base.ChangeEntityState(entity, EntityState.Modified);
+            this.ChangeEntityState(entity, EntityState.Modified);
         }
 
         public void HardDelete(T entity)

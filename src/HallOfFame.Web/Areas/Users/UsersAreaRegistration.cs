@@ -30,6 +30,11 @@
                 "Current_Users_profile",
                 "Users/Profile",
                 new { controller = "Profile", action = ControllerNames.Index });
+
+            context.MapRoute(
+                "Users_profile",
+                "Users/{username}",
+                new { controller = "Profile", action = ControllerNames.Index, username = UrlParameter.Optional });
         }
     }
 }

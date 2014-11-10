@@ -22,7 +22,7 @@
                 new { controller = "Create", action = "Index", id = UrlParameter.Optional });
 
             context.MapRoute(
-                "Users_profile",
+                "Projects_Details",
                 "Projects/{name}",
                 new { controller = "Details", action = ControllerNames.Index, name = UrlParameter.Optional });
 

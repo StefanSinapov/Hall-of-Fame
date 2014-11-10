@@ -99,11 +99,13 @@
         <div class="col-md-4">
             <div class="content-block">
                 <div class="row">
-                    <h2>Creators</h2>
-                    @foreach (var user in Model.Team)
-                    {
-                        Html.RenderPartial("_userInfoPartial", user);
-                    }
+                    <div class="col-md-12">
+                        <h2>Creators</h2>
+                        @foreach (var user in Model.Team)
+                        {
+                            Html.RenderPartial("_userInfoPartial", user);
+                        }
+                    </div>
                 </div>
             </div>
         </div>

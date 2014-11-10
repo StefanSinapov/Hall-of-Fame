@@ -1,6 +1,5 @@
 ﻿@model HallOfFame.Web.ViewModels.Shared.UserInfoViewModel
 
-<div class="container">
-    <img src="@Model.AvatarUrl" alt="@Model.UserName Avatar" width="25" height="25" title="@Model.UserName"/>
-    <a href="@Url.Action(@Model.UserName, "Profile", new { area="Users"})">@Model.UserName</a>
-</div>
+<a href="@(string.Format("/users/{0}", @Model.UserName))">
+    <img src="@Model.AvatarUrl" alt="@Model.UserName Avatar" width="35" height="35" title="@Model.UserName" />
+</a>

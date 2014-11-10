@@ -12,7 +12,6 @@
     public class ProjectDetailsViewModel : BaseProjectViewModel, IMapFrom<Project>, IHaveCustomMappings
     {
         // TODO: Get Comments with AJAX
-
         public ICollection<UserInfoViewModel> Team { get; set; }
 
         public int LikesCount { get; set; }
