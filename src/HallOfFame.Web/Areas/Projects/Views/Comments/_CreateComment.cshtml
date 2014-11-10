@@ -1,24 +1,41 @@
-﻿@model HallOfFame.Web.ViewModels.Comments.CommentViewModel
+﻿@using Kendo.Mvc.UI
+@model HallOfFame.Web.ViewModels.Comments.CommentViewModel
 
-<div class="post-comment">
-    <h3>Leave a Comment</h3>
+<div class="">
+    <h4><i class="fa fa-paper-plane-o"></i> Leave a Comment:</h4>
     @if (User.Identity.IsAuthenticated)
     {
-        using (Ajax.BeginForm("Create", "Comments", new { id = ViewBag.Id }, new AjaxOptions { HttpMethod = "Post", InsertionMode = InsertionMode.InsertBefore, UpdateTargetId = "comments", OnFailure = "showCommentRequiredError" }))
+        using (Ajax.BeginForm("Create", "Comments", new { id = ViewBag.Id }, new AjaxOptions
+                                                                {
+                                                                    HttpMethod = "Post",
+                                                                    InsertionMode = InsertionMode.InsertBefore,
+                                                                    UpdateTargetId = "comments",
+                                                                    OnSuccess = "ClearInput",
+                                                                    OnComplete = "showCommentRequiredError"
+                                                                }))
         {
             @Html.AntiForgeryToken()
 
-            @Html.EditorFor(m => m.Content)
-            <p>
-                <input type="submit" class="btn btn-primary" data_disable="true" value="Add Comment" />
-            </p>
+            @Html.ValidationSummary(string.Empty, new { @class = "text-danger" })
+            <div class="form-group">
+                @Html.TextAreaFor(m => m.Content, new
+                                                      {
+                                                          @class = "form-control",
+                                                          id = "input-comment",
+                                                          rows = 4,
+                                                          placeholder = "Your message here..."
+                                                      })
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-primary" value="Add Comment" />
+            </div>
         }
     }
     else
     {
-        <p>
+        <div>
             Only registered users can comment.
             @Html.Partial("_PageLoginPartial")
-        </p>
+        </div>
     }
 </div>

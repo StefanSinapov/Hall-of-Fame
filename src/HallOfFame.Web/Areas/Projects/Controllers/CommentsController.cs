@@ -8,22 +8,25 @@
 
     using HallOfFame.Data.Common.Repositories;
     using HallOfFame.Models;
-    using HallOfFame.Web.Infrastructure.Filters;
-    using HallOfFame.Web.Infrastructure.Identity;
     using HallOfFame.Web.ViewModels.Comments;
+
+    using Microsoft.AspNet.Identity;
+
+    using Newtonsoft.Json;
 
     public class CommentsController : Controller
     {
         protected readonly IRepository<Comment> Comments;
-        protected readonly ICurrentUser CurrentUser;
-     
+
         private const int MinutesBetweenComments = 1;
 
-        public CommentsController(IRepository<Comment> commentsRepository, ICurrentUser user)
+        public CommentsController(IRepository<Comment> commentsRepository, IRepository<User> users)
         {
+            this.Users = users;
             this.Comments = commentsRepository;
-            this.CurrentUser = user;
         }
+
+        public IRepository<User> Users { get; set; }
 
         public ActionResult All(int id, int maxComments = 999, int startFrom = 0)
         {
@@ -39,13 +42,17 @@
             return this.PartialView(comments);
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(int id, CommentViewModel comment)
         {
-            if (this.CurrentUserCommentedInLastMinutes())
+            var userId = this.User.Identity.GetUserId();
+
+            // TODO: fix anti-spam
+            if (this.CurrentUserCommentedInLastMinutes(userId))
             {
-                // return this.JsonError(string.Format("You can comment every {0} minute", MinutesBetweenComments));
+                return this.Json(new { Error = string.Format("You can comment every {0} minute", MinutesBetweenComments) });
             }
 
             if (ModelState.IsValid)
@@ -54,30 +61,32 @@
                 {
                     Content = comment.Content,
                     ProjectId = id,
-                    Author = this.CurrentUser.Get()
+                    AuthorId = userId
                 };
 
                 this.Comments.Add(newComment);
                 this.Comments.SaveChanges();
 
-                comment.UserName = this.CurrentUser.Get().UserName;
-                comment.CommentedOn = DateTime.Now;
+                var user = this.Users.Find(userId);
+
+                comment.UserName = user.UserName;
+                comment.UserAvatar = user.AvatarUrl;
+                comment.CreatedOn = DateTime.Now;
+
+                ModelState.Clear();
 
                 return this.PartialView("_CommentDetail", comment);
             }
-            else
-            {
-                return this.Redirect("/");
 
-                // TODO: Fix this
-                /*return this.JsonError("Content is required");*/
-            }
+            return this.Json(new { Error = string.Format("You can comment every {0} minute", MinutesBetweenComments) });
         }
 
-        private bool CurrentUserCommentedInLastMinutes()
+        private bool CurrentUserCommentedInLastMinutes(string userId)
         {
-            var lastComment = this.CurrentUser.Get()
+            var lastComment = this
                 .Comments
+                .All()
+                .Where(u => u.AuthorId == userId)
                 .OrderByDescending(c => c.CreatedOn)
                 .FirstOrDefault();
 

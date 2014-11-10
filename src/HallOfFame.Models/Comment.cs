@@ -9,7 +9,7 @@
     {
         public Comment()
         {
-            this.DatePublished = DateTime.Now;
+            this.CreatedOn = DateTime.Now;
         }
 
         [Key]
@@ -26,9 +26,6 @@
         public int ProjectId { get; set; }
 
         public virtual Project Project { get; set; }
-
-        [Required]
-        public DateTime DatePublished { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

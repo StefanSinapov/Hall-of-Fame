@@ -14,13 +14,14 @@
                             OnSuccess = "hideViewCommentsButton",
                             InsertionMode = InsertionMode.Replace,
                             UpdateTargetId = "comments"
-                        }, new { id = "show-comments-btn", @class = "btn-u" }))
+                        }, new { id = "show-comments-btn", @class = "btn btn-primary" }))
 </div>
 
-<section id="comments"></section>
-
-<hr />
 
 <section id="new-comment" class="hidden">
     @Html.Partial(string.Format(CommentsPartialViewsFolder, "_CreateComment"), new CommentViewModel())
 </section>
+
+<section id="comments"></section>
+
+<hr />

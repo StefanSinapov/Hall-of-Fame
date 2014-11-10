@@ -11,7 +11,13 @@
         $('#new-comment').removeClass('hidden');
     }
 
+    function ClearInput() {
+        $('#input-comment').val('');
+    }
+
     function showCommentRequiredError(data) {
-        $('<h3 style="color:red">' + data.responseJSON.errorMessage + '</h3>').prependTo('#new-comment').delay(3000).fadeOut();
+        if (data.responseJSON) {
+            $('<h3 style="color:red">' + data.responseJSON.Error + '</h3>').prependTo('#new-comment').delay(3000).fadeOut();
+        }
     }
 </script>

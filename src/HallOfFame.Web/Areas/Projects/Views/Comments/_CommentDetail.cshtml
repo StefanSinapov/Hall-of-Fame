@@ -1,16 +1,14 @@
 ﻿@model HallOfFame.Web.ViewModels.Comments.CommentViewModel
 
 <div class="media">
-    <a class="pull-left" href="#">
-        <img class="media-object img-responsive img-circle" src=@Model.UserAvatar width="35" height="34" alt="@Model.UserName">
+    <a class="pull-left" href="@(string.Format("/users/{0}", @Model.UserName))">
+        <img class="media-object img-responsive img-circle" src=@Model.UserAvatar alt="@Model.UserName" width="35" height="35">
     </a>
     <div class="media-body">
         <h4 class="media-heading">
-            @Model.UserName
-            <span class="pull-right">@Model.CommentedOn@* / <a href="#">Reply</a>*@</span>
+            @Html.DisplayFor(m => m.UserName) &nbsp;
+            <span class="small">@Html.DisplayFor(m => m.CreatedOn)</span>
         </h4>
-        <p>@Model.Content</p>
+        <p>@Html.DisplayFor(m => m.Content, new { @class="col-md-12"})</p>
     </div>
 </div>
-
-<hr />

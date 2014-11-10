@@ -11,6 +11,8 @@
     using HallOfFame.Models;
     using HallOfFame.Web.Areas.Projects.ViewModels;
 
+    using Kendo.Mvc.UI;
+
     public class DetailsController : Controller
     {
         public DetailsController(IRepository<Project> projects)
@@ -30,7 +32,7 @@
                 // TODO: custom not found page
                 throw new HttpException((int)HttpStatusCode.NotFound, "Project not Found");
             }
-
+            ViewBag.Id = project.Id;
             return this.View(project);
         }
     }

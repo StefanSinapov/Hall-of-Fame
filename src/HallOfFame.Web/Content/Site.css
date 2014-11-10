@@ -53,8 +53,9 @@ a .fa {
 input,
 select,
 textarea {
-    max-width: 280px;
+    max-width: 65%;
 }
+
 
 a {
     color: #fdcef8;

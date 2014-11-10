@@ -88,8 +88,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Filters\RouteValuesInViewData.cs" />
-    <Compile Include="Identity\CurrentUser.cs" />
-    <Compile Include="Identity\ICurrentUser.cs" />
     <Compile Include="Mapping\AutoMapperConfig.cs" />
     <Compile Include="Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Mapping\IMapFrom.cs" />
