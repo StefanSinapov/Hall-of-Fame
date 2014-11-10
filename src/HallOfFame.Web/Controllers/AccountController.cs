@@ -415,6 +415,7 @@
         public ActionResult LogOff()
         {
             this.AuthenticationManager.SignOut();
+            this.Session.Abandon();
             return this.RedirectToAction("Index", "Home");
         }
 

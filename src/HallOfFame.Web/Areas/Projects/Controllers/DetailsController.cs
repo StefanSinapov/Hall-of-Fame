@@ -32,6 +32,7 @@
                 // TODO: custom not found page
                 throw new HttpException((int)HttpStatusCode.NotFound, "Project not Found");
             }
+
             ViewBag.Id = project.Id;
             return this.View(project);
         }
