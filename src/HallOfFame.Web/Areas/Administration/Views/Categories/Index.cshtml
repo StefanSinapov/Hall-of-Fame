@@ -1,1 +1,40 @@
-﻿
+﻿@using HallOfFame.Web.Areas.Administration.ViewModels.Categories
+@using HallOfFame.Web.Common
+@using Kendo.Mvc.UI
+@{
+    const string ControllerName = ControllerNames.Categories;
+    ViewBag.Title = ControllerNames.Categories;
+}
+
+<h1>@ViewBag.Title</h1>
+
+@(Html.Kendo().Grid<CategoryViewModel>()
+        .Columns(columns =>
+                {
+                    columns.Bound(x => x.Id);
+                    columns.Bound(x => x.Name);
+                    columns.Bound(x => x.Description);
+                    columns.Bound(x => x.CoursesCount);
+                    columns.Bound(x => x.CreatedOn).Format("{0:dd/MM/yyyy HH:mm}").Hidden();
+                    columns.Bound(x => x.ModifiedOn).Format("{0:dd/MM/yyyy HH:mm}").Hidden();
+                    columns.Command(command => command.Edit().UpdateText("Update").CancelText("Cancel")).Width(100);
+                    columns.Command(command => command.Destroy()).Width(100);
+                })
+            .Pageable(page => page.Refresh(true))
+            .Sortable(sortable => sortable.AllowUnsort(false))
+            .ColumnMenu()
+        .DataSource(datasource => datasource
+            .Ajax()
+            .ServerOperation(true)
+            .Model(model =>
+                {
+                    model.Id(x => x.Id);
+                })
+                .Sort(sort => sort.Add(x => x.CreatedOn).Descending())
+            .Create(create => create.Action("Create", ControllerName))
+            .Read(read => read.Action("Read", ControllerName))
+            .Update(update => update.Action("Update", ControllerName))
+            .Destroy(destroy => destroy.Action("Destroy", ControllerName))
+            )
+    .Name("DataGrid")
+)

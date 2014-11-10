@@ -3,5 +3,7 @@
     public static class ControllerNames
     {
         public const string Index = "Index";
+
+        public const string Categories = "Categories";
     }
 }

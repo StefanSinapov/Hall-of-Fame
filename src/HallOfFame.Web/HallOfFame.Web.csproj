@@ -231,7 +231,7 @@
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
-    <Compile Include="Areas\Administration\Models\Categories\ListCategoryViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Categories\CategoryViewModel.cs" />
     <Compile Include="Areas\Projects\Controllers\CommentsController.cs" />
     <Compile Include="Areas\Projects\Controllers\CreateController.cs" />
     <Compile Include="Areas\Projects\Controllers\DetailsController.cs" />
@@ -253,6 +253,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KendoGridAdministrationController.cs" />
     <Compile Include="Controllers\ManageController.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
@@ -368,7 +369,6 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Areas\Administration\Views\web.config" />
     <Content Include="Areas\Administration\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Administration\Views\Categories\Index.cshtml" />
     <Content Include="Areas\Users\Views\web.config" />
     <Content Include="Areas\Projects\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Projects\Views\web.config" />
@@ -390,6 +390,18 @@
     <Content Include="Areas\Projects\Views\Comments\_CommentDetail.cshtml" />
     <Content Include="Areas\Projects\Views\Shared\_Comments.cshtml" />
     <Content Include="Areas\Projects\Views\Comments\_CreateComment.cshtml" />
+    <Content Include="Areas\Administration\Views\Categories\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Currency.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Date.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\EmailAddress.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Integer.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\MultilineText.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Number.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Password.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Time.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Img\background.jpg" />
     <Content Include="Img\loader.gif" />
@@ -472,9 +484,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administration\Models\Courses\" />
-    <Folder Include="Areas\Administration\Models\Projects\" />
-    <Folder Include="Areas\Administration\Models\Users\" />
+    <Folder Include="Areas\Administration\Models\" />
+    <Folder Include="Areas\Administration\ViewModels\Courses\" />
+    <Folder Include="Areas\Administration\ViewModels\Projects\" />
+    <Folder Include="Areas\Administration\ViewModels\Users\" />
     <Folder Include="Areas\Administration\Views\Courses\" />
     <Folder Include="Areas\Administration\Views\Projects\" />
     <Folder Include="Areas\Administration\Views\Users\" />
