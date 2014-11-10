@@ -231,7 +231,10 @@
     <Compile Include="App_Start\ViewEnginesConfig.cs" />
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\CoursesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
     <Compile Include="Areas\Administration\ViewModels\Categories\CategoryViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Courses\CourseInfoViewModel.cs" />
     <Compile Include="Areas\Projects\Controllers\CommentsController.cs" />
     <Compile Include="Areas\Projects\Controllers\CreateController.cs" />
     <Compile Include="Areas\Projects\Controllers\DetailsController.cs" />
@@ -392,7 +395,6 @@
     <Content Include="Areas\Projects\Views\Comments\_CreateComment.cshtml" />
     <Content Include="Areas\Administration\Views\Categories\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Currency.cshtml" />
-    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Date.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\DateTime.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\EmailAddress.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\GridForeignKey.cshtml" />
@@ -402,6 +404,8 @@
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Password.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\String.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\Time.cshtml" />
+    <Content Include="Areas\Administration\Views\Courses\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Users\Index.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Img\background.jpg" />
     <Content Include="Img\loader.gif" />
@@ -485,12 +489,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Areas\Administration\ViewModels\Courses\" />
     <Folder Include="Areas\Administration\ViewModels\Projects\" />
     <Folder Include="Areas\Administration\ViewModels\Users\" />
-    <Folder Include="Areas\Administration\Views\Courses\" />
     <Folder Include="Areas\Administration\Views\Projects\" />
-    <Folder Include="Areas\Administration\Views\Users\" />
     <Folder Include="Areas\Users\Models\" />
     <Folder Include="Content\UserFiles\Images\" />
     <Folder Include="Models\" />

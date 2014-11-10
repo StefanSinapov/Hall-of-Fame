@@ -1,20 +1,20 @@
-﻿@using HallOfFame.Web.Areas.Administration.ViewModels.Categories
+﻿@using HallOfFame.Web.Areas.Administration.ViewModels.Courses
 @using HallOfFame.Web.Common
 @using Kendo.Mvc.UI
 @{
-    const string ControllerName = ControllerNames.Categories;
+    const string ControllerName = ControllerNames.Courses;
     ViewBag.Title = ControllerName;
 }
 
 <h1>@ViewBag.Title</h1>
 
-@(Html.Kendo().Grid<CategoryViewModel>()
+@(Html.Kendo().Grid<CourseInfoViewModel>()
         .Columns(columns =>
                 {
                     columns.Bound(x => x.Id);
                     columns.Bound(x => x.Name);
                     columns.Bound(x => x.Description);
-                    columns.Bound(x => x.CoursesCount);
+                    columns.Bound(x => x.CategoryId).Hidden();
                     columns.Bound(x => x.CreatedOn).Format("{0:dd/MM/yyyy}").Hidden();
                     columns.Bound(x => x.ModifiedOn).Format("{0:dd/MM/yyyy}").Hidden();
                     columns.Command(command => { command.Edit(); command.Destroy(); }).Width(160);
@@ -23,7 +23,6 @@
             .Editable(editable => editable.Mode(GridEditMode.PopUp))
             .Pageable(page => page.Refresh(true))
             .Sortable(sortable => sortable.AllowUnsort(false))
-            .ColumnMenu()
         .DataSource(datasource => datasource
             .Ajax()
             .ServerOperation(true)
@@ -31,11 +30,11 @@
                 {
                     model.Id(x => x.Id);
                 })
-            .Sort(sort => sort.Add(x => x.CreatedOn).Descending())
-            .Create(create => create.Action("Create", ControllerName))
-            .Read(read => read.Action("Read", ControllerName))
-            .Update(update => update.Action("Update", ControllerName))
-            .Destroy(destroy => destroy.Action("Destroy", ControllerName))
+                .Sort(sort => sort.Add(x => x.CreatedOn).Descending())
+                .Create(create => create.Action("Create", ControllerName))
+                .Read(read => read.Action("Read", ControllerName))
+                .Update(update => update.Action("Update", ControllerName))
+                .Destroy(destroy => destroy.Action("Destroy", ControllerName))
             )
     .Name("DataGrid")
 )

@@ -1,24 +1,23 @@
 ﻿namespace HallOfFame.Web.Areas.Administration.Controllers
 {
     using System.Collections;
-    using System.Linq;
     using System.Web.Mvc;
 
     using AutoMapper.QueryableExtensions;
 
     using HallOfFame.Data.Common.Repositories;
     using HallOfFame.Models;
-    using HallOfFame.Web.Areas.Administration.ViewModels.Categories;
+    using HallOfFame.Web.Areas.Users.ViewModels;
     using HallOfFame.Web.Controllers;
 
-    public class CategoriesController : KendoGridAdministrationController
+    public class UsersController : KendoGridAdministrationController
     {
-       public CategoriesController(IRepository<Category> categories)
-       {
-           this.Categories = categories;
-       }
+        public UsersController(IRepository<User> users)
+        {
+            this.Users = users;
+        }
 
-        private IRepository<Category> Categories { get; set; }
+        public IRepository<User> Users { get; set; }
 
         public ActionResult Index()
         {
@@ -27,12 +26,12 @@
 
         public override IEnumerable GetData()
         {
-            return this.Categories.All().OrderBy(x => x.Id).Project().To<CategoryViewModel>();
+            return this.Users.All().Project().To<UserSettingsViewModel>();
         }
 
         public override object GetById(object id)
         {
-            return this.Categories.Find(id);
+            return this.Users.Find(id);
         }
     }
 }

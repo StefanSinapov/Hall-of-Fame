@@ -1,38 +1,37 @@
 ﻿namespace HallOfFame.Web.Areas.Administration.Controllers
 {
     using System.Collections;
-    using System.Linq;
     using System.Web.Mvc;
 
     using AutoMapper.QueryableExtensions;
 
     using HallOfFame.Data.Common.Repositories;
     using HallOfFame.Models;
-    using HallOfFame.Web.Areas.Administration.ViewModels.Categories;
+    using HallOfFame.Web.Areas.Administration.ViewModels.Courses;
     using HallOfFame.Web.Controllers;
 
-    public class CategoriesController : KendoGridAdministrationController
+    public class CoursesController : KendoGridAdministrationController
     {
-       public CategoriesController(IRepository<Category> categories)
-       {
-           this.Categories = categories;
-       }
-
-        private IRepository<Category> Categories { get; set; }
+        public CoursesController(IRepository<Course> courses)
+        {
+            this.Courses = courses;
+        }
 
         public ActionResult Index()
         {
             return this.View();
         }
 
+        public IRepository<Course> Courses { get; set; }
+
         public override IEnumerable GetData()
         {
-            return this.Categories.All().OrderBy(x => x.Id).Project().To<CategoryViewModel>();
+            return this.Courses.All().Project().To<CourseInfoViewModel>();
         }
 
         public override object GetById(object id)
         {
-            return this.Categories.Find(id);
+            return this.Courses.Find(id);
         }
     }
 }

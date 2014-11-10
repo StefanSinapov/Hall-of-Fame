@@ -37,18 +37,26 @@
                       "~/Scripts/search-box.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
+                        "~/Scripts/kendo/2014.2.716/cultures/kendo.culture.en-GB.min.js",
+                        "~/Scripts/kendo/2014.2.716/cultures/kendo.culture.bg-BG.min.js",
                         "~/Scripts/kendo/2014.2.716/kendo.web.min.js",
                         "~/Scripts/kendo/2014.2.716/kendo.aspnetmvc.js"));
         }
 
         private static void RegisterScripts(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/Content/css").Include(
+            bundles.Add(new StyleBundle("~/Content/kendo").Include(
                       "~/Content/kendo/2014.2.716/kendo.common.min.css",
-                      "~/Content/kendo/2014.2.716/kendo.metro.min.css",
+                      "~/Content/kendo/2014.2.716/kendo.metro.min.css"));
+
+
+            bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-theme.min.css",
-                      "~/Content/font-awesome.css", 
-                      "~/Content/site.css"));
+                      "~/Content/font-awesome.css"));
+
+            bundles.Add(new StyleBundle("~/Content/custom")
+                .Include("~/Content/site.css"));
+
         }
     }
 }

@@ -7,6 +7,8 @@
 
     public class BaseUserViewModel : IMapFrom<User>
     {
+        public string Id { get; set; }
+
         [Display(Name = "Username")]
         public string UserName { get; set; }
 

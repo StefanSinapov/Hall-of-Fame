@@ -26,6 +26,10 @@
     color: white;
 }
 
+.k-widget.k-window {
+    width: 500px;
+    height: 500px;
+}
 
 a .fa {
     color: white;

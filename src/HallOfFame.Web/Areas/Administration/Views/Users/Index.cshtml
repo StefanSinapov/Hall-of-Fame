@@ -1,22 +1,33 @@
 ﻿@using HallOfFame.Web.Areas.Administration.ViewModels.Categories
+@using HallOfFame.Web.Areas.Users.ViewModels
 @using HallOfFame.Web.Common
 @using Kendo.Mvc.UI
 @{
-    const string ControllerName = ControllerNames.Categories;
+    const string ControllerName = ControllerNames.Users;
     ViewBag.Title = ControllerName;
 }
 
 <h1>@ViewBag.Title</h1>
 
-@(Html.Kendo().Grid<CategoryViewModel>()
+@(Html.Kendo().Grid<UserSettingsViewModel>()
         .Columns(columns =>
                 {
-                    columns.Bound(x => x.Id);
-                    columns.Bound(x => x.Name);
-                    columns.Bound(x => x.Description);
-                    columns.Bound(x => x.CoursesCount);
-                    columns.Bound(x => x.CreatedOn).Format("{0:dd/MM/yyyy}").Hidden();
-                    columns.Bound(x => x.ModifiedOn).Format("{0:dd/MM/yyyy}").Hidden();
+                    columns.Bound(x => x.Id).Hidden();
+                    columns.Bound(x => x.UserName);
+                    columns.Bound(x => x.Email);
+                    columns.Bound(x => x.FirstName);
+                    columns.Bound(x => x.LastName);
+                    columns.Bound(x => x.AboutMe);
+                    columns.Bound(x => x.Gender);
+                    columns.Bound(x => x.BirthDate);
+                    columns.Bound(x => x.AvatarUrl).Hidden();
+                    columns.Bound(x => x.Website).Hidden();
+                    columns.Bound(x => x.TelerikAcademyProfile).Hidden();
+                    columns.Bound(x => x.GitHubProfile).Hidden();
+                    columns.Bound(x => x.FacebookProfile).Hidden();
+                    columns.Bound(x => x.GooglePlusProfile).Hidden();
+                    columns.Bound(x => x.SkypeName).Hidden();
+                    columns.Bound(x => x.TwitterProfile).Hidden();
                     columns.Command(command => { command.Edit(); command.Destroy(); }).Width(160);
                 })
             .ToolBar(toolbar => toolbar.Create())
@@ -31,7 +42,6 @@
                 {
                     model.Id(x => x.Id);
                 })
-            .Sort(sort => sort.Add(x => x.CreatedOn).Descending())
             .Create(create => create.Action("Create", ControllerName))
             .Read(read => read.Action("Read", ControllerName))
             .Update(update => update.Action("Update", ControllerName))
