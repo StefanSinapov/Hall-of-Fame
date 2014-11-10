@@ -1,0 +1,24 @@
+﻿@model HallOfFame.Web.ViewModels.Comments.CommentViewModel
+
+<div class="post-comment">
+    <h3>Leave a Comment</h3>
+    @if (User.Identity.IsAuthenticated)
+    {
+        using (Ajax.BeginForm("Create", "Comments", new { id = ViewBag.Id }, new AjaxOptions { HttpMethod = "Post", InsertionMode = InsertionMode.InsertBefore, UpdateTargetId = "comments", OnFailure = "showCommentRequiredError" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.EditorFor(m => m.Content)
+            <p>
+                <input type="submit" class="btn btn-primary" data_disable="true" value="Add Comment" />
+            </p>
+        }
+    }
+    else
+    {
+        <p>
+            Only registered users can comment.
+            @Html.Partial("_PageLoginPartial")
+        </p>
+    }
+</div>

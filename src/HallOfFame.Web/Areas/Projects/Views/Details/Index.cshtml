@@ -15,6 +15,10 @@
                         <span><i class="fa fa-group"></i>&nbsp;</span> @Html.DisplayFor(m => m.TeamName) <span> /</span>
                     }
                     @Html.DisplayFor(m => m.Name)
+                    @* @if (Model.Team)
+                        {
+
+                        }*@
                 </h3>
                 <hr />
                 <div class="row">
@@ -31,18 +35,6 @@
                 <div class="row">
                     <div class="col-md-12 vcard-social">
                         @Html.FontAwesome("fa fa-graduation-cap")&nbsp;<a href="/">@Html.DisplayFor(m => m.CourseName)</a>
-                        @if (!string.IsNullOrEmpty(Model.GitHubLink))
-                        {
-                            <a href="@Html.DisplayFor(m => m.GitHubLink)" target="_blank"><i class="fa fa-github-square fa-2x"></i>&nbsp;</a>
-                        }
-                        @if (!string.IsNullOrEmpty(Model.GooglePlusLink))
-                        {
-                            <a href="@Html.DisplayFor(m => m.GooglePlusLink)" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i>&nbsp;</a>
-                        }
-                        @if (!string.IsNullOrEmpty(Model.FacebookLink))
-                        {
-                            <a href="@Html.DisplayFor(m => m.FacebookLink)" target="_blank"><i class="fa fa-facebook fa-2x"></i>&nbsp;</a>
-                        }
                     </div>
                 </div>
                 <hr />
@@ -92,6 +84,11 @@
                                 @Html.Raw(Model.Description)
                             </div>
                         </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                @Html.Partial("_Comments", Model.Id)
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,6 +101,23 @@
                         @foreach (var user in Model.Team)
                         {
                             Html.RenderPartial("_userInfoPartial", user);
+                        }
+                    </div>
+                </div>
+                <hr />
+                <div class="row">
+                    <div class="col-md-12">
+                        @if (!string.IsNullOrEmpty(Model.GitHubLink))
+                        {
+                            <a href="@Html.DisplayFor(m => m.GitHubLink)" target="_blank"><i class="fa fa-github-square fa-2x"></i>&nbsp;</a>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.GooglePlusLink))
+                        {
+                            <a href="@Html.DisplayFor(m => m.GooglePlusLink)" target="_blank"><i class="fa fa-google-plus-square fa-2x"></i>&nbsp;</a>
+                        }
+                        @if (!string.IsNullOrEmpty(Model.FacebookLink))
+                        {
+                            <a href="@Html.DisplayFor(m => m.FacebookLink)" target="_blank"><i class="fa fa-facebook fa-2x"></i>&nbsp;</a>
                         }
                     </div>
                 </div>

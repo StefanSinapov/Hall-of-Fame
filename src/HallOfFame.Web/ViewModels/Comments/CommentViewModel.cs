@@ -19,6 +19,8 @@
 
         public string UserName { get; set; }
 
+        public string UserAvatar { get; set; }
+
         public DateTime CommentedOn { get; set; }
 
         public void CreateMappings(IConfiguration configuration)
@@ -27,6 +29,8 @@
                  .ForMember(m => m.CommentedOn, opt => opt.MapFrom(u => u.CreatedOn));
             configuration.CreateMap<Comment, CommentViewModel>()
                 .ForMember(m => m.UserName, opt => opt.MapFrom(u => u.Author.UserName));
+            configuration.CreateMap<Comment, CommentViewModel>()
+                .ForMember(m => m.UserAvatar, opt => opt.MapFrom(u => u.Author.AvatarUrl));
         }
     }
 }

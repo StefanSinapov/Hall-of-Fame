@@ -7,6 +7,7 @@ namespace HallOfFame.Web
 {
     using System;
     using System.Data.Entity;
+    using System.Security.Principal;
     using System.Web;
 
     using HallOfFame.Common.Constants;
@@ -14,6 +15,7 @@ namespace HallOfFame.Web
     using HallOfFame.Data.Common.Repositories;
     using HallOfFame.Data.Contracts;
     using HallOfFame.Data.Repositories;
+    using HallOfFame.Web.Infrastructure.Identity;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
@@ -82,6 +84,9 @@ namespace HallOfFame.Web
             kernel.Bind(typeof(IDeletableEntityRepository<>)).To(typeof(DeletableEntityRepository<>));
 
             kernel.Bind(typeof(IRepository<>)).To(typeof(GenericRepository<>));
+
+
+            kernel.Bind(typeof(ICurrentUser)).To(typeof(CurrentUser));
 
             // Image Upload
             kernel.Bind<EverliveApp>()

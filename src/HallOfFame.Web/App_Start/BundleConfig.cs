@@ -47,7 +47,7 @@
                       "~/Content/kendo/2014.2.716/kendo.common.min.css",
                       "~/Content/kendo/2014.2.716/kendo.metro.min.css",
                       "~/Content/bootstrap-theme.min.css",
-                      "~/Content/font-awesome.css",
+                      "~/Content/font-awesome.css", 
                       "~/Content/site.css"));
         }
     }

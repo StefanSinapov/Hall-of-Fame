@@ -13,6 +13,7 @@
     using HallOfFame.ImageUpload;
     using HallOfFame.Models;
     using HallOfFame.Web.Areas.Projects.ViewModels;
+    using HallOfFame.Web.Controllers;
     using HallOfFame.Web.ViewModels.Shared;
 
     using Microsoft.AspNet.Identity;
@@ -20,14 +21,12 @@
     using Telerik.Everlive.Sdk.Core;
 
     [Authorize]
-    public class CreateController : Controller
+    public class CreateController : BaseController
     {
         public CreateController(IHallOfFameData data)
+            : base(data)
         {
-            this.Data = data;
         }
-
-        public IHallOfFameData Data { get; set; }
 
         [HttpGet]
         public ActionResult Index()

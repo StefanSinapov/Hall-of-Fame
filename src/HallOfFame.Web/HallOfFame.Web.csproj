@@ -232,6 +232,7 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Administration\Models\Categories\ListCategoryViewModel.cs" />
+    <Compile Include="Areas\Projects\Controllers\CommentsController.cs" />
     <Compile Include="Areas\Projects\Controllers\CreateController.cs" />
     <Compile Include="Areas\Projects\Controllers\DetailsController.cs" />
     <Compile Include="Areas\Projects\ProjectsAreaRegistration.cs" />
@@ -313,18 +314,18 @@
     <Content Include="Content\kendo\2014.2.716\images\wp8_inverseicons.png" />
     <Content Include="Content\kendo\2014.2.716\kendo.common.min.css" />
     <Content Include="Content\kendo\2014.2.716\kendo.metro.min.css" />
-    <Content Include="Content\Metro\editor.png" />
-    <Content Include="Content\Metro\imagebrowser.png" />
-    <Content Include="Content\Metro\indeterminate.gif" />
-    <Content Include="Content\Metro\loading-image.gif" />
-    <Content Include="Content\Metro\loading.gif" />
-    <Content Include="Content\Metro\loading_2x.gif" />
-    <Content Include="Content\Metro\markers.png" />
-    <Content Include="Content\Metro\markers_2x.png" />
-    <Content Include="Content\Metro\slider-h.gif" />
-    <Content Include="Content\Metro\slider-v.gif" />
-    <Content Include="Content\Metro\sprite.png" />
-    <Content Include="Content\Metro\sprite_2x.png" />
+    <Content Include="Content\kendo\2014.2.716\Metro\editor.png" />
+    <Content Include="Content\kendo\2014.2.716\Metro\imagebrowser.png" />
+    <Content Include="Content\kendo\2014.2.716\Metro\indeterminate.gif" />
+    <Content Include="Content\kendo\2014.2.716\Metro\loading-image.gif" />
+    <Content Include="Content\kendo\2014.2.716\Metro\loading.gif" />
+    <Content Include="Content\kendo\2014.2.716\Metro\loading_2x.gif" />
+    <Content Include="Content\kendo\2014.2.716\Metro\markers.png" />
+    <Content Include="Content\kendo\2014.2.716\Metro\markers_2x.png" />
+    <Content Include="Content\kendo\2014.2.716\Metro\slider-h.gif" />
+    <Content Include="Content\kendo\2014.2.716\Metro\slider-v.gif" />
+    <Content Include="Content\kendo\2014.2.716\Metro\sprite.png" />
+    <Content Include="Content\kendo\2014.2.716\Metro\sprite_2x.png" />
     <Content Include="Content\kendo\2014.2.716\textures\brushed-metal.png" />
     <Content Include="Content\kendo\2014.2.716\textures\dots1.png" />
     <Content Include="Content\kendo\2014.2.716\textures\dots10.png" />
@@ -385,6 +386,10 @@
     <Content Include="Areas\Projects\Views\Details\Index.cshtml" />
     <Content Include="Views\Shared\_userInfoPartial.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Projects\Views\Comments\All.cshtml" />
+    <Content Include="Areas\Projects\Views\Comments\_CommentDetail.cshtml" />
+    <Content Include="Areas\Projects\Views\Shared\_Comments.cshtml" />
+    <Content Include="Areas\Projects\Views\Comments\_CreateComment.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Img\background.jpg" />
     <Content Include="Img\loader.gif" />
@@ -463,6 +468,7 @@
     <Content Include="Scripts\kendo\2014.2.716\kendo.web.min.js.map" />
     <Content Include="Views\Shared\EditorTemplates\Editor.cshtml" />
     <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
+    <Content Include="Views\Shared\_PageLoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -472,7 +478,6 @@
     <Folder Include="Areas\Administration\Views\Courses\" />
     <Folder Include="Areas\Administration\Views\Projects\" />
     <Folder Include="Areas\Administration\Views\Users\" />
-    <Folder Include="Areas\Projects\Views\Shared\" />
     <Folder Include="Areas\Users\Models\" />
     <Folder Include="Content\UserFiles\Images\" />
     <Folder Include="Models\" />
