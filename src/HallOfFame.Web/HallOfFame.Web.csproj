@@ -384,6 +384,7 @@
     <Content Include="Areas\Users\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Projects\Views\Details\Index.cshtml" />
     <Content Include="Views\Shared\_userInfoPartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\_Layout.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Img\background.jpg" />
     <Content Include="Img\loader.gif" />
@@ -470,7 +471,6 @@
     <Folder Include="Areas\Administration\Models\Users\" />
     <Folder Include="Areas\Administration\Views\Courses\" />
     <Folder Include="Areas\Administration\Views\Projects\" />
-    <Folder Include="Areas\Administration\Views\Shared\" />
     <Folder Include="Areas\Administration\Views\Users\" />
     <Folder Include="Areas\Projects\Views\Shared\" />
     <Folder Include="Areas\Users\Models\" />

@@ -1,12 +1,20 @@
 ﻿namespace HallOfFame.Web
 {
-    using System.Web;
     using System.Web.Optimization;
 
     public class BundleConfig
     {
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
+        {
+            RegisterScripts(bundles);
+            RegisterStyles(bundles);
+
+            // TODO: change on release
+            BundleTable.EnableOptimizations = false;
+        }
+
+        private static void RegisterStyles(BundleCollection bundles)
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
@@ -30,20 +38,17 @@
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                         "~/Scripts/kendo/2014.2.716/kendo.web.min.js",
-                        "~/Scripts/kendo/2014.2.716/cultures/kendo.culture.en-GB.min.js",
-                        "~/Scripts/kendo/2014.2.716/cultures/kendo.culture.bg-BG.min.js",
                         "~/Scripts/kendo/2014.2.716/kendo.aspnetmvc.js"));
+        }
 
+        private static void RegisterScripts(BundleCollection bundles)
+        {
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/kendo/2014.2.716/kendo.common.min.css",
                       "~/Content/kendo/2014.2.716/kendo.metro.min.css",
                       "~/Content/bootstrap-theme.min.css",
                       "~/Content/font-awesome.css",
                       "~/Content/site.css"));
-
-            // Set EnableOptimizations to false for debugging. For more information,
-            // visit http://go.microsoft.com/fwlink/?LinkId=301862
-            BundleTable.EnableOptimizations = true;
         }
     }
 }
