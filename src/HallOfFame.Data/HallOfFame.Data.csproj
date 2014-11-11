@@ -66,6 +66,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\HallOfFame.Common.ExtensionMethods\HallOfFame.Common.ExtensionMethods.csproj">
+      <Project>{2A60D45A-92CE-4D56-821C-7B778ACDB76D}</Project>
+      <Name>HallOfFame.Common.ExtensionMethods</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HallOfFame.Common\HallOfFame.Common.Constants.csproj">
       <Project>{6A51F342-28E3-43BA-A748-B88DC0C77245}</Project>
       <Name>HallOfFame.Common.Constants</Name>

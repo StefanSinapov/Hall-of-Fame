@@ -1,13 +1,12 @@
 ﻿namespace HallOfFame.Models
 {
-    using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
     using HallOfFame.Data.Common.Models;
 
-    public class Project : IAuditInfo, IDeletableEntity
+    public class Project : DeletableEntity
     {
         private ICollection<User> team;
 
@@ -89,15 +88,5 @@
                 this.likes = value;
             }
         }
-
-        public DateTime CreatedOn { get; set; }
-
-        public bool PreserveCreatedOn { get; set; }
-
-        public DateTime? ModifiedOn { get; set; }
-
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletedOn { get; set; }
     }
 }

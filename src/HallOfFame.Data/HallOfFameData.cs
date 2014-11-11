@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Data.Entity;
 
+    using HallOfFame.Data.Common.Models;
     using HallOfFame.Data.Common.Repositories;
     using HallOfFame.Data.Contracts;
     using HallOfFame.Data.Repositories;
@@ -40,7 +41,7 @@
         {
             get
             {
-                return this.GetRepository<Project>();
+                return this.GetDeletableEntityRepository<Project>();
             }
         }
 
@@ -48,7 +49,7 @@
         {
             get
             {
-                return this.GetRepository<Category>();
+                return this.GetDeletableEntityRepository<Category>();
             }
         }
 
@@ -56,7 +57,7 @@
         {
             get
             {
-                return this.GetRepository<Comment>();
+                return this.GetDeletableEntityRepository<Comment>();
             }
         }
 
@@ -64,7 +65,7 @@
         {
             get
             {
-                return this.GetRepository<Course>();
+                return this.GetDeletableEntityRepository<Course>();
             }
         }
 
@@ -72,7 +73,7 @@
         {
             get
             {
-                return this.GetRepository<Like>();
+                return this.GetDeletableEntityRepository<Like>();
             }
         }
 
@@ -109,6 +110,17 @@
             }
 
             return (IRepository<T>)this.repositories[typeOfModel];
+        }
+
+        private IDeletableEntityRepository<T> GetDeletableEntityRepository<T>() where T : class, IDeletableEntity
+        {
+            if (!this.repositories.ContainsKey(typeof(T)))
+            {
+                var type = typeof(DeletableEntityRepository<T>);
+                this.repositories.Add(typeof(T), Activator.CreateInstance(type, this.context));
+            }
+
+            return (IDeletableEntityRepository<T>)this.repositories[typeof(T)];
         }
     }
 }

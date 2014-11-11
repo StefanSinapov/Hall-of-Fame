@@ -27,6 +27,8 @@
 
         void ChangeEntityState(T entity, EntityState state);
 
+        void UpdateValues(Expression<Func<T, object>> entity);
+
         int SaveChanges();
     }
 }

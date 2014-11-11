@@ -6,7 +6,7 @@
 
     using HallOfFame.Data.Common.Models;
 
-    public class Category : IAuditInfo, IDeletableEntity
+    public class Category : DeletableEntity
     {
         private ICollection<Course> courses;
 
@@ -35,15 +35,5 @@
                 this.courses = value;
             }
         }
-
-        public DateTime CreatedOn { get; set; }
-
-        public bool PreserveCreatedOn { get; set; }
-
-        public DateTime? ModifiedOn { get; set; }
-
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletedOn { get; set; }
     }
 }
