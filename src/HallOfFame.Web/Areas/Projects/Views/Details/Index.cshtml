@@ -1,8 +1,10 @@
-﻿@using Mvc.RazorTools.FontAwesome
+﻿@using Microsoft.AspNet.Identity
+@using Mvc.RazorTools.FontAwesome
 @model HallOfFame.Web.Areas.Projects.ViewModels.ProjectDetailsViewModel
 
 @{
     ViewBag.Title = @Model.Name;
+    var currentUsername = this.User.Identity.GetUserId();
 }
 
 <div class="container">
@@ -15,10 +17,10 @@
                         <span><i class="fa fa-group"></i>&nbsp;</span> @Html.DisplayFor(m => m.TeamName) <span> /</span>
                     }
                     @Html.DisplayFor(m => m.Name)
-                    @* @if (Model.Team)
-                        {
-
-                        }*@
+                    @if (Model.Team.FirstOrDefault(m => m.UserName == currentUsername) != null)
+                    {
+                        <button class="btn btn-primary">Edit</button>
+                    }
                 </h3>
                 <hr />
                 <div class="row">

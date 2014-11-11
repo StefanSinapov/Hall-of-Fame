@@ -10,8 +10,7 @@
     using HallOfFame.Data.Common.Repositories;
     using HallOfFame.Models;
     using HallOfFame.Web.Areas.Projects.ViewModels;
-
-    using Kendo.Mvc.UI;
+    using HallOfFame.Web.ViewModels.Shared;
 
     public class DetailsController : Controller
     {
@@ -24,7 +23,7 @@
 
         public ActionResult Index(string name)
         {
-            var project = this.Projects.Search(p => p.Name == name).Project().To<ProjectDetailsViewModel>().FirstOrDefault();
+            var project = this.GetProjectByName(name).Project().To<ProjectDetailsViewModel>().FirstOrDefault();
             if (project == null)
             {
                 return this.RedirectToAction("Index", "Home", new { area = string.Empty });
@@ -35,6 +34,18 @@
 
             ViewBag.Id = project.Id;
             return this.View(project);
+        }
+
+
+        public ActionResult Likes(string name)
+        {
+            var likes = this.GetProjectByName(name).Select(m => m.Likes).Project().To<LikeViewModel>();
+            return this.PartialView("_Likes", likes);
+        }
+
+        private IQueryable<Project> GetProjectByName(string name)
+        {
+            return this.Projects.Search(p => p.Name == name);
         }
     }
 }
