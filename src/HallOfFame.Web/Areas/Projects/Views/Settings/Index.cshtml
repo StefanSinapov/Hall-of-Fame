@@ -10,6 +10,7 @@
 <div class="container">
     @using (@Html.BeginForm())
     {
+        <h2>@Html.ValidationSummary()</h2>
         <div class="row form-horizontal">
             <div class="col-md-8">
                 <div class="content-block">
@@ -19,7 +20,7 @@
                                 @Html.LabelFor(m => m.TeamName, new { @class = "col-md-2 control-label" })
                             </strong>
                             <div class="col-md-6">
-                                @Html.HiddenFor(m => m.TeamName, new { @class = "form-control" })
+                                @Html.EditorFor(m => m.TeamName, new { @class = "form-control" })
                             </div>
                         </div>
                     </div>
@@ -29,7 +30,7 @@
                                 @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
                             </strong>
                             <div class="col-md-6">
-                                @Html.DisplayFor(m => m.TeamName, new { @class = "form-control" })
+                                @Html.DisplayFor(m => m.Name, new { @class = "form-control" })
                             </div>
                         </div>
                     </div>
@@ -61,30 +62,39 @@
                                 @Html.DropDownListFor(m => m.CourseId, new SelectList(@ViewBag.Courses, "Id", "Name"), new { @class = "form-control" })
                             </div>
                         </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.PhotoUrl, new { @class = "col-md-2 control-label" })
+                            <div class="col-md-8">
+                                @Html.HiddenFor(m => m.PhotoUrl, new { @id = "photo-url-input" })
+                                @(Html.Kendo().Upload()
+                                      .Name("files")
+                                      .HtmlAttributes(new { accept = "image/*" })
+                                      .Multiple(false)
+                                      .Events(events => events
+                                                            .Success("onSuccess")
+                                      )
+                                      .Async(a => a
+                                                      .Save("Save", "Create")
+                                                      .AutoUpload(true)
+                                      )
+                                )
+                            </div>
+                        </div>
+                        <script>
+                            function onSuccess(e) {
+                                console.log(e.response.ImageName);
+                                $("#photo-url-input").val(e.response.ImageName);
+                                $("#photo-url-holder").attr("src", e.response.ImageName);
+                            }
+                        </script>
                     </div>
                     <hr />
                     <style>
                     </style>
                     <div class="row">
                         <div class="col-md-12">
-                            @if (!string.IsNullOrEmpty(@Model.PhotoUrl))
-                            {
-                            <div class="carousel article-slide" id="article-photo-carousel">
-                                <!-- Wrapper for slides -->
-                                <div class="carousel-inner">
-                                    <div class="item active">
-                                        <img src="@Model.PhotoUrl" alt="@Model.Name cover photo" class="img-responsive" title="Cover photo" />
-                                    </div>
-                                </div>
-                                <!-- Indicators -->
-                                <ol class="carousel-indicators">
-                                    <li class="active" data-slide-to="0" data-target="#article-photo-carousel">
-                                        <img src="@Model.PhotoUrl" alt="@Model.Name cover photo" class="media-object img-responsive img-rounded" />
-                                    </li>
-                                </ol>
-                            </div>
-                            <hr />
-                            }
+                            <img src="@Model.PhotoUrl" alt="@Model.Name cover photo" class="img-responsive" title="Cover photo" id="photo-url-holder" />
+                            <hr/>
                             <div class="row">
                                 <div class="col-md-12">
                                     @(Html.Kendo().EditorFor(m => m.Description).Name("Description").Encode(false).HtmlAttributes(new { style = "height:500px" })
@@ -117,8 +127,6 @@
                             {
                                 Html.RenderPartial("_userInfoPartial", user);
                             }
-
-                            @Html.EditorFor(m => m.Team)
                         </div>
                     </div>
                     <hr />

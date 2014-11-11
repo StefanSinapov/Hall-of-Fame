@@ -1,10 +1,12 @@
 ﻿namespace HallOfFame.Web.Areas.Projects.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Net;
     using System.Web;
     using System.Web.Mvc;
+    using System.Web.Routing;
 
     using AutoMapper.QueryableExtensions;
 
@@ -65,9 +67,31 @@
         {
             if (this.ModelState.IsValid)
             {
+                this.CheckAndUpdateProject(model);
+
+                return this.RedirectToAction("Index", "Details", new { area = "Projects", name = model.Name });
             }
 
             return this.View(model);
+        }
+
+        private void CheckAndUpdateProject(ProjectSettingsViewModel model)
+        {
+            var project = this.Projects.Search(p => p.Name == model.Name).First();
+
+            project.Description = model.Description;
+            project.Title = model.Title;
+            project.TeamName = model.TeamName;
+            project.PhotoUrl = model.PhotoUrl;
+            project.CourseId = model.CourseId;
+            project.FacebookLink = model.FacebookLink;
+            project.GitHubLink = model.GitHubLink;
+            project.GooglePlusLink = model.GooglePlusLink;
+            project.Website = model.Website;
+            project.ModifiedOn = DateTime.Now;
+
+            this.Projects.Update(project);
+            this.Projects.SaveChanges();
         }
 
         private List<CourseViewModel> GetCourses()
