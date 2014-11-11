@@ -10,15 +10,19 @@
     using HallOfFame.Data.Common.Repositories;
     using HallOfFame.Models;
     using HallOfFame.Web.Areas.Projects.ViewModels;
+    using HallOfFame.Web.Infrastructure.Sanitizer;
     using HallOfFame.Web.ViewModels.Shared;
 
     using Microsoft.AspNet.Identity;
 
     public class DetailsController : Controller
     {
-        public DetailsController(IRepository<Project> projects)
+        private readonly ISanitizer sanitizer;
+
+        public DetailsController(IRepository<Project> projects, ISanitizer sanitizer)
         {
             this.Projects = projects;
+            this.sanitizer = sanitizer;
         }
 
         public IRepository<Project> Projects { get; set; }
@@ -42,9 +46,11 @@
             }
 
             ViewBag.Id = project.Id;
+
+            project.Description = this.sanitizer.Sanitize(project.Description);
+
             return this.View(project);
         }
-
 
         public ActionResult Likes(string name)
         {

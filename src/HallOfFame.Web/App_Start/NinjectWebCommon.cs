@@ -14,6 +14,7 @@ namespace HallOfFame.Web
     using HallOfFame.Data.Common.Repositories;
     using HallOfFame.Data.Contracts;
     using HallOfFame.Data.Repositories;
+    using HallOfFame.Web.Infrastructure.Sanitizer;
 
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
@@ -76,6 +77,8 @@ namespace HallOfFame.Web
             kernel.Bind<IHallOfFameData>()
                 .To<HallOfFameData>()
                 .WithConstructorArgument("context", c => new HallOfFameDbContext());
+
+            kernel.Bind<ISanitizer>().To<Sanitiezer>();
 
             kernel.Bind<DbContext>().To<HallOfFameDbContext>();
 

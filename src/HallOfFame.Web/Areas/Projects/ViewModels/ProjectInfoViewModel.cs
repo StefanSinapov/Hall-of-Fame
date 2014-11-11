@@ -44,7 +44,11 @@
                     m => m.Team,
                     opt =>
                     opt.MapFrom(
-                        u => u.Team.Select(t => new UserInfoViewModel { UserName = t.UserName, AvatarUrl = t.AvatarUrl })
+                        u => u.Team.Select(t => new UserInfoViewModel
+                        {
+                            UserName = t.UserName,
+                            AvatarUrl = t.AvatarUrl
+                        })
                             .ToList()));
             configuration.CreateMap<Project, ProjectDetailsViewModel>()
                 .ForMember(m => m.LikesCount, opt => opt.MapFrom(u => u.Likes.Count));
