@@ -26,9 +26,9 @@
             return this.Data.Users.All().Project().To<UserSettingsViewModel>();
         }
 
-        public override object GetById(object id)
+        public override T GetById<T>(object id)
         {
-            return this.Data.Users.Find(id);
+            return this.Data.Users.Find(id) as T;
         }
     }
 }

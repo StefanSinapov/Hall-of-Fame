@@ -233,8 +233,9 @@
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
     <Compile Include="Areas\Administration\Controllers\CoursesController.cs" />
     <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Base\AdministrationViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Categories\CategoryViewModel.cs" />
-    <Compile Include="Areas\Administration\ViewModels\Courses\CourseInfoViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Courses\CourseAdministrationViewModel.cs" />
     <Compile Include="Areas\Projects\Controllers\CommentsController.cs" />
     <Compile Include="Areas\Projects\Controllers\CreateController.cs" />
     <Compile Include="Areas\Projects\Controllers\DetailsController.cs" />

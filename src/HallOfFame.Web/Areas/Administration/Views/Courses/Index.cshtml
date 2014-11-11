@@ -7,34 +7,32 @@
 }
 
 <h1>@ViewBag.Title</h1>
-
-@(Html.Kendo().Grid<CourseInfoViewModel>()
-        .Columns(columns =>
-                {
-                    columns.Bound(x => x.Id);
-                    columns.Bound(x => x.Name);
-                    columns.Bound(x => x.Description);
-                    columns.Bound(x => x.CategoryId).Hidden();
-                    columns.Bound(x => x.CreatedOn).Format("{0:dd/MM/yyyy}").Hidden();
-                    columns.Bound(x => x.ModifiedOn).Format("{0:dd/MM/yyyy}").Hidden();
-                    columns.Command(command => { command.Edit(); command.Destroy(); }).Width(160);
-                })
-            .ToolBar(toolbar => toolbar.Create())
-            .Editable(editable => editable.Mode(GridEditMode.PopUp))
-            .Pageable(page => page.Refresh(true))
-            .Sortable(sortable => sortable.AllowUnsort(false))
-        .DataSource(datasource => datasource
+@(Html.Kendo()
+            .Grid<CourseAdministrationViewModel>()
+        .Name("DataGrid")
+    .Columns(cols =>
+    {
+        cols.Bound(pr => pr.Id);
+        cols.Bound(pr => pr.Name);
+        cols.Bound(pr => pr.Description);
+        cols.Bound(x => x.CategoryId).Hidden();
+        cols.Bound(pr => pr.CreatedOn).Format("{0:dd.MM.yyyy HH:mm}").Hidden();
+        cols.Bound(pr => pr.ModifiedOn).Format("{0:dd.MM.yyyy HH:mm}").Hidden();
+        cols.Command(command => { command.Edit(); command.Destroy(); }).Width(160);
+    })
+    .ColumnMenu()
+    .Pageable(page => page.Refresh(true))
+    .Sortable()
+    .Groupable()
+    .Filterable()
+    .Editable(edit => edit.Mode(GridEditMode.PopUp))
+    .ToolBar(toolbar => toolbar.Create())
+    .DataSource(data =>
+        data
             .Ajax()
-            .ServerOperation(true)
-            .Model(model =>
-                {
-                    model.Id(x => x.Id);
-                })
-                .Sort(sort => sort.Add(x => x.CreatedOn).Descending())
-                .Create(create => create.Action("Create", ControllerName))
-                .Read(read => read.Action("Read", ControllerName))
-                .Update(update => update.Action("Update", ControllerName))
-                .Destroy(destroy => destroy.Action("Destroy", ControllerName))
-            )
-    .Name("DataGrid")
-)
+            .Model(m => m.Id(adv => adv.Id))
+            .Read(read => read.Action("Read", ControllerName))
+            .Create(create => create.Action("Create", ControllerName))
+            .Update(update => update.Action("Update", ControllerName))
+            .Destroy(destroy => destroy.Action("Destroy", ControllerName))
+            ))

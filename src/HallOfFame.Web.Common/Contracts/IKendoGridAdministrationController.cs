@@ -9,7 +9,7 @@
     {
         IEnumerable GetData();
 
-        object GetById(object id);
+        T GetById<T>(object id) where T : class;
 
         ActionResult Read([DataSourceRequest]DataSourceRequest request); 
     }
