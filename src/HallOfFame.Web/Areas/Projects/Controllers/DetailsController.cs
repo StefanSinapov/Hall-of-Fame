@@ -12,6 +12,8 @@
     using HallOfFame.Web.Areas.Projects.ViewModels;
     using HallOfFame.Web.ViewModels.Shared;
 
+    using Microsoft.AspNet.Identity;
+
     public class DetailsController : Controller
     {
         public DetailsController(IRepository<Project> projects)
@@ -30,6 +32,13 @@
 
                 // TODO: custom not found page
                 throw new HttpException((int)HttpStatusCode.NotFound, "Project not Found");
+            }
+
+            var currentUsername = this.User.Identity.GetUserName();
+
+            if (project.Team.FirstOrDefault(m => m.UserName == currentUsername) != null)
+            {
+                ViewBag.IsTeamMember = true;
             }
 
             ViewBag.Id = project.Id;

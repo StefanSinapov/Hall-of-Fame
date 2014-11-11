@@ -28,7 +28,7 @@
 
             context.MapRoute(
                 "Projects_Details",
-                "Projects/{name}",
+                "Projects/{name}/{controller}/{action}",
                 new { controller = "Details", action = ControllerNames.Index, name = UrlParameter.Optional });
 
             /* context.MapRoute(

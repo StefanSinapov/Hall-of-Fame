@@ -1,18 +1,27 @@
 ﻿namespace HallOfFame.Web.Areas.Projects.ViewModels
 {
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Linq;
+
     using AutoMapper;
 
     using HallOfFame.Models;
     using HallOfFame.Web.Infrastructure.Mapping;
+    using HallOfFame.Web.ViewModels.Shared;
 
     public class ProjectInfoViewModel : IMapFrom<Project>, IHaveCustomMappings
     {
-        // TODO: Image (add to model), team (viewModel)
         public string Name { get; set; }
+
+        [Display(Name = "Cover photo")]
+        public string PhotoUrl { get; set; }
+
+        public ICollection<UserInfoViewModel> Team { get; set; }
 
         public string TeamName { get; set; }
 
-        public string Info { get; set; }
+        public string Title { get; set; }
 
         public string GitHubLink { get; set; }
 
@@ -27,9 +36,18 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Project, ProjectInfoViewModel>()
-               .ForMember(m => m.CommentsCount, opt => opt.MapFrom(p => p.Comments.Count));
+                .ForMember(m => m.CommentsCount, opt => opt.MapFrom(p => p.Comments.Count));
             configuration.CreateMap<Project, ProjectInfoViewModel>()
-               .ForMember(m => m.LikesCount, opt => opt.MapFrom(p => p.Likes.Count));
+                .ForMember(m => m.LikesCount, opt => opt.MapFrom(p => p.Likes.Count));
+            configuration.CreateMap<Project, ProjectDetailsViewModel>()
+                .ForMember(
+                    m => m.Team,
+                    opt =>
+                    opt.MapFrom(
+                        u => u.Team.Select(t => new UserInfoViewModel { UserName = t.UserName, AvatarUrl = t.AvatarUrl })
+                            .ToList()));
+            configuration.CreateMap<Project, ProjectDetailsViewModel>()
+                .ForMember(m => m.LikesCount, opt => opt.MapFrom(u => u.Likes.Count));
         }
     }
 }

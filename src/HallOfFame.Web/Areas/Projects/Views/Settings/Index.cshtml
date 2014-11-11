@@ -1,0 +1,153 @@
+﻿@using Kendo.Mvc.UI
+@using Mvc.RazorTools.FontAwesome
+@model HallOfFame.Web.Areas.Projects.ViewModels.ProjectSettingsViewModel
+
+@{
+    ViewBag.Title = @Model.Name;
+}
+<h1>Settings</h1>
+
+<div class="container">
+    @using (@Html.BeginForm())
+    {
+        <div class="row form-horizontal">
+            <div class="col-md-8">
+                <div class="content-block">
+                    <div class="row">
+                        <div class="form-group">
+                            <strong>
+                                @Html.LabelFor(m => m.TeamName, new { @class = "col-md-2 control-label" })
+                            </strong>
+                            <div class="col-md-6">
+                                @Html.HiddenFor(m => m.TeamName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <strong>
+                                @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+                            </strong>
+                            <div class="col-md-6">
+                                @Html.DisplayFor(m => m.TeamName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="form-group">
+                            <strong>
+                                @Html.LabelFor(m => m.Title, new { @class = "col-md-2 control-label" })
+                            </strong>
+                            <div class="col-md-6">
+                                @Html.EditorFor(m => m.Title, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <strong>
+                                @Html.LabelFor(m => m.Website, new { @class = "col-md-2 control-label" })
+                            </strong>
+                            <div class="col-md-6">
+                                @Html.EditorFor(m => m.Website, new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <strong>
+                                @Html.LabelFor(m => m.CourseId, new { @class = "col-md-2 control-label" })
+                            </strong>
+                            <div class="col-md-6">
+                                @Html.DropDownListFor(m => m.CourseId, new SelectList(@ViewBag.Courses, "Id", "Name"), new { @class = "form-control" })
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <style>
+                    </style>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @if (!string.IsNullOrEmpty(@Model.PhotoUrl))
+                            {
+                            <div class="carousel article-slide" id="article-photo-carousel">
+                                <!-- Wrapper for slides -->
+                                <div class="carousel-inner">
+                                    <div class="item active">
+                                        <img src="@Model.PhotoUrl" alt="@Model.Name cover photo" class="img-responsive" title="Cover photo" />
+                                    </div>
+                                </div>
+                                <!-- Indicators -->
+                                <ol class="carousel-indicators">
+                                    <li class="active" data-slide-to="0" data-target="#article-photo-carousel">
+                                        <img src="@Model.PhotoUrl" alt="@Model.Name cover photo" class="media-object img-responsive img-rounded" />
+                                    </li>
+                                </ol>
+                            </div>
+                            <hr />
+                            }
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @(Html.Kendo().EditorFor(m => m.Description).Name("Description").Encode(false).HtmlAttributes(new { style = "height:500px" })
+                                    )
+                                </div>
+                            </div>
+                            <hr />
+                            <div class="row">
+                                <div class="col-md-12">
+                                    @Html.Partial("_Comments", Model.Id)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="content-block">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="submit" class="btn btn-primary" value="Save" />
+                            <a href=@Url.Action("Index", "Details", new { area = "Projects", name = Model.Name })
+                               class="btn btn-primary">Cancel</a>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2>Creators</h2>
+                            @foreach (var user in Model.Team)
+                            {
+                                Html.RenderPartial("_userInfoPartial", user);
+                            }
+
+                            @Html.EditorFor(m => m.Team)
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <strong>
+                            @Html.LabelFor(m => m.GitHubLink, new { @class = "col-md-3 control-label" })
+                        </strong>
+                        <div class="col-md-9">
+                            @Html.EditorFor(m => m.GitHubLink, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <strong>
+                            @Html.LabelFor(m => m.GooglePlusLink, new { @class = "col-md-3 control-label" })
+                        </strong>
+                        <div class="col-md-9">
+                            @Html.EditorFor(m => m.GooglePlusLink, new { @class = "form-control" })
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <strong>
+                            @Html.LabelFor(m => m.FacebookLink, new { @class = "col-md-3 control-label" })
+                        </strong>
+                        <div class="col-md-9">
+                            @Html.EditorFor(m => m.FacebookLink, new { @class = "form-control" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</div>

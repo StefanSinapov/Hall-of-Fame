@@ -238,11 +238,13 @@
     <Compile Include="Areas\Projects\Controllers\CommentsController.cs" />
     <Compile Include="Areas\Projects\Controllers\CreateController.cs" />
     <Compile Include="Areas\Projects\Controllers\DetailsController.cs" />
+    <Compile Include="Areas\Projects\Controllers\SettingsController.cs" />
     <Compile Include="Areas\Projects\ProjectsAreaRegistration.cs" />
     <Compile Include="Areas\Projects\ViewModels\BaseProjectViewModel.cs" />
     <Compile Include="Areas\Projects\ViewModels\CreateProjectViewModel.cs" />
     <Compile Include="Areas\Projects\ViewModels\ProjectDetailsViewModel.cs" />
     <Compile Include="Areas\Projects\ViewModels\ProjectInfoViewModel.cs" />
+    <Compile Include="Areas\Projects\ViewModels\ProjectSettingsViewModel.cs" />
     <Compile Include="Areas\Users\Controllers\ProfileController.cs" />
     <Compile Include="Areas\Users\Controllers\SettingsController.cs" />
     <Compile Include="Areas\Users\UsersAreaRegistration.cs" />
@@ -407,6 +409,7 @@
     <Content Include="Areas\Administration\Views\Courses\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Users\Index.cshtml" />
     <Content Include="Areas\Projects\Views\Details\_Likes.cshtml" />
+    <Content Include="Areas\Projects\Views\Settings\Index.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Img\background.jpg" />
     <Content Include="Img\loader.gif" />

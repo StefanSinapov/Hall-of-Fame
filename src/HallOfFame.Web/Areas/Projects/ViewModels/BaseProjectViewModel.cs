@@ -6,7 +6,7 @@
     public class BaseProjectViewModel
     {
         [Required]
-        [Display(Name = "Name *")]
+        [Display(Name = "Name")]
         [StringLength(30, ErrorMessage = "The {0} must be between {2} and {1} characters", MinimumLength = 3)]
         [RegularExpression(@"^[a-zA-Z]([/._]?[/.-]?[a-zA-Z0-9]+)+$",
             ErrorMessage = "Name must contain only Latin letters, digits, _ and -")]

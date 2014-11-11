@@ -1,27 +1,31 @@
-﻿@using Microsoft.AspNet.Identity
-@using Mvc.RazorTools.FontAwesome
+﻿@using Mvc.RazorTools.FontAwesome
 @model HallOfFame.Web.Areas.Projects.ViewModels.ProjectDetailsViewModel
 
 @{
     ViewBag.Title = @Model.Name;
-    var currentUsername = this.User.Identity.GetUserId();
 }
 
 <div class="container">
     <div class="row">
         <div class="col-md-8">
             <div class="content-block">
-                <h3>
-                    @if (!string.IsNullOrEmpty(Model.TeamName))
-                    {
-                        <span><i class="fa fa-group"></i>&nbsp;</span> @Html.DisplayFor(m => m.TeamName) <span> /</span>
-                    }
-                    @Html.DisplayFor(m => m.Name)
-                    @if (Model.Team.FirstOrDefault(m => m.UserName == currentUsername) != null)
-                    {
-                        <button class="btn btn-primary">Edit</button>
-                    }
-                </h3>
+                <div class="row">
+                    <h3 class="col-md-10">
+                        @if (!string.IsNullOrEmpty(Model.TeamName))
+                        {
+                            <span><i class="fa fa-group"></i>&nbsp;</span>
+                            @Html.DisplayFor(m => m.TeamName)
+                            <span> /</span>
+                        }
+                        @Html.DisplayFor(m => m.Name)
+                    </h3>
+                    <div class="col-md-2">
+                        @if (ViewBag.IsTeamMember)
+                        {
+                            <a href=@Url.Action("Index", "Settings", new { area = "Projects", name = Model.Name }) class="btn btn-primary pull-right">Edit</a>
+                        }
+                    </div>
+                </div>
                 <hr />
                 <div class="row">
                     <div class="col-md-6">
