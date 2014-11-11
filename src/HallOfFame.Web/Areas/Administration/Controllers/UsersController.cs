@@ -5,19 +5,16 @@
 
     using AutoMapper.QueryableExtensions;
 
-    using HallOfFame.Data.Common.Repositories;
-    using HallOfFame.Models;
+    using HallOfFame.Data.Contracts;
     using HallOfFame.Web.Areas.Users.ViewModels;
     using HallOfFame.Web.Controllers;
 
     public class UsersController : KendoGridAdministrationController
     {
-        public UsersController(IRepository<User> users)
+        public UsersController(IHallOfFameData data)
+            : base(data)
         {
-            this.Users = users;
         }
-
-        public IRepository<User> Users { get; set; }
 
         public ActionResult Index()
         {
@@ -26,12 +23,12 @@
 
         public override IEnumerable GetData()
         {
-            return this.Users.All().Project().To<UserSettingsViewModel>();
+            return this.Data.Users.All().Project().To<UserSettingsViewModel>();
         }
 
         public override object GetById(object id)
         {
-            return this.Users.Find(id);
+            return this.Data.Users.Find(id);
         }
     }
 }

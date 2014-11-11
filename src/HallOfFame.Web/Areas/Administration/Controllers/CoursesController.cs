@@ -5,19 +5,16 @@
 
     using AutoMapper.QueryableExtensions;
 
-    using HallOfFame.Data.Common.Repositories;
-    using HallOfFame.Models;
+    using HallOfFame.Data.Contracts;
     using HallOfFame.Web.Areas.Administration.ViewModels.Courses;
     using HallOfFame.Web.Controllers;
 
     public class CoursesController : KendoGridAdministrationController
     {
-        public CoursesController(IRepository<Course> courses)
+        public CoursesController(IHallOfFameData data)
+            : base(data)
         {
-            this.Courses = courses;
         }
-
-        public IRepository<Course> Courses { get; set; }
 
         public ActionResult Index()
         {
@@ -26,12 +23,12 @@
 
         public override IEnumerable GetData()
         {
-            return this.Courses.All().Project().To<CourseInfoViewModel>();
+            return this.Data.Courses.All().Project().To<CourseInfoViewModel>();
         }
 
         public override object GetById(object id)
         {
-            return this.Courses.Find(id);
+            return this.Data.Courses.Find(id);
         }
     }
 }

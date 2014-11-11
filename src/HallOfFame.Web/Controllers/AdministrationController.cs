@@ -3,13 +3,14 @@
     using System.Web.Mvc;
 
     using HallOfFame.Common.Constants;
+    using HallOfFame.Data.Contracts;
 
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
-    public class AdministrationController : Controller // : BaseController
+    public class AdministrationController : BaseController
     {
-        /*   public AdministrationController(IHallOfFameData data)
-               : base(data)
-           {
-           }*/
+        public AdministrationController(IHallOfFameData data)
+            : base(data)
+        {
+        }
     }
 }

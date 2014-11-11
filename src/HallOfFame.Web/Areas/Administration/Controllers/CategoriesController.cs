@@ -6,19 +6,16 @@
 
     using AutoMapper.QueryableExtensions;
 
-    using HallOfFame.Data.Common.Repositories;
-    using HallOfFame.Models;
+    using HallOfFame.Data.Contracts;
     using HallOfFame.Web.Areas.Administration.ViewModels.Categories;
     using HallOfFame.Web.Controllers;
 
     public class CategoriesController : KendoGridAdministrationController
     {
-       public CategoriesController(IRepository<Category> categories)
-       {
-           this.Categories = categories;
-       }
-
-        private IRepository<Category> Categories { get; set; }
+        public CategoriesController(IHallOfFameData data)
+            : base(data)
+        {
+        }
 
         public ActionResult Index()
         {
@@ -27,12 +24,12 @@
 
         public override IEnumerable GetData()
         {
-            return this.Categories.All().OrderBy(x => x.Id).Project().To<CategoryViewModel>();
+            return this.Data.Categories.All().OrderBy(x => x.Id).Project().To<CategoryViewModel>();
         }
 
         public override object GetById(object id)
         {
-            return this.Categories.Find(id);
+            return this.Data.Categories.Find(id);
         }
     }
 }

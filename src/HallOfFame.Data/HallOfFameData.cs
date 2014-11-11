@@ -20,6 +20,14 @@
             this.context = context;
         }
 
+        public DbContext Context
+        {
+            get
+            {
+                return this.context;
+            }
+        }
+
         public IRepository<User> Users
         {
             get
