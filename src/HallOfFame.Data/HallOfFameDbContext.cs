@@ -4,8 +4,8 @@ namespace HallOfFame.Data
     using System.Data.Entity;
     using System.Linq;
 
-    using HallOfFame.Common;
     using HallOfFame.Common.Constants;
+    using HallOfFame.Data.Common.CodeFirstConventions;
     using HallOfFame.Data.Common.Models;
     using HallOfFame.Data.Contracts;
     using HallOfFame.Data.Migrations;
@@ -39,6 +39,26 @@ namespace HallOfFame.Data
         public new IDbSet<TEntity> Set<TEntity>() where TEntity : class
         {
             return base.Set<TEntity>();
+        }
+
+        public DbContext DbContext
+        {
+            get
+            {
+                return this;
+            }
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Add(new IsUnicodeAttributeConvention());
+
+            base.OnModelCreating(modelBuilder); // Without this call EntityFramework won't be able to configure the identity model
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
         }
 
         public override int SaveChanges()

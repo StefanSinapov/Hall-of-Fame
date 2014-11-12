@@ -12,16 +12,16 @@
 
     public class HallOfFameData : IHallOfFameData
     {
-        private readonly DbContext context;
+        private readonly IHallOfFameDbContext context;
 
         private readonly IDictionary<Type, object> repositories = new Dictionary<Type, object>();
 
-        public HallOfFameData(DbContext context)
+        public HallOfFameData(IHallOfFameDbContext context)
         {
             this.context = context;
         }
 
-        public DbContext Context
+        public IHallOfFameDbContext Context
         {
             get
             {

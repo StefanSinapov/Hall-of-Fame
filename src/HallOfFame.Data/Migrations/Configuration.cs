@@ -69,18 +69,20 @@ namespace HallOfFame.Data.Migrations
 
         private void SeedAdminUser(UserManager<User> userManager)
         {
-            /*var user = new User { UserName = GlobalConstants.AdministratorUserName };
+            var user = new User { UserName = GlobalConstants.AdministratorUserName };
             user.Email = user.UserName;
+            user.FirstName = "Admin";
+            user.LastName = "Hall of Fame";
 
             if (userManager.FindByName(GlobalConstants.AdministratorUserName) == null)
             {
-                var result = userManager.Create(user, GlobalConstants.AdministratorPassword);
+                var result = userManager.Create(user, GlobalConstants.AdministratorUserPassword);
 
                 if (result.Succeeded)
                 {
                     userManager.AddToRole(user.Id, GlobalConstants.AdministratorRoleName);
                 }
-            }*/
+            }
         }
 
         private void SeedCategories(IHallOfFameDbContext context)
@@ -101,8 +103,10 @@ namespace HallOfFame.Data.Migrations
 
             foreach (var category in categories)
             {
-                context.Categories.AddOrUpdate(category);
+                context.Categories.Add(category);
             }
+
+            context.SaveChanges();
         }
 
         private void SeedCourses(IHallOfFameDbContext context)
@@ -269,8 +273,10 @@ namespace HallOfFame.Data.Migrations
 
             foreach (var course in courses)
             {
-                context.Courses.AddOrUpdate(course);
+                context.Courses.Add(course);
             }
+
+            context.SaveChanges();
         }
     }
 }

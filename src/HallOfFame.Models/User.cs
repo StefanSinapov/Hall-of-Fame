@@ -7,13 +7,12 @@
     using System.Threading.Tasks;
 
     using HallOfFame.Common.Constants;
-    using HallOfFame.Data.Common.Models;
     using HallOfFame.Models.Enums;
 
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
 
-    public class User : IdentityUser, IAuditInfo, IDeletableEntity
+    public class User : IdentityUser
     {
         private ICollection<Project> projects;
 
@@ -105,23 +104,6 @@
                 this.likes = value;
             }
         }
-
-        #region IAuditInfo
-
-        public DateTime CreatedOn { get; set; }
-
-        public bool PreserveCreatedOn { get; set; }
-
-        public DateTime? ModifiedOn { get; set; }
-        #endregion
-
-        #region IDeletableEntity
-
-        public bool IsDeleted { get; set; }
-
-        public DateTime? DeletedOn { get; set; }
-
-        #endregion
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<User> manager)
         {

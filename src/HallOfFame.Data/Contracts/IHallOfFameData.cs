@@ -8,7 +8,7 @@
 
     public interface IHallOfFameData : IDisposable
     {
-        DbContext Context { get; }
+        IHallOfFameDbContext Context { get; }
 
         IRepository<User> Users { get; }
 

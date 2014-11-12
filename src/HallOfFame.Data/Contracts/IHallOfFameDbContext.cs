@@ -19,6 +19,10 @@
 
         IDbSet<Like> Likes { get; set; }
 
+        DbContext DbContext { get; }
+
+        void Dispose();
+
         int SaveChanges();
 
         IDbSet<TEntity> Set<TEntity>() where TEntity : class;

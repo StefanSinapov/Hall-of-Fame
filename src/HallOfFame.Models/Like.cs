@@ -1,10 +1,13 @@
 ﻿namespace HallOfFame.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     using HallOfFame.Data.Common.Models;
 
     public class Like : DeletableEntity
     {
-        public string Id { get; set; }
+        [Key]
+        public int Id { get; set; }
 
         public string UserId { get; set; }
 
