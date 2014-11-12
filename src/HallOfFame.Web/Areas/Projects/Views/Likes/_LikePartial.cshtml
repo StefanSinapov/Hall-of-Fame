@@ -1,40 +1,7 @@
 ﻿@model HallOfFame.Web.Areas.Projects.ViewModels.LikeViewModel
 @{
-    var ajaxOpts = new AjaxOptions
-                   {
-                       InsertionMode = InsertionMode.Replace,
-                       HttpMethod = "Post",
-                       UpdateTargetId = "likes-container"
-                   };
+    var ajaxOpts = new AjaxOptions { InsertionMode = InsertionMode.Replace, HttpMethod = "Post", UpdateTargetId = "likes-container" };
 }
-
-<style>
-    .likes-holder {
-    }
-
-        .likes-holder .thanks {
-            width: 100px;
-            height: 100px;
-            border: 0;
-            background: url("../../../../Img/project-icons.png") no-repeat -207px -3px;
-        }
-
-        .likes-holder .like {
-            width: 100px;
-            height: 100px;
-            border: 0;
-            background: url("../../../../Img/project-icons.png") no-repeat -105px -3px;
-        }
-
-            .likes-holder .like:hover {
-                background: url("../../../../Img/project-icons.png") no-repeat -3px -3px;
-            }
-
-            .likes-holder .like a {
-                width: 100%;
-                height: 100%;
-            }
-</style>
 
 <div class="likes-holder text-center">
     @if (Model.Value == false)
@@ -48,7 +15,7 @@
             <input type="submit" class="like" value="" />
         }
     }
-    else if (Model.Value == true)
+    else if (Model.Value)
     {
         using (@Ajax.BeginForm("Unlike", ajaxOpts))
         {

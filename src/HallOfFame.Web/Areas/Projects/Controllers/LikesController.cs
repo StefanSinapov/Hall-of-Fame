@@ -9,19 +9,14 @@
     using HallOfFame.Models;
     using HallOfFame.Web.Areas.Projects.ViewModels;
 
-    using Kendo.Mvc.UI;
-
     using Microsoft.AspNet.Identity;
 
     public class LikesController : Controller
     {
-        private readonly IDeletableEntityRepository<Project> projects;
+        private readonly IDeletableEntityRepository<Like> likes;
 
-        private IDeletableEntityRepository<Like> likes;
-
-        public LikesController(IDeletableEntityRepository<Project> projects, IDeletableEntityRepository<Like> likes )
+        public LikesController(IDeletableEntityRepository<Like> likes)
         {
-            this.projects = projects;
             this.likes = likes;
         }
 
@@ -47,10 +42,14 @@
             return this.PartialView("_LikePartial", userLike);
         }
 
-        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult Like(LikeViewModel model)
         {
+            if (!this.User.Identity.IsAuthenticated || this.User.Identity.GetUserId() != model.UserId)
+            {
+                return this.PartialView("_PageLoginPartial");
+            }
+
             if (this.ModelState.IsValid)
             {
                 model.Value = true;

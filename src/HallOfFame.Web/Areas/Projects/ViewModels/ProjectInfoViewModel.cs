@@ -1,7 +1,6 @@
 ﻿namespace HallOfFame.Web.Areas.Projects.ViewModels
 {
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
     using System.Linq;
 
     using AutoMapper;

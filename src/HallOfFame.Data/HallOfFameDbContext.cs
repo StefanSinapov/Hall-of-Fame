@@ -31,6 +31,14 @@ namespace HallOfFame.Data
 
         public IDbSet<Like> Likes { get; set; }
 
+        public DbContext DbContext
+        {
+            get
+            {
+                return this;
+            }
+        }
+
         public static HallOfFameDbContext Create()
         {
             return new HallOfFameDbContext();
@@ -41,12 +49,11 @@ namespace HallOfFame.Data
             return base.Set<TEntity>();
         }
 
-        public DbContext DbContext
+        public override int SaveChanges()
         {
-            get
-            {
-                return this;
-            }
+            this.ApplyAuditInfoRules();
+            this.ApplyDeletableEntityRules();
+            return base.SaveChanges();
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -55,19 +62,7 @@ namespace HallOfFame.Data
 
             base.OnModelCreating(modelBuilder); // Without this call EntityFramework won't be able to configure the identity model
         }
-
-        protected override void Dispose(bool disposing)
-        {
-            base.Dispose(disposing);
-        }
-
-        public override int SaveChanges()
-        {
-            this.ApplyAuditInfoRules();
-            this.ApplyDeletableEntityRules();
-            return base.SaveChanges();
-        }
-
+        
         private void ApplyAuditInfoRules()
         {
             // Approach via @julielerman: http://bit.ly/123661P
