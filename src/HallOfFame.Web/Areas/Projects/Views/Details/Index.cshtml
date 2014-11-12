@@ -28,22 +28,20 @@
                 </div>
                 <hr />
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         @Html.DisplayFor(m => m.Title)
-                    </div>
-                    <div class="col-md-5">
-                        @if (!string.IsNullOrEmpty(Model.Website))
-                        {
-                            <span><i class="fa fa-globe"></i>&nbsp;</span>@Html.DisplayFor(m => m.Website)
-                        }
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         @Html.FontAwesome("fa fa-graduation-cap")&nbsp;<a href="/">@Html.DisplayFor(m => m.CourseName)</a>
+                        @if (!string.IsNullOrEmpty(Model.Website))
+                        {
+                            <span><i class="fa fa-globe"></i>&nbsp;</span>@Html.DisplayFor(m => m.Website)
+                        }
                         <span class="pull-right">
                             <a href="#comments-container">@Html.FontAwesome("fa fa-comments")&nbsp;@Html.DisplayFor(m => m.CommentsCount)</a>
-                            
+                            <a href="#comments-container">@Html.FontAwesome("fa fa-thumbs-up")&nbsp;@Html.DisplayFor(m => m.LikesCount)</a>
                         </span>
                     </div>
                 </div>
@@ -92,6 +90,11 @@
                         <div class="row">
                             <div class="col-md-12">
                                 @Html.Raw(Model.Description)
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12 text-center" id="likes-container">
+                                @Html.Action("GetLikes", "Likes", new { id = Model.Id })
                             </div>
                         </div>
                         <div class="row">

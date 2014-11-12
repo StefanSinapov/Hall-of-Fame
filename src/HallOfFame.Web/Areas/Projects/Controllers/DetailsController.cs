@@ -11,7 +11,6 @@
     using HallOfFame.Models;
     using HallOfFame.Web.Areas.Projects.ViewModels;
     using HallOfFame.Web.Infrastructure.Sanitizer;
-    using HallOfFame.Web.ViewModels.Shared;
 
     using Microsoft.AspNet.Identity;
 
@@ -51,12 +50,6 @@
             project.Description = this.sanitizer.Sanitize(project.Description);
 
             return this.View(project);
-        }
-
-        public ActionResult Likes(string name)
-        {
-            var likes = this.GetProjectByName(name).Select(m => m.Likes).Project().To<LikeViewModel>();
-            return this.PartialView("_Likes", likes);
         }
 
         private IQueryable<Project> GetProjectByName(string name)

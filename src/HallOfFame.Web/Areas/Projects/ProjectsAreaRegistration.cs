@@ -27,6 +27,11 @@
                 new { controller = "Comments", id = UrlParameter.Optional });
 
             context.MapRoute(
+               "Projects_Details_Likes",
+                "Projects/{id}/Likes/{action}",
+                new { controller = "Likes", action = "Likes", id = UrlParameter.Optional });
+
+            context.MapRoute(
                 "Projects_Details",
                 "Projects/{name}/{controller}/{action}",
                 new { controller = "Details", action = ControllerNames.Index, name = UrlParameter.Optional });

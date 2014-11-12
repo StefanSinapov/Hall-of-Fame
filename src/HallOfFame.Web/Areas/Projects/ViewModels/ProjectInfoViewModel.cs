@@ -26,7 +26,7 @@
             configuration.CreateMap<Project, ProjectInfoViewModel>()
                 .ForMember(m => m.Team, opt => opt.MapFrom(u => u.Team.AsQueryable().Project().To<UserInfoViewModel>()));
             configuration.CreateMap<Project, ProjectInfoViewModel>()
-                .ForMember(m => m.LikesCount, opt => opt.MapFrom(u => u.Likes.Count));
+                .ForMember(m => m.LikesCount, opt => opt.MapFrom(u => u.Likes.Count(l => l.IsDeleted == false)));
         }
     }
 }

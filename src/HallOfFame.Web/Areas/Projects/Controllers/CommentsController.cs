@@ -32,6 +32,7 @@
         {
             var comments = this.Comments
                 .All()
+                .Where(c => c.ProjectId == id)
                 .Where(c => !c.IsDeleted)
                 .OrderByDescending(c => c.CreatedOn)
                 .Skip(startFrom)
