@@ -103,42 +103,90 @@ hr {
         width: 20px;
     }
 
-    .vcard-social .git {
-        /* color: black;*/
-        color: #eee;
-        cursor: pointer;
+.vcard-social .git {
+    /* color: black;*/
+    color: #eee;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+.vcard-social .twitter {
+    color: #19C4FF;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.vcard-social .google-plus {
+    color: #DD4B39;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.vcard-social .facebook {
+    color: #007BB6;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.vcard-social .linkedin {
+    color: #007BB6;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.vcard-social .skype {
+    color: #12A5F4;
+    cursor: pointer;
+    margin-left: 5px;
+}
+
+div.user-holder:hover {
+    background-color: #5f059c;
+}
+
+/* User partial */
+
+.user-holder {
+    background-color: #9233d3;
+    background-color: rgba(146, 51, 211, 0.80);
+    display: inline-block;
+    min-width: 220px;
+    height: 75px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+    .user-holder a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .user-holder img {
+        margin-top: 14px;
         margin-left: 5px;
+        float: left;
+        min-width: 40px;
     }
 
-    .vcard-social .twitter {
-        color: #19C4FF;
-        cursor: pointer;
-        margin-left: 10px;
+    .user-holder div {
+        color: whitesmoke;
+        float: left;
+        display: inline-block;
+        min-width: 180px;
+        margin-left: 15px;
     }
 
-    .vcard-social .google-plus {
-        color: #DD4B39;
-        cursor: pointer;
-        margin-left: 10px;
-    }
+        .user-holder div h3 {
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
 
-    .vcard-social .facebook {
-        color: #007BB6;
-        cursor: pointer;
-        margin-left: 10px;
-    }
+        .user-holder div p {
+            font-size: 1em;
+        }
 
-    .vcard-social .linkedin {
-        color: #007BB6;
-        cursor: pointer;
-        margin-left: 10px;
-    }
 
-    .vcard-social .skype {
-        color: #12A5F4;
-        cursor: pointer;
-        margin-left: 5px;
-    }
 /*
  Footer styles
 */
@@ -293,7 +341,7 @@ hr {
         margin-bottom: 10px;
     }
 
-    .footer .social a .fa{
+    .footer .social a .fa {
         color: white;
         text-decoration: none;
     }
@@ -374,7 +422,7 @@ hr {
     opacity: 0;
 }
 
-#search.open {
+    #search.open {
         -webkit-transform: translate(0, 0) scale(1, 1);
         -moz-transform: translate(0, 0) scale(1, 1);
         -o-transform: translate(0, 0) scale(1, 1);
@@ -402,7 +450,7 @@ hr {
         outline: none;
     }
 
-#search .btn {
+    #search .btn {
         position: absolute;
         top: 50%;
         left: 50%;

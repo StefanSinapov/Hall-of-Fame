@@ -242,8 +242,8 @@
     <Compile Include="Areas\Projects\Controllers\SettingsController.cs" />
     <Compile Include="Areas\Projects\ProjectsAreaRegistration.cs" />
     <Compile Include="Areas\Projects\ViewModels\BaseProjectViewModel.cs" />
-    <Compile Include="Areas\Projects\ViewModels\CreateProjectViewModel.cs" />
     <Compile Include="Areas\Projects\ViewModels\ProjectDetailsViewModel.cs" />
+    <Compile Include="Areas\Projects\ViewModels\CreateProjectViewModel.cs" />
     <Compile Include="Areas\Projects\ViewModels\ProjectInfoViewModel.cs" />
     <Compile Include="Areas\Projects\ViewModels\ProjectSettingsViewModel.cs" />
     <Compile Include="Areas\Users\Controllers\ProfileController.cs" />

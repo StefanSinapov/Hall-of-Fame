@@ -5,6 +5,9 @@
 
     public class CreateProjectViewModel : BaseProjectViewModel
     {
+        [AllowHtml]
+        public string Description { get; set; }
+
         [Required]
         [Display(Name = "Course")]
         public int CourseId { get; set; }

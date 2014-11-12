@@ -16,10 +16,7 @@
         [Display(Name = "Title")]
         [StringLength(120, ErrorMessage = "The {0} must be between {2} and {1} characters", MinimumLength = 3)]
         public string Title { get; set; }
-
-        [AllowHtml]
-        public string Description { get; set; }
-
+      
         [DataType(DataType.ImageUrl)]
         [Display(Name = "Cover photo")]
         public string PhotoUrl { get; set; }

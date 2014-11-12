@@ -19,17 +19,18 @@
     {
         private readonly ISanitizer sanitizer;
 
-        public DetailsController(IRepository<Project> projects, ISanitizer sanitizer)
+        public DetailsController(IDeletableEntityRepository<Project> projects, ISanitizer sanitizer)
         {
             this.Projects = projects;
             this.sanitizer = sanitizer;
         }
 
-        public IRepository<Project> Projects { get; set; }
+        public IDeletableEntityRepository<Project> Projects { get; set; }
 
         public ActionResult Index(string name)
         {
             var project = this.GetProjectByName(name).Project().To<ProjectDetailsViewModel>().FirstOrDefault();
+
             if (project == null)
             {
                 return this.RedirectToAction("Index", "Home", new { area = string.Empty });
@@ -60,7 +61,7 @@
 
         private IQueryable<Project> GetProjectByName(string name)
         {
-            return this.Projects.Search(p => p.Name == name);
+            return this.Projects.All().Where(p => p.Name == name);
         }
     }
 }

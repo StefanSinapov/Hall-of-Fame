@@ -20,7 +20,7 @@
                         @Html.DisplayFor(m => m.Name)
                     </h3>
                     <div class="col-md-2">
-                        @if (ViewBag.IsTeamMember)
+                        @if (ViewBag.IsTeamMember != null && ViewBag.IsTeamMember == true)
                         {
                             <a href=@Url.Action("Index", "Settings", new { area = "Projects", name = Model.Name }) class="btn btn-primary pull-right">Edit</a>
                         }
@@ -39,8 +39,12 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12 vcard-social">
+                    <div class="col-md-12">
                         @Html.FontAwesome("fa fa-graduation-cap")&nbsp;<a href="/">@Html.DisplayFor(m => m.CourseName)</a>
+                        <span class="pull-right">
+                            <a href="#comments-container">@Html.FontAwesome("fa fa-comments")&nbsp;@Html.DisplayFor(m => m.CommentsCount)</a>
+                            
+                        </span>
                     </div>
                 </div>
                 <hr />
@@ -91,7 +95,7 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12" id="comments-container">
                                 @Html.Partial("_Comments", Model.Id)
                             </div>
                         </div>
@@ -112,7 +116,7 @@
                 </div>
                 <hr />
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-12 vcard-social">
                         @if (!string.IsNullOrEmpty(Model.GitHubLink))
                         {
                             <a href="@Html.DisplayFor(m => m.GitHubLink)" target="_blank"><i class="fa fa-github-square fa-2x"></i>&nbsp;</a>
