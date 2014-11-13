@@ -35,6 +35,9 @@
             bundles.Add(new ScriptBundle("~/bundles/search").Include(
                       "~/Scripts/search-box.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/signalr").Include(
+                      "~/Scripts/jquery.signalR-2.1.2.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                         "~/Scripts/kendo/2014.2.716/cultures/kendo.culture.en-GB.min.js",
                         "~/Scripts/kendo/2014.2.716/cultures/kendo.culture.bg-BG.min.js",
