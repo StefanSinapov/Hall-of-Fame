@@ -54,9 +54,11 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="Comment.cs" />
+    <Compile Include="Conversation.cs" />
     <Compile Include="Course.cs" />
     <Compile Include="Enums\Gender.cs" />
     <Compile Include="Like.cs" />
+    <Compile Include="Message.cs" />
     <Compile Include="Project.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="User.cs" />

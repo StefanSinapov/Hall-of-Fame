@@ -19,6 +19,10 @@
 
         IDbSet<Like> Likes { get; set; }
 
+        IDbSet<Message> Messages { get; set; }
+
+        IDbSet<Conversation> Conversations { get; set; }
+
         DbContext DbContext { get; }
 
         void Dispose();

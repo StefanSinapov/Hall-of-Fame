@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Data.Entity;
 
     using HallOfFame.Data.Common.Models;
     using HallOfFame.Data.Common.Repositories;
@@ -74,6 +73,22 @@
             get
             {
                 return this.GetDeletableEntityRepository<Like>();
+            }
+        }
+
+        public IRepository<Message> Messages
+        {
+            get
+            {
+                return this.GetDeletableEntityRepository<Message>();
+            }
+        }
+
+        public IRepository<Conversation> Conversations
+        {
+            get
+            {
+                return this.GetDeletableEntityRepository<Conversation>();
             }
         }
 

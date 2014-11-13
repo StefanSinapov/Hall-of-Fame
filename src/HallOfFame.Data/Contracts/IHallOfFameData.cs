@@ -1,7 +1,6 @@
 ﻿namespace HallOfFame.Data.Contracts
 {
     using System;
-    using System.Data.Entity;
 
     using HallOfFame.Data.Common.Repositories;
     using HallOfFame.Models;
@@ -21,6 +20,10 @@
         IRepository<Course> Courses { get; }
 
         IRepository<Like> Likes { get; }
+        
+        IRepository<Message> Messages { get; }
+
+        IRepository<Conversation> Conversations { get; }
 
         int SaveChanges();
     }

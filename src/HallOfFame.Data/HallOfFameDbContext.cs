@@ -21,15 +21,19 @@ namespace HallOfFame.Data
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<HallOfFameDbContext, Configuration>());
         }
       
-        public IDbSet<Project> Projects { get; set; }
+        public virtual IDbSet<Project> Projects { get; set; }
 
-        public IDbSet<Category> Categories { get; set; }
+        public virtual IDbSet<Category> Categories { get; set; }
+        
+        public virtual IDbSet<Comment> Comments { get; set; }
+        
+        public virtual IDbSet<Course> Courses { get; set; }
+        
+        public virtual IDbSet<Like> Likes { get; set; }
+        
+        public virtual IDbSet<Message> Messages { get; set; }
 
-        public IDbSet<Comment> Comments { get; set; }
-
-        public IDbSet<Course> Courses { get; set; }
-
-        public IDbSet<Like> Likes { get; set; }
+        public virtual IDbSet<Conversation> Conversations { get; set; }
 
         public DbContext DbContext
         {
