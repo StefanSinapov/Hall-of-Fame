@@ -2,4 +2,5 @@
 @model DateTime?
 
 @(Html.Kendo().DatePickerFor(m => m)
-    .Format("MM/dd/yyyy"))
+    .Format("dd/MM/yyyy")
+    .Culture("en-GB"))

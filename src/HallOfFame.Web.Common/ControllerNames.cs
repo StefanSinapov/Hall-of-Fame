@@ -11,5 +11,7 @@
         public const string Users = "Users";
 
         public const string Projects = "Projects";
+
+        public const string Messages = "Messages";
     }
 }

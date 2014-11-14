@@ -39,10 +39,9 @@
                       "~/Scripts/jquery.signalR-2.1.2.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
-                        "~/Scripts/kendo/2014.2.716/cultures/kendo.culture.en-GB.min.js",
-                        "~/Scripts/kendo/2014.2.716/cultures/kendo.culture.bg-BG.min.js",
                         "~/Scripts/kendo/2014.2.716/kendo.web.min.js",
-                        "~/Scripts/kendo/2014.2.716/kendo.aspnetmvc.js"));
+                        "~/Scripts/kendo/2014.2.716/kendo.aspnetmvc.js",
+                        "~/Scripts/kendo/2014.2.716/cultures/kendo.culture.en-GB.min.js"));
         }
 
         private static void RegisterScripts(BundleCollection bundles)
