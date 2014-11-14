@@ -1,4 +1,4 @@
-﻿namespace HallOfFame.Web.Areas.Projects.ViewModels
+﻿namespace HallOfFame.Web.Areas.Projects.ViewModels.Likes
 {
     using HallOfFame.Models;
     using HallOfFame.Web.Infrastructure.Mapping;

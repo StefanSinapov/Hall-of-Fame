@@ -1,0 +1,55 @@
+﻿@using Mvc.RazorTools.FontAwesome
+@model HallOfFame.Web.Areas.Projects.ViewModels.ProjectInfoViewModel
+
+<div class="project">
+    <div class="title row">
+        <strong>
+            <a href="@Url.Action("Index", "Details", new { area = "Projects", name = @Model.Name })">
+                @* @if (!string.IsNullOrEmpty(Model.TeamName))
+                    {
+                        <span><i class="fa fa-group"></i>&nbsp;</span>
+                        @Html.DisplayFor(m => m.TeamName)
+                        <span> /</span>
+                    }*@
+                @Model.Name
+            </a>
+        </strong>
+    </div>
+    <div class="element row">
+        <a href="@Url.Action("Index", "Details", new { area = "Projects", name = @Model.Name })">
+            <img src="@Model.PhotoUrl" alt="@Model.Name Cover Photo" class="img-responsive" title="@Model.Name" />
+        </a>
+        <p>@Model.Title</p>
+    </div>
+    <div class="footer row">
+        <div class="col-md-5">
+            <a href="@string.Format("{0}#{1}", Url.Action("Index", "Details", new { area = "Projects", name = @Model.Name }), "comments-container")">
+                @Html.FontAwesome("fa fa-comments")&nbsp;@Html.DisplayFor(m => m.CommentsCount)
+            </a>
+            <a href="@string.Format("{0}#{1}", Url.Action("Index", "Details", new { area = "Projects", name = @Model.Name }), "likes-container")">
+                @Html.FontAwesome("fa fa-thumbs-up")&nbsp;@Html.DisplayFor(m => m.LikesCount)
+            </a>
+        </div>
+        <div class="col-md-7 text-right">
+            @if (!string.IsNullOrEmpty(Model.Website))
+            {
+                <a href="@Model.Website" target="_blank"><i class="fa fa-globe"></i>&nbsp;</a>
+            }
+            @if (!string.IsNullOrEmpty(Model.GitHubLink))
+            {
+                <a href="@Html.DisplayFor(m => m.GitHubLink)" target="_blank"><i class="fa fa-github"></i>&nbsp;</a>
+            }
+            @if (!string.IsNullOrEmpty(Model.GooglePlusLink))
+            {
+                <a href="@Html.DisplayFor(m => m.GooglePlusLink)" target="_blank"><i class="fa fa-google-plus"></i>&nbsp;</a>
+            }
+            @if (!string.IsNullOrEmpty(Model.FacebookLink))
+            {
+                <a href="@Html.DisplayFor(m => m.FacebookLink)" target="_blank"><i class="fa fa-facebook"></i>&nbsp;</a>
+            }
+        </div>
+    </div>
+    <div class="course row">
+        <strong>Course: </strong><a href="/Courses/@Model.Course.Id">@Model.Course.Name</a>
+    </div>
+</div>

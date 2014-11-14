@@ -75,11 +75,13 @@
         </div>
 
         <div class="col-md-9">
-            <h2 class="page-header content-block">
+            <h2 class="content-block">
                 @Html.FontAwesome("fa fa-code") Projects
             </h2>
             <div class="row">
-
+                <div class="col-md-12">
+                    @Html.Partial("_ProjectsTimelinePartial", @Model.Projects.ToList())
+                </div>
             </div>
         </div>
     </div>

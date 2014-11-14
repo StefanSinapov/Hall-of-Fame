@@ -4,9 +4,25 @@
 
     public class MessageHub : Hub
     {
-        public void Hello()
+        public void ChangeGroup()
         {
-            Clients.All.hello();
+            // Clients.Caller.changeGroup
+        }
+
+        public void GetUnreadMessages()
+        {
+        }
+
+        public void Join()
+        {
+        }
+
+        public void RegisterUser()
+        {
+        }
+
+        public void SendMessage()
+        {
         }
     }
 }

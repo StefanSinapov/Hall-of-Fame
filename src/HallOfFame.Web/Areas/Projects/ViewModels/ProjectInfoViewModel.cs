@@ -1,10 +1,8 @@
 ﻿namespace HallOfFame.Web.Areas.Projects.ViewModels
 {
-    using System.Collections.Generic;
     using System.Linq;
 
     using AutoMapper;
-    using AutoMapper.QueryableExtensions;
 
     using HallOfFame.Models;
     using HallOfFame.Web.Infrastructure.Mapping;
@@ -12,20 +10,24 @@
 
     public class ProjectInfoViewModel : BaseProjectViewModel, IMapFrom<Project>, IHaveCustomMappings
     {
-        public ICollection<UserInfoViewModel> Team { get; set; }
-
         public int CommentsCount { get; set; }
 
         public int LikesCount { get; set; }
 
+        public CourseViewModel Course { get; set; }
+
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Project, ProjectInfoViewModel>()
+               .ForMember(m => m.Course, opt => opt.MapFrom(u => new CourseViewModel
+                                                                   {
+                                                                       Id = u.Course.Id,
+                                                                       Name = u.Course.Name
+                                                                   }));
+            configuration.CreateMap<Project, ProjectInfoViewModel>()
                 .ForMember(m => m.CommentsCount, opt => opt.MapFrom(p => p.Comments.Count));
             configuration.CreateMap<Project, ProjectInfoViewModel>()
-                .ForMember(m => m.Team, opt => opt.MapFrom(u => u.Team.AsQueryable().Project().To<UserInfoViewModel>()));
-            configuration.CreateMap<Project, ProjectInfoViewModel>()
-                .ForMember(m => m.LikesCount, opt => opt.MapFrom(u => u.Likes.Count(l => l.IsDeleted == false)));
+                .ForMember(m => m.LikesCount, opt => opt.MapFrom(p => p.Likes.Count(l => l.IsDeleted == false)));
         }
     }
 }

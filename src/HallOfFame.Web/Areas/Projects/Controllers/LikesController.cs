@@ -8,6 +8,7 @@
     using HallOfFame.Data.Common.Repositories;
     using HallOfFame.Models;
     using HallOfFame.Web.Areas.Projects.ViewModels;
+    using HallOfFame.Web.Areas.Projects.ViewModels.Likes;
 
     using Microsoft.AspNet.Identity;
 

@@ -208,7 +208,6 @@
             padding: 5px;
             font-weight: 300;
             font-size: 1em;
-            height: 15px;
             width: 240px;
         }
 
@@ -289,7 +288,7 @@
 
             </div>
         </div>
-        <div id="messageContainer" style="display: none">
+        <div id="messageContainer" style="/*display: none*/">
             <textarea id="messageToSend"></textarea>
             <div id="sendButton"><p>Send</p></div>
             <div id="submitByEnter"><label for="useEnterKey">Press Enter for send</label> <input type="checkbox" id="useEnterKey" value="yes"></div>
@@ -299,7 +298,7 @@
     <div class="col-md-3">
         <div id="friendsContainer">
             <div class="search">
-                <input type="text" name="friendQuery" id="inputQuery" placeholder="Търси" />
+                <input type="text" name="friendQuery" id="inputQuery" placeholder="Търси" class="form-control"/>
             </div>
         </div>
     </div>
@@ -541,7 +540,6 @@
             }
 
             //Register
-            //;
             var t = setTimeout(function () { chat.server.registerUser(); }, 1000);
 
             $('.importantMessageWarning').remove();

@@ -495,3 +495,143 @@ div.user-holder:hover {
         padding: 10px 17px;
         font-size: 27px;
     }
+
+/* Project partial and Timeline */
+
+.timeline li {
+    text-align: -webkit-match-parent;
+    list-style-type: none;
+}
+
+ul.timeline > li.odd {
+    float: right;
+    clear: right;
+}
+
+ul.timeline > li.even {
+    float: left;
+    clear: left;
+}
+
+ul.timeline > li {
+    width: 45%;
+}
+
+
+
+    ul.timeline > li.odd .project:before, ul.timeline > li.even .project:before {
+        right: -2px;
+        top: 39px;
+        left: auto;
+        height: 0;
+        height: -webkit-calc(100% - 25px);
+        height: -moz-calc(100% - 25px);
+        height: -ms-calc(100% - 25px);
+        height: calc(100% - 25px);
+    }
+
+    ul.timeline > li.odd .project:after, ul.timeline > li.even .project:after {
+        right: -8px;
+        background-position: center left;
+        top: 10px;
+        left: auto;
+    }
+
+ul.timeline > .project:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: transparent url('../../Content/timeline-connectors-open.png') center center no-repeat;
+    width: 24px;
+    height: 30px;
+}
+
+li .project {
+    /* max-width: 250px;*/
+    margin-top: 5px
+}
+
+    .project .title {
+        background: #cfe7f1;
+        background: rgba(207,231,241,0.8);
+        padding: 14px 20px 16px 20px;
+    }
+
+        .project .title a {
+            font-size: 1.6em;
+            line-height: 1.3em;
+            color: #82198c;
+        }
+
+            .project .title a:hover {
+                text-decoration: underline;
+            }
+
+    .project .element {
+        background: rgba(207,231,241,0.8);
+    }
+
+        .project .element p {
+            color: #333;
+            vertical-align: baseline;
+            padding: 20px 20px 20px 20px;
+        }
+
+    .project .footer {
+        border-top: 1px solid #1B4446;
+        border-top: 1px solid rgba(255,255,255,0.1);
+        background: rgba(0,0,0,0.2);
+        padding: 10px 15px;
+        margin-top: 0;
+    }
+
+        .project .footer a {
+            color: rgba(255, 255, 255, 0.4);
+            background: transparent;
+        }
+
+            .project .footer a .fa {
+                text-decoration: none;
+            }
+
+    .project .course {
+        font-size: 80%;
+        text-align: right;
+        opacity: 0.6;
+    }
+
+@media (max-width: 500px) {
+    ul.timeline > li {
+        width: 100%;
+    }
+
+        ul.timeline > li.even {
+            float: left;
+            clear: left;
+        }
+
+        ul.timeline > li.odd {
+            float: left;
+            clear: left;
+        }
+
+        ul.timeline > li:before {
+            content: "";
+            width: 4px;
+            background: white;
+            opacity: 0.2525;
+            height: 100%;
+            position: absolute;
+        }
+
+        ul.timeline > li:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: transparent url('/css/images/timeline-connectors-open.png?1375281801') center center no-repeat;
+            width: 24px;
+            height: 30px;
+        }
+}

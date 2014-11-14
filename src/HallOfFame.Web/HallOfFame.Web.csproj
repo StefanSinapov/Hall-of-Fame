@@ -302,7 +302,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\Shared\CourseViewModel.cs" />
-    <Compile Include="Areas\Projects\ViewModels\LikeViewModel.cs" />
+    <Compile Include="Areas\Projects\ViewModels\Likes\LikeViewModel.cs" />
     <Compile Include="ViewModels\Shared\PaginationViewModel.cs" />
     <Compile Include="ViewModels\Shared\UserInfoViewModel.cs" />
   </ItemGroup>
@@ -373,6 +373,7 @@
     <Content Include="Content\kendo\2014.2.716\textures\stripe6.png" />
     <Content Include="Content\kendo\2014.2.716\textures\transparency.png" />
     <Content Include="Content\kendo\2014.2.716\textures\transtexture.png" />
+    <Content Include="Content\timeline-connectors-open.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -507,6 +508,8 @@
     <Content Include="Views\Shared\EditorTemplates\Url.cshtml" />
     <Content Include="Views\Shared\_PageLoginPartial.cshtml" />
     <Content Include="Views\Messages\Index.cshtml" />
+    <Content Include="Views\Shared\_ProjectInfoPartial.cshtml" />
+    <Content Include="Views\Shared\_ProjectsTimelinePartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
