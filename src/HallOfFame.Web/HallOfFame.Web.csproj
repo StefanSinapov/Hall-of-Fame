@@ -280,7 +280,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Hubs\MessageHub.cs" />
-    <Compile Include="Infrastructure\Helpers\Html\FormHelpers.cs" />
     <Compile Include="ViewModels\Account\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Account\ChangePasswordViewModel.cs" />
     <Compile Include="ViewModels\Account\ConfigureTwoFactorViewModel.cs" />
