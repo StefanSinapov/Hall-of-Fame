@@ -13,6 +13,7 @@
 
     public class ProjectDetailsViewModel : BaseProjectViewModel, IMapFrom<Project>, IHaveCustomMappings
     {
+        public int CourseId { get; set; }
 
         public int CommentsCount { get; set; }
 

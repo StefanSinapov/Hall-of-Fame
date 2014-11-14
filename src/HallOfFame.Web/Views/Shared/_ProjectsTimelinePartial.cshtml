@@ -4,13 +4,13 @@
     {
         if (i % 2 == 0)
         {
-            <li class="odd">
+            <li class="even">
                 @Html.Partial("_ProjectInfoPartial", @Model[i])
             </li>
         }
         else
         {
-            <li class="even">
+            <li class="odd">
                 @Html.Partial("_ProjectInfoPartial", @Model[i])
             </li>
         }

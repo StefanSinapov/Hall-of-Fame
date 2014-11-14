@@ -50,6 +50,6 @@
         </div>
     </div>
     <div class="course row">
-        <strong>Course: </strong><a href="/Courses/@Model.Course.Id">@Model.Course.Name</a>
+        <strong>Course: </strong><a href=@Url.Action("Details", "Courses", new { id = @Model.Course.Id, area = string.Empty })>@Model.Course.Name</a>
     </div>
 </div>

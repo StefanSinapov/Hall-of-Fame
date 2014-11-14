@@ -1,0 +1,25 @@
+﻿@model HallOfFame.Web.ViewModels.Courses.CourseDetailsViewModel
+
+@{
+    ViewBag.Title = @Model.Name + "| Courses";
+}
+
+<div class="jumbotron content-block">
+    <h1>@Model.Name</h1>
+    <p>@Model.Description</p>
+    <p><a class="btn btn-success" href="@Model.TelerikAcademyLink" target="_blank">See more at TelerikAcademy</a></p>
+</div>
+
+<div class="row">
+    <div class="col-md-12" id="projects-container">
+        <p>
+            @Model.ProjectsCount project(s) |
+            @Ajax.ActionLink("See projects", "GetProjectByCourse", new { id = @Model.Id }, new AjaxOptions
+                                                                                           {
+                                                                                               HttpMethod = "Get",
+                                                                                               UpdateTargetId = "projects-container",
+                                                                                               InsertionMode = InsertionMode.Replace
+                                                                                           })
+        </p>
+    </div>
+</div>

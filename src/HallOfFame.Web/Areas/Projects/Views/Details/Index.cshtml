@@ -34,7 +34,7 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        @Html.FontAwesome("fa fa-graduation-cap")&nbsp;<a href="/Courses/@Model.CourseName">@Html.DisplayFor(m => m.CourseName)</a>
+                        @Html.FontAwesome("fa fa-graduation-cap")&nbsp;<a href=@Url.Action("Details", "Courses", new { id = @Model.CourseId, area = string.Empty })>@Html.DisplayFor(m => m.CourseName)</a>
                         @if (!string.IsNullOrEmpty(Model.Website))
                         {
                             <span><i class="fa fa-globe"></i>&nbsp;</span>@Html.DisplayFor(m => m.Website)
