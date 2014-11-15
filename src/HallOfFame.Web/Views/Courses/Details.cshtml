@@ -12,14 +12,18 @@
 
 <div class="row">
     <div class="col-md-12" id="projects-container">
+
         <p>
             @Model.ProjectsCount project(s) |
-            @Ajax.ActionLink("See projects", "GetProjectByCourse", new { id = @Model.Id }, new AjaxOptions
-                                                                                           {
-                                                                                               HttpMethod = "Get",
-                                                                                               UpdateTargetId = "projects-container",
-                                                                                               InsertionMode = InsertionMode.Replace
-                                                                                           })
+            @if (Model.ProjectsCount > 0)
+            {
+                @Ajax.ActionLink("See projects", "GetProjectByCourse", new { id = @Model.Id }, new AjaxOptions
+                                                                                               {
+                                                                                                   HttpMethod = "Get",
+                                                                                                   UpdateTargetId = "projects-container",
+                                                                                                   InsertionMode = InsertionMode.Replace
+                                                                                               })
+            }
         </p>
     </div>
 </div>

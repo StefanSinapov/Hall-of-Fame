@@ -7,12 +7,11 @@
 
     using HallOfFame.Data.Common.Repositories;
     using HallOfFame.Models;
-    using HallOfFame.Web.Areas.Administration.ViewModels.Categories;
     using HallOfFame.Web.ViewModels.Categories;
 
     public class HomeController : Controller
     {
-        private IDeletableEntityRepository<Category> categories;
+        private readonly IDeletableEntityRepository<Category> categories;
 
         public HomeController(IDeletableEntityRepository<Category> categories)
         {
