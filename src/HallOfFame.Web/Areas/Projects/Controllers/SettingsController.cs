@@ -6,36 +6,30 @@
     using System.Net;
     using System.Web;
     using System.Web.Mvc;
-    using System.Web.Routing;
 
     using AutoMapper.QueryableExtensions;
 
-    using HallOfFame.Data.Common.Repositories;
-    using HallOfFame.Models;
+    using HallOfFame.Data.Contracts;
     using HallOfFame.Web.Areas.Projects.ViewModels;
+    using HallOfFame.Web.Controllers;
     using HallOfFame.Web.ViewModels.Shared;
 
     using Microsoft.AspNet.Identity;
 
     [Authorize]
-    public class SettingsController : Controller
+    public class SettingsController : BaseController
     {
-        public SettingsController(IRepository<Project> projects, IRepository<Course> courses)
+        public SettingsController(IHallOfFameData data)
+            : base(data)
         {
-            this.Projects = projects;
-            this.Courses = courses;
         }
-
-        public IRepository<Course> Courses { get; set; }
-
-        public IRepository<Project> Projects { get; set; }
 
         [HttpGet]
         public ActionResult Index(string name)
         {
             var currentUserName = this.User.Identity.GetUserName();
 
-            var project = this.Projects
+            var project = this.Data.Projects
                     .Search(p => p.Name == name)
                     .Project().To<ProjectSettingsViewModel>()
                     .FirstOrDefault();
@@ -75,9 +69,24 @@
             return this.View(model);
         }
 
+        public JsonResult GetUsers(string text)
+        {
+            var usersSearch = this.Data.Users
+                .All();
+
+            if (!string.IsNullOrEmpty(text))
+            {
+                usersSearch = usersSearch.Where(u => u.UserName.Contains(text));
+            }
+
+            var result = usersSearch.Project().To<UserInfoViewModel>();
+
+            return this.Json(result, JsonRequestBehavior.AllowGet);
+        }
+
         private void CheckAndUpdateProject(ProjectSettingsViewModel model)
         {
-            var project = this.Projects.Search(p => p.Name == model.Name).First();
+            var project = this.Data.Projects.Search(p => p.Name == model.Name).First();
 
             project.Description = model.Description;
             project.Title = model.Title;
@@ -90,13 +99,22 @@
             project.Website = model.Website;
             project.ModifiedOn = DateTime.Now;
 
-            this.Projects.Update(project);
-            this.Projects.SaveChanges();
+            if (!string.IsNullOrEmpty(model.AddedContributor))
+            {
+                var user = this.Data.Users.All().FirstOrDefault(u => u.UserName == model.AddedContributor);
+                if (user != null)
+                {
+                    project.Team.Add(user);
+                }
+            }
+
+            this.Data.Projects.Update(project);
+            this.Data.SaveChanges();
         }
 
         private List<CourseViewModel> GetCourses()
         {
-            return this.Courses.All().Project().To<CourseViewModel>().ToList();
+            return this.Data.Courses.All().Project().To<CourseViewModel>().ToList();
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿@using Kendo.Mvc.UI
-@using Mvc.RazorTools.FontAwesome
 @model HallOfFame.Web.Areas.Projects.ViewModels.ProjectSettingsViewModel
 
 @{
@@ -94,7 +93,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <img src="@Model.PhotoUrl" alt="@Model.Name cover photo" class="img-responsive" title="Cover photo" id="photo-url-holder" />
-                            <hr/>
+                            <hr />
                             <div class="row">
                                 <div class="col-md-12">
                                     @(Html.Kendo().EditorFor(m => m.Description).Name("Description").Encode(false).HtmlAttributes(new { style = "height:500px" })
@@ -129,6 +128,26 @@
                             }
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @* @Html.HiddenFor(m => m.AddedContributor, new { id = "added-contributor" })*@
+                            @(Html.Kendo().AutoComplete()
+                                  .Name("AddedContributor")
+                                  .DataTextField("UserName")
+                                  .Filter("contains")
+                                  .MinLength(3)
+                                  .TemplateId("user-template")
+                                  .HtmlAttributes(new { style = "width:250px" })
+                                  .DataSource(source =>
+                                              source.Read(read => read.Action("GetUsers", "Settings")
+                                                                      .Data("onAdditionalData"))
+                                                  .ServerFiltering(true))
+                                  .Events(e => e.Change("onChange"))
+                  .BindTo(Model.AddedContributor)
+                            )
+                            <input type="submit" class="btn btn-sm btn-primary" id="btn-add-contributor" disabled="disabled" value="Add" />
+                        </div>
+                    </div>
                     <hr />
                     <div class="form-group">
                         <strong>
@@ -159,3 +178,27 @@
         </div>
     }
 </div>
+<script>
+    var addContributorBtn = $("#btn-add-contributor");
+    var contributorInput = $("#added-contributor");
+
+    function onAdditionalData() {
+        return ({
+            text: $("#Team").val()
+        });
+    }
+    function onChange(data) {
+        console.log(data);
+        contributorInput.val();
+        addContributorBtn.removeAttr("disabled");
+    }
+</script>
+<script id="user-template" type="text/x-kendo-template">
+    <div class="col-md-12 user-holder">
+        <img src="#: AvatarUrl #" alt="#: UserName # Avatar" class="img-responsive" width="50" height="50" title="#: UserName #" />
+        <div>
+            <h3>#: UserName #</h3>
+            <p>#: FirstName # #: LastName #</p>
+        </div>
+    </div>
+</script>

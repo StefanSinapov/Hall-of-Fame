@@ -24,23 +24,22 @@
         public ActionResult Index(string q, int page = 1)
         {
             var result = new SearchResultInfo
-            {
-                Query = q,
-                Page = page,
-                ProjectsCount =
-                    this.Data.Projects.All()
-                    .Count(SearchProjectsExpression(q)),
-                CoursesCount =
-                    this.Data.Courses.All()
-                    .Count(SearchCoursesExpression(q)),
-                UsersCount =
-                    this.Data.Users.All()
-                    .Count(SearchUsersExpression(q))
-            };
+                             {
+                                 Query = q,
+                                 Page = page,
+                                 ProjectsCount =
+                                     this.Data.Projects.All()
+                                     .Count(SearchProjectsExpression(q)),
+                                 CoursesCount =
+                                     this.Data.Courses.All()
+                                     .Count(SearchCoursesExpression(q)),
+                                 UsersCount =
+                                     this.Data.Users.All()
+                                     .Count(SearchUsersExpression(q))
+                             };
 
             return this.View(result);
         }
-
 
         [HttpGet]
         public ActionResult Users(string q = "", int page = 1)

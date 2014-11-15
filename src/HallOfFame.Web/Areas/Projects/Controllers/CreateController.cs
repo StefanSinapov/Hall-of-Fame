@@ -62,11 +62,9 @@
                 this.Data.Projects.Add(project);
                 this.Data.Projects.SaveChanges();
 
-                // TODO: redirect to project view
-                return this.RedirectToAction("Index", "Home", new { area = string.Empty });
+                return this.RedirectToAction("Index", "Details", new { name = project.Name });
             }
 
-            // this.ModelState.Clear();
             ViewBag.Courses = this.GetCourses();
             return this.View(model);
         }
