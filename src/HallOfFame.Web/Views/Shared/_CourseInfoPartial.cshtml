@@ -1,0 +1,9 @@
+﻿@model HallOfFame.Web.ViewModels.Shared.CourseViewModel
+
+<div class="col-md-12 course-holder">
+    <a href="@Url.Action("Details", "Courses", new { id = Model.Id, area = string.Empty })">
+        <div>
+            <p><i class="fa fa-graduation-cap fa-2x"></i>&nbsp;@Html.DisplayFor(m => m.Name)</p>
+        </div>
+    </a>
+</div>

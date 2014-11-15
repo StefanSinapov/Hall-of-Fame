@@ -1,11 +1,14 @@
 ﻿namespace HallOfFame.Web.Controllers
 {
+    using System;
     using System.Linq;
+    using System.Linq.Expressions;
     using System.Web.Mvc;
 
     using AutoMapper.QueryableExtensions;
 
     using HallOfFame.Data.Contracts;
+    using HallOfFame.Models;
     using HallOfFame.Web.Areas.Projects.ViewModels;
     using HallOfFame.Web.ViewModels.Search;
     using HallOfFame.Web.ViewModels.Shared;
@@ -26,37 +29,25 @@
                 Page = page,
                 ProjectsCount =
                     this.Data.Projects.All()
-                    .Count(
-                        p =>
-                        p.Name.Contains(q) || p.Title.Contains(q)
-                        || p.TeamName.Contains(q) || p.Course.Name.Contains(q)),
+                    .Count(SearchProjectsExpression(q)),
                 CoursesCount =
                     this.Data.Courses.All()
-                    .Count(
-                        c =>
-                        c.Name.Contains(q) || c.Description.Contains(q)
-                        || c.Category.Name.Contains(q)),
+                    .Count(SearchCoursesExpression(q)),
                 UsersCount =
                     this.Data.Users.All()
-                    .Count(
-                        u =>
-                        u.UserName.Contains(q) || u.FirstName.Contains(q)
-                        || u.LastName.Contains(q) || u.TelerikAcademyProfile.Contains(q)
-                        || u.Email.Contains(q))
+                    .Count(SearchUsersExpression(q))
             };
 
             return this.View(result);
         }
 
+
         [HttpGet]
-        public ActionResult Users(string q, int page = 1)
+        public ActionResult Users(string q = "", int page = 1)
         {
             var result =
                 this.Data.Users.All()
-                    .Where(
-                        u =>
-                        u.UserName.Contains(q) || u.FirstName.Contains(q) || u.LastName.Contains(q)
-                        || u.TelerikAcademyProfile.Contains(q) || u.Email.Contains(q))
+                    .Where(SearchUsersExpression(q))
                     .Project()
                     .To<UserInfoViewModel>().ToList();
 
@@ -64,17 +55,48 @@
         }
 
         [HttpGet]
-        public ActionResult Projects(string q, int page = 1)
+        public ActionResult Projects(string q = "", int page = 1)
         {
             var result =
                 this.Data.Projects.All()
-                    .Where(
-                        p =>
-                        p.Name.Contains(q) || p.Title.Contains(q) || p.TeamName.Contains(q) || p.Course.Name.Contains(q))
+                    .Where(SearchProjectsExpression(q))
                     .Project()
                     .To<ProjectInfoViewModel>()
                     .ToList();
             return this.PartialView("_ProjectsSearchPartial", result);
+        }
+
+        [HttpGet]
+        public ActionResult Courses(string q = "", int page = 1)
+        {
+            var result = this.Data
+                .Courses
+                .All()
+                .Where(SearchCoursesExpression(q))
+                .Project()
+                .To<CourseViewModel>()
+                .ToList();
+
+            return this.PartialView("_CoursesSearchPartial", result);
+        }
+
+        private static Expression<Func<Project, bool>> SearchProjectsExpression(string q)
+        {
+            return p => p.Name.Contains(q) || p.Title.Contains(q)
+                || p.TeamName.Contains(q) || p.Course.Name.Contains(q);
+        }
+
+        private static Expression<Func<User, bool>> SearchUsersExpression(string q)
+        {
+            return u => u.UserName.Contains(q) || u.FirstName.Contains(q)
+                   || u.LastName.Contains(q) || u.TelerikAcademyProfile.Contains(q)
+                   || u.Email.Contains(q);
+        }
+
+        private static Expression<Func<Course, bool>> SearchCoursesExpression(string q)
+        {
+            return c => c.Name.Contains(q) || c.Description.Contains(q)
+                   || c.Category.Name.Contains(q);
         }
     }
 }

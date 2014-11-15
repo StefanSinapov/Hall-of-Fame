@@ -1,0 +1,8 @@
+﻿@model List<HallOfFame.Web.ViewModels.Shared.CourseViewModel>
+
+<div class="row">
+    @foreach (var course in @Model)
+    {
+        <div class="col-md-4">@Html.Partial("_CourseInfoPartial", course)</div>
+    }
+</div>

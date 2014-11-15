@@ -518,6 +518,8 @@
     <Content Include="Views\Search\Index.cshtml" />
     <Content Include="Views\Search\_UsersSearchPartial.cshtml" />
     <Content Include="Views\Search\_ProjectsSearchPartial.cshtml" />
+    <Content Include="Views\Shared\_CourseInfoPartial.cshtml" />
+    <Content Include="Views\Search\_CoursesSearchPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

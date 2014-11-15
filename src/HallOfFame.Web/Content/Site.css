@@ -144,11 +144,12 @@ hr {
     margin-left: 5px;
 }
 
+
+
+/* User partial */
 div.user-holder:hover {
     background-color: #5f059c;
 }
-
-/* User partial */
 
 .user-holder {
     background-color: #9233d3;
@@ -187,6 +188,41 @@ div.user-holder:hover {
 
         .user-holder div p {
             font-size: 1em;
+        }
+
+/* Course partial */
+.course-holder:hover {
+    background-color: #5f059c;
+}
+
+.course-holder {
+    background-color: #9233d3;
+    background-color: rgba(146, 51, 211, 0.80);
+    display: inline-block;
+    min-width: 220px;
+    height: 75px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    vertical-align: central;
+}
+
+    .course-holder a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .course-holder div {
+        color: whitesmoke;
+        float: left;
+        display: inline-block;
+        margin-left: 15px;
+    }
+
+        .course-holder div p {
+            font-size: 1em;
+            padding-top: 5%;
+            padding-bottom: 5%
         }
 
 /* 
@@ -638,4 +674,3 @@ li .project {
             height: 30px;
         }
 }
-

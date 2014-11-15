@@ -19,25 +19,29 @@
 <div class="row">
     <div class="col-md-3">
         <div class="list-group search-results">
+            @Ajax.RawActionLink(string.Format("<i class='fa fa-code fa-fw'></i> Projects <span class='badge'>{0}</span>", @Model.ProjectsCount),
+                "Projects", "Search",
+                new { area = string.Empty, q = Model.Query },
+                options, new { @class = "list-group-item", id = "projects-nav" })
 
-            @Ajax.RawActionLink(string.Format("<i class='fa fa-code'></i> Projects <span class='badge'>{0}</span>", @Model.ProjectsCount),
-            "Projects", "Search",
-            new { area = string.Empty, q = Model.Query },
-            options, new { @class = "list-group-item" })
+            @Ajax.RawActionLink(string.Format("<i class='fa fa-graduation-cap fa-fw'></i> Courses <span class='badge'>{0}</span>", @Model.CoursesCount),
+                "Courses", "Search",
+                new { area = string.Empty, q = Model.Query },
+                options, new { @class = "list-group-item @(Model.Type)" })
 
-            @Ajax.RawActionLink(string.Format("<i class='fa fa-graduation-cap'></i> Courses <span class='badge'>{0}</span>", @Model.CoursesCount),
-            "Courses", "Search",
-            new { area = string.Empty, q = Model.Query},
-            options, new { @class = "list-group-item @(Model.Type)" })
-
-            @Ajax.RawActionLink(string.Format("<i class='fa fa-user'></i> Users <span class='badge'>{0}</span>", @Model.UsersCount),
-            "Users", "Search",
-            new { area = string.Empty, q = Model.Query },
-            options, new { @class = "list-group-item" })
-
+            @Ajax.RawActionLink(string.Format("<i class='fa fa-user fa-fw'></i> Users <span class='badge'>{0}</span>", @Model.UsersCount),
+                "Users", "Search",
+                new { area = string.Empty, q = Model.Query },
+                options, new { @class = "list-group-item" })
         </div>
     </div>
     <div class="col-md-9" id="results-container">
         @*@Html.Action(@Model.Type, "Search", new { area = string.Empty, q = Model.Query, page = Model.Page })*@
     </div>
 </div>
+
+<script>
+    $(function () {
+        $('#projects-nav').click();
+    });
+</script>
