@@ -542,64 +542,64 @@ ul.timeline > .project:after {
     position: absolute;
     top: 0;
     right: 0;
-    background: transparent url('../../Content/timeline-connectors-open.png') center center no-repeat;
+    background: transparent url('./timeline-connectors-open.png') center center no-repeat;
     width: 24px;
     height: 30px;
 }
 
 li .project {
     /* max-width: 250px;*/
-    margin-top: 5px
+    margin-top: 5px;
 }
 
-    .project .title {
-        background: #cfe7f1;
-        background: rgba(207,231,241,0.8);
-        padding: 14px 20px 16px 20px;
+.project .title {
+    background: #cfe7f1;
+    background: rgba(207,231,241,0.8);
+    padding: 14px 20px 16px 20px;
+}
+
+    .project .title a {
+        font-size: 1.6em;
+        line-height: 1.3em;
+        color: #82198c;
     }
 
-        .project .title a {
-            font-size: 1.6em;
-            line-height: 1.3em;
-            color: #82198c;
+        .project .title a:hover {
+            text-decoration: underline;
         }
 
-            .project .title a:hover {
-                text-decoration: underline;
-            }
+.project .element {
+    background: rgba(207,231,241,0.8);
+}
 
-    .project .element {
-        background: rgba(207,231,241,0.8);
+    .project .element p {
+        color: #333;
+        vertical-align: baseline;
+        padding: 20px 20px 20px 20px;
     }
 
-        .project .element p {
-            color: #333;
-            vertical-align: baseline;
-            padding: 20px 20px 20px 20px;
+.project .footer {
+    border-top: 1px solid #1B4446;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    background: rgba(0,0,0,0.2);
+    padding: 10px 15px;
+    margin-top: 0;
+}
+
+    .project .footer a {
+        color: rgba(255, 255, 255, 0.4);
+        background: transparent;
+    }
+
+        .project .footer a .fa {
+            text-decoration: none;
         }
 
-    .project .footer {
-        border-top: 1px solid #1B4446;
-        border-top: 1px solid rgba(255,255,255,0.1);
-        background: rgba(0,0,0,0.2);
-        padding: 10px 15px;
-        margin-top: 0;
-    }
-
-        .project .footer a {
-            color: rgba(255, 255, 255, 0.4);
-            background: transparent;
-        }
-
-            .project .footer a .fa {
-                text-decoration: none;
-            }
-
-    .project .course {
-        font-size: 80%;
-        text-align: right;
-        opacity: 0.6;
-    }
+.project .course {
+    font-size: 80%;
+    text-align: right;
+    opacity: 0.6;
+}
 
 @media (max-width: 500px) {
     ul.timeline > li {
@@ -635,3 +635,47 @@ li .project {
             height: 30px;
         }
 }
+
+div.user-holder:hover {
+    background-color: #5f059c;
+}
+
+.user-holder {
+    background-color: #9233d3;
+    background-color: rgba(146, 51, 211, 0.80);
+    display: inline-block;
+    min-width: 220px;
+    height: 75px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+}
+
+    .user-holder a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    .user-holder img {
+        margin-top: 14px;
+        margin-left: 5px;
+        float: left;
+        width: 40px;
+    }
+
+    .user-holder div {
+        color: whitesmoke;
+        float: left;
+        display: inline-block;
+        width: 140px;
+        margin-left: 15px;
+    }
+
+        .user-holder div h3 {
+            font-size: 14px;
+            margin-bottom: 3px;
+        }
+
+        .user-holder div p {
+            font-size: 1em;
+        }

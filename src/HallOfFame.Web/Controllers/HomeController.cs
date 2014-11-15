@@ -1,26 +1,36 @@
 ﻿namespace HallOfFame.Web.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
+
+    using AutoMapper.QueryableExtensions;
+
+    using HallOfFame.Data.Common.Repositories;
+    using HallOfFame.Models;
+    using HallOfFame.Web.Areas.Administration.ViewModels.Categories;
+    using HallOfFame.Web.ViewModels.Categories;
 
     public class HomeController : Controller
     {
+        private IDeletableEntityRepository<Category> categories;
+
+        public HomeController(IDeletableEntityRepository<Category> categories)
+        {
+            this.categories = categories;
+        }
+
         public ActionResult Index()
         {
             return this.View();
         }
 
-        public ActionResult About()
+        [HttpGet]
+        [OutputCache(Duration = 60 * 60)]
+        public ActionResult GetCategories()
         {
-            ViewBag.Message = "Your application description page.";
+            var catModels = this.categories.All().Project().To<CategoryCoursesViewModel>().ToList();
 
-            return this.View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return this.View();
+            return this.PartialView("_CategoriesNavPartial", catModels);
         }
     }
 }

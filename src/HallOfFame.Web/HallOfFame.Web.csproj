@@ -307,6 +307,7 @@
     <Compile Include="Areas\Projects\ViewModels\Likes\LikeViewModel.cs" />
     <Compile Include="ViewModels\Shared\PaginationViewModel.cs" />
     <Compile Include="ViewModels\Shared\UserInfoViewModel.cs" />
+    <Compile Include="ViewModels\Categories\CategoryCoursesViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -511,6 +512,7 @@
     <Content Include="Views\Shared\_ProjectInfoPartial.cshtml" />
     <Content Include="Views\Shared\_ProjectsTimelinePartial.cshtml" />
     <Content Include="Views\Courses\Details.cshtml" />
+    <Content Include="Views\Shared\_CategoriesNavPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
