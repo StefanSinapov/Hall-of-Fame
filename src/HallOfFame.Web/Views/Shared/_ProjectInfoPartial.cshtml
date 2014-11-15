@@ -17,7 +17,10 @@
     </div>
     <div class="element row">
         <a href="@Url.Action("Index", "Details", new { area = "Projects", name = @Model.Name })">
-            <img src="@Model.PhotoUrl" alt="@Model.Name Cover Photo" class="img-responsive" title="@Model.Name" />
+            @if (!string.IsNullOrEmpty(Model.PhotoUrl))
+            {
+                <img src="@Model.PhotoUrl" alt="@Model.Name Cover Photo" class="img-responsive" title="@Model.Name" />
+            }
         </a>
         <p>@Model.Title</p>
     </div>
