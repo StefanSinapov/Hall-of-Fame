@@ -1,5 +1,5 @@
 ﻿@using HallOfFame.Web.Common
-@using Mvc.RazorTools.FontAwesome
+@using Kendo.Mvc.UI
 @model HallOfFame.Web.Areas.Users.ViewModels.UserSettingsViewModel
 
 @{
@@ -14,34 +14,55 @@
                     <h3>User profile settings</h3>
                 </div>
                 <div class="form-horizontal">
-                    <div class="form-group ">
-                        <div class="col-md-3 col-md-offset-4">
-                            @Html.DisplayFor(m => m.AvatarUrl)
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.UserName, new { @class = "col-md-4 control-label" })
-                        <div class="col-md-8">
-                            @Html.DisplayFor(m => m.UserName, new { @class = "form-control" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <span class="control-label col-md-4">Password</span>
-                        <div class="col-md-8">
-                            @Html.ActionLink("[Change password]", "ChangePassword", "Manage", new { area = string.Empty }, null)
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        @Html.LabelFor(m => m.Email, new { @class = "col-md-4 control-label" })
-                        <div class="col-md-8">
-                            @Html.DisplayFor(m => m.Email, new { @class = "form-control" })
-                            | <a href="">[Change]</a>
-                        </div>
-                    </div>
-
                     @using (@Html.BeginForm())
                     {
+                        <div class="form-group ">
+                            <div class="col-md-3 col-md-offset-4">
+                                <img src="@Model.AvatarUrl" id="photo-url-holder" alt="@Model.UserName avatar" class="img-responsive img-thumbnail" />
+                                @Html.HiddenFor(m => m.AvatarUrl)
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                @(Html.Kendo().Upload()
+                                              .Name("files")
+                                      .HtmlAttributes(new { accept = "image/*" })
+                                      .Multiple(false)
+                                      .Async(a => a.Save("Save", "Upload", new { area = string.Empty }).AutoUpload(true))
+                                               .Events(events => events
+                                                                    .Success("onSuccess")
+                                              )
+                                )
+                            </div>
+                        </div>
+                        <script>
+                            function onSuccess(e) {
+                                console.log(e.response.ImageName);
+                                $("#AvatarUrl").val(e.response.ImageName);
+                                $("#photo-url-holder").attr("src", e.response.ImageName);
+                            }
+                        </script>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.UserName, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.DisplayFor(m => m.UserName, new { @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <span class="control-label col-md-4">Password</span>
+                            <div class="col-md-8">
+                                @Html.ActionLink("[Change password]", "ChangePassword", "Manage", new { area = string.Empty }, null)
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Email, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-8">
+                                @Html.DisplayFor(m => m.Email, new { @class = "form-control" })
+                                | <a href="">[Change]</a>
+                            </div>
+                        </div>
+
                         @Html.AntiForgeryToken()
                         <h4>Personal Info.</h4>
                         <hr />

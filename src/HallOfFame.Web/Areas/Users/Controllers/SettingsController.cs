@@ -52,6 +52,7 @@
 
         private void UpdateUserSettings(User user, UserSettingsViewModel model)
         {
+            user.AvatarUrl = model.AvatarUrl;
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
             user.AboutMe = model.AboutMe;
