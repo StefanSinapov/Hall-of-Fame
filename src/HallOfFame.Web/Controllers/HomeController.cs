@@ -18,6 +18,7 @@
             this.categories = categories;
         }
 
+        [HttpGet]
         public ActionResult Index()
         {
             return this.View();

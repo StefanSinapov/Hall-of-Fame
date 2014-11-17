@@ -7,6 +7,7 @@
     using AutoMapper.QueryableExtensions;
 
     using HallOfFame.Data.Contracts;
+    using HallOfFame.Web.Areas.Administration.Controllers.Base;
     using HallOfFame.Web.Areas.Administration.ViewModels.Categories;
     using HallOfFame.Web.Controllers;
 

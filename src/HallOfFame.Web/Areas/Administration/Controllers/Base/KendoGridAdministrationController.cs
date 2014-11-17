@@ -1,4 +1,4 @@
-﻿namespace HallOfFame.Web.Controllers
+﻿namespace HallOfFame.Web.Areas.Administration.Controllers.Base
 {
     using System.Collections;
     using System.Data.Entity;
@@ -37,7 +37,7 @@
         [NonAction]
         protected virtual T Create<T>(object model) where T : class
         {
-            if (model != null && ModelState.IsValid)
+            if (model != null && this.ModelState.IsValid)
             {
                 var dataModel = Mapper.Map<T>(model);
                 this.ChangeEntityStateAndSave(dataModel, EntityState.Added);
@@ -52,7 +52,7 @@
             where TModel : AuditInfo
             where TViewModel : AdministrationViewModel
         {
-            if (model != null && ModelState.IsValid)
+            if (model != null && this.ModelState.IsValid)
             {
                 var dataModel = this.GetById<TModel>(id);
                 Mapper.Map(model, dataModel);

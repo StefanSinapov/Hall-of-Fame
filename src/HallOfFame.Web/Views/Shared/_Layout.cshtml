@@ -24,17 +24,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Hall of Fame", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Hall of Fame", "Index", "Home", new { area = string.Empty }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home", new { area = string.Empty}, null)</li>
                 </ul>
                 @Html.Action("GetCategories", "Home", new { area = string.Empty })
                 <ul class="nav navbar-nav">
                     <li><a href="#search" data-toggle="tooltip" data-placement="bottom" title="Search" data-original-title="Search">@Html.FontAwesome("fa fa-search")</a></li>
                 </ul>
-
                 @Html.Partial("_LoginPartial")
             </div>
         </div>
@@ -45,7 +44,7 @@
             <div id="search">
                 <button type="button" class="close">×</button>
                 <form role="search" action="/Search">
-                    <input type="search" placeholder="type keyword(s) here" name="q" />
+                    <input type="search" placeholder="type keyword(s) here" name="q" autocomplete="off" />
                     <button class="btn btn-primary" type="submit">Search</button>
                 </form>
             </div>

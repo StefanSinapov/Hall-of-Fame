@@ -1,9 +1,10 @@
-﻿namespace HallOfFame.Web.Controllers
+﻿namespace HallOfFame.Web.Areas.Administration.Controllers.Base
 {
     using System.Web.Mvc;
 
     using HallOfFame.Common.Constants;
     using HallOfFame.Data.Contracts;
+    using HallOfFame.Web.Controllers;
 
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class AdministrationController : BaseController
