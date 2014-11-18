@@ -20,7 +20,6 @@
                 url: "{controller}/{id}/{action}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional, },
                 namespaces: new[] { "HallOfFame.Web.Controllers" });
-
         }
     }
 }

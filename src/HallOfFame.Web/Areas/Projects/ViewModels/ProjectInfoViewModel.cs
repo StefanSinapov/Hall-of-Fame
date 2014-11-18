@@ -19,14 +19,15 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Project, ProjectInfoViewModel>()
-               .ForMember(m => m.Course, opt => opt.MapFrom(u => new CourseViewModel
-                                                                   {
-                                                                       Id = u.Course.Id,
-                                                                       Name = u.Course.Name
-                                                                   }));
-            configuration.CreateMap<Project, ProjectInfoViewModel>()
-                .ForMember(m => m.CommentsCount, opt => opt.MapFrom(p => p.Comments.Count));
-            configuration.CreateMap<Project, ProjectInfoViewModel>()
+                .ForMember(
+                    m => m.Course,
+                    opt => opt.MapFrom(
+                        u => new CourseViewModel
+                                 {
+                                     Id = u.Course.Id,
+                                     Name = u.Course.Name
+                                 }))
+                .ForMember(m => m.CommentsCount, opt => opt.MapFrom(p => p.Comments.Count))
                 .ForMember(m => m.LikesCount, opt => opt.MapFrom(p => p.Likes.Count(l => l.IsDeleted == false)));
         }
     }

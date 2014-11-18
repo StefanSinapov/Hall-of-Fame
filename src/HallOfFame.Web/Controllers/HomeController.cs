@@ -9,13 +9,10 @@
     using HallOfFame.Web.Areas.Projects.ViewModels;
     using HallOfFame.Web.ViewModels.Categories;
     using HallOfFame.Web.ViewModels.Shared;
-    using HallOfFame.Web.ViewModels.Statistics;
 
     public class HomeController : BaseController
     {
         private const int DefaultTimelineSize = 2;
-
-        private const int DefaultStatisticSize = 5;
 
         public HomeController(IHallOfFameData data)
             : base(data)
@@ -54,47 +51,6 @@
             var catModels = this.Data.Categories.All().Project().To<CategoryCoursesViewModel>().ToList();
 
             return this.PartialView("_CategoriesNavPartial", catModels);
-        }
-
-        [HttpGet]
-        [ChildActionOnly]
-        [OutputCache(Duration = 1 * 60 * 5)]
-        public ActionResult GetStatistics()
-        {
-            var viewModel = new StatisticViewModel();
-
-            viewModel.Projects = this.Data.Likes.All()
-                    .GroupBy(l => l.Project)
-                    .OrderByDescending(l => l.Count())
-                    .Take(DefaultStatisticSize)
-                    .Select(l => l.Key)
-                    .Project()
-                    .To<ProjectInfoViewModel>().ToList();
-
-            viewModel.Users =
-                this.Data.Likes.All()
-                    .GroupBy(l => l.Project)
-                    .Select(group => new { Project = group.Key, Likes = group.ToList() })
-                    .SelectMany(p => p.Project.Team)
-                    .GroupBy(p => p)
-                    .OrderByDescending(p => p.Count())
-                    .Take(DefaultStatisticSize)
-                    .Select(l => l.Key)
-                    .Project()
-                    .To<UserInfoViewModel>()
-                    .ToList();
-
-            viewModel.MostCommented =
-                this.Data.Comments.All()
-                    .GroupBy(c => c.Project)
-                    .OrderByDescending(l => l.Count())
-                    .Take(DefaultStatisticSize)
-                    .Select(l => l.Key)
-                    .Project()
-                    .To<ProjectInfoViewModel>()
-                    .ToList();
-
-            return this.PartialView("_StatisticsPartial", viewModel);
         }
     }
 }

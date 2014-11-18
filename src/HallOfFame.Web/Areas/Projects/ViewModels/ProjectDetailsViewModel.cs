@@ -31,16 +31,18 @@
         public void CreateMappings(IConfiguration configuration)
         {
             configuration.CreateMap<Project, ProjectDetailsViewModel>()
-                .ForMember(m => m.CourseName, opt => opt.MapFrom(u => u.Course.Name));
-            configuration.CreateMap<Project, ProjectDetailsViewModel>()
-               .ForMember(m => m.Team, opt => opt.MapFrom(u => u.Team.Select(t => new UserInfoViewModel
-                                                                                      {
-                                                                                          FirstName = t.FirstName,
-                                                                                          LastName = t.LastName,
-                                                                                          AvatarUrl = t.AvatarUrl,
-                                                                                          UserName = t.UserName
-                                                                                      })));
-            configuration.CreateMap<Project, ProjectDetailsViewModel>()
+                .ForMember(m => m.CourseName, opt => opt.MapFrom(u => u.Course.Name))
+                .ForMember(
+                    m => m.Team,
+                    opt => opt.MapFrom(
+                        u => u.Team.Select(
+                            t => new UserInfoViewModel
+                                     {
+                                         FirstName = t.FirstName,
+                                         LastName = t.LastName,
+                                         AvatarUrl = t.AvatarUrl,
+                                         UserName = t.UserName
+                                     })))
                 .ForMember(m => m.LikesCount, opt => opt.MapFrom(u => u.Likes.Count(l => l.IsDeleted == false)));
         }
     }
