@@ -1,15 +1,12 @@
 ﻿namespace HallOfFame.Web.Areas.Administration.Controllers
 {
     using System.Collections;
-    using System.Linq;
     using System.Web.Mvc;
 
     using AutoMapper.QueryableExtensions;
 
     using HallOfFame.Data.Contracts;
     using HallOfFame.Web.Areas.Administration.Controllers.Base;
-    using HallOfFame.Web.Areas.Administration.ViewModels.Categories;
-    using HallOfFame.Web.Controllers;
 
     using Kendo.Mvc.UI;
 
@@ -26,16 +23,6 @@
         public ActionResult Index()
         {
             return this.View();
-        }
-
-        public override IEnumerable GetData()
-        {
-            return this.Data.Categories.All().OrderBy(x => x.Id).Project().To<CategoryViewModel>();
-        }
-
-        public override T GetById<T>(object id)
-        {
-            return this.Data.Categories.Find(id) as T;
         }
 
         [HttpPost]
@@ -62,15 +49,23 @@
         {
             if (model != null && ModelState.IsValid)
             {
-                if (model.Id != null)
-                {
-                    this.Data.Categories.Delete(model.Id.Value);
-                }
-
-                this.Data.SaveChanges();
             }
 
             return this.GridOperation(model, request);
+        }
+
+        protected override IEnumerable GetData()
+        {
+            return this.Data
+                .Categories
+                .All()
+                .Project()
+                .To<ViewModel>();
+        }
+
+        protected override T GetById<T>(object id)
+        {
+            return this.Data.Categories.Find(id) as T;
         }
     }
 }

@@ -6,33 +6,31 @@
 
     using AutoMapper;
 
-    using HallOfFame.Data.Common.Models;
     using HallOfFame.Data.Contracts;
-    using HallOfFame.Web.Areas.Administration.ViewModels.Base;
-    using HallOfFame.Web.Common.Contracts;
 
     using Kendo.Mvc.Extensions;
     using Kendo.Mvc.UI;
 
-    public abstract class KendoGridAdministrationController : AdministrationController, IKendoGridAdministrationController
+    public abstract class KendoGridAdministrationController : AdministrationController
     {
         protected KendoGridAdministrationController(IHallOfFameData data)
             : base(data)
         {
         }
 
-        public abstract IEnumerable GetData();
-
-        public abstract T GetById<T>(object id) where T : class;
-
         [HttpPost]
-        public ActionResult Read([DataSourceRequest]DataSourceRequest request)
+        public ActionResult Read([DataSourceRequest]
+                                 DataSourceRequest request)
         {
-            var ads =
-                this.GetData()
-                .ToDataSourceResult(request);
-            return this.Json(ads);
+            var data = this.GetData()
+                           .ToDataSourceResult(request);
+
+            return this.Json(data);
         }
+
+        protected abstract IEnumerable GetData();
+
+        protected abstract T GetById<T>(object id) where T : class;
 
         [NonAction]
         protected virtual T Create<T>(object model) where T : class
@@ -49,19 +47,18 @@
 
         [NonAction]
         protected virtual void Update<TModel, TViewModel>(TViewModel model, object id)
-            where TModel : AuditInfo
-            where TViewModel : AdministrationViewModel
+            where TModel : class
+            where TViewModel : class
         {
             if (model != null && this.ModelState.IsValid)
             {
                 var dataModel = this.GetById<TModel>(id);
                 Mapper.Map(model, dataModel);
                 this.ChangeEntityStateAndSave(dataModel, EntityState.Modified);
-                model.ModifiedOn = dataModel.ModifiedOn;
             }
         }
-        
-        protected JsonResult GridOperation<T>(T model, [DataSourceRequest]DataSourceRequest request)
+
+        protected JsonResult GridOperation<T>(T model, [DataSourceRequest] DataSourceRequest request)
         {
             return this.Json(new[] { model }.ToDataSourceResult(request, this.ModelState));
         }

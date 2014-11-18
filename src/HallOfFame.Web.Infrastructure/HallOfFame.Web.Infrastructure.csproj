@@ -49,6 +49,9 @@
       <HintPath>..\packages\HtmlSanitizer.1.1.5338.17998\lib\net40\HtmlSanitizer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Kendo.Mvc">
+      <HintPath>..\External Libraries\Kendo.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.1.0\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -98,6 +101,7 @@
     <Compile Include="Helpers\Html\AjaxButton.cs" />
     <Compile Include="Helpers\Html\FormGroup.cs" />
     <Compile Include="Helpers\Html\FormHelpers.cs" />
+    <Compile Include="Helpers\Html\KendoHelpers.cs" />
     <Compile Include="Mapping\AutoMapperConfig.cs" />
     <Compile Include="Mapping\IHaveCustomMappings.cs" />
     <Compile Include="Mapping\IMapFrom.cs" />

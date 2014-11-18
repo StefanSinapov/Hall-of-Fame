@@ -1,38 +1,9 @@
-﻿@using HallOfFame.Web.Areas.Administration.ViewModels.Courses
-@using HallOfFame.Web.Common
-@using Kendo.Mvc.UI
+﻿@using HallOfFame.Web.Areas.Administration.ViewModels.Categories
+@using HallOfFame.Web.Infrastructure.Helpers.Html
 @{
-    const string ControllerName = ControllerNames.Courses;
+    const string ControllerName = "Categories";
     ViewBag.Title = ControllerName;
 }
 
-<h1>@ViewBag.Title</h1>
-@(Html.Kendo()
-            .Grid<CourseAdministrationViewModel>()
-        .Name("DataGrid")
-    .Columns(cols =>
-    {
-        cols.Bound(pr => pr.Id);
-        cols.Bound(pr => pr.Name);
-        cols.Bound(pr => pr.Description);
-        cols.Bound(x => x.CategoryId).Hidden();
-        cols.Bound(pr => pr.CreatedOn).Format("{0:dd.MM.yyyy HH:mm}").Hidden();
-        cols.Bound(pr => pr.ModifiedOn).Format("{0:dd.MM.yyyy HH:mm}").Hidden();
-        cols.Command(command => { command.Edit(); command.Destroy(); }).Width(160);
-    })
-    .ColumnMenu()
-    .Pageable(page => page.Refresh(true))
-    .Sortable()
-    .Groupable()
-    .Filterable()
-    .Editable(edit => edit.Mode(GridEditMode.PopUp))
-    .ToolBar(toolbar => toolbar.Create())
-    .DataSource(data =>
-        data
-            .Ajax()
-            .Model(m => m.Id(adv => adv.Id))
-            .Read(read => read.Action("Read", ControllerName))
-            .Create(create => create.Action("Create", ControllerName))
-            .Update(update => update.Action("Update", ControllerName))
-            .Destroy(destroy => destroy.Action("Destroy", ControllerName))
-            ))
+<h2>@ViewBag.Title</h2>
+@(Html.FullFeaturedGrid<CategoryViewModel>(ControllerName, m => m.Id))

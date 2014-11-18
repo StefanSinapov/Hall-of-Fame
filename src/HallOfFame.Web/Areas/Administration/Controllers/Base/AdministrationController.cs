@@ -13,5 +13,15 @@
             : base(data)
         {
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                this.Data.Dispose();
+            }
+
+            base.Dispose(disposing);
+        }
     }
 }

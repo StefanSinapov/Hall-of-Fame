@@ -7,8 +7,9 @@
 
     using HallOfFame.Data.Contracts;
     using HallOfFame.Web.Areas.Administration.Controllers.Base;
-    using HallOfFame.Web.Areas.Users.ViewModels;
-    using HallOfFame.Web.Controllers;
+
+    using Model = HallOfFame.Models.User;
+    using ViewModel = HallOfFame.Web.ViewModels.Shared.UserInfoViewModel;
 
     public class UsersController : KendoGridAdministrationController
     {
@@ -22,12 +23,16 @@
             return this.View();
         }
 
-        public override IEnumerable GetData()
+        protected override IEnumerable GetData()
         {
-            return this.Data.Users.All().Project().To<UserSettingsViewModel>();
+            return this.Data
+                .Users
+                .All()
+                .Project()
+                .To<ViewModel>();
         }
 
-        public override T GetById<T>(object id)
+        protected override T GetById<T>(object id)
         {
             return this.Data.Users.Find(id) as T;
         }
