@@ -276,6 +276,7 @@
     </Compile>
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\StatisticsController.cs" />
     <Compile Include="Controllers\UploadController.cs" />
     <Compile Include="GlimpseSecurityPolicy.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
@@ -525,7 +526,7 @@
     <Content Include="Views\Shared\_CourseInfoPartial.cshtml" />
     <Content Include="Views\Search\_CoursesSearchPartial.cshtml" />
     <Content Include="Views\Home\_TimelinePartial.cshtml" />
-    <Content Include="Views\Home\_StatisticsPartial.cshtml" />
+    <Content Include="Views\Statistics\_StatisticsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
