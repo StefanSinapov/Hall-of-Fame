@@ -241,10 +241,12 @@
     <Compile Include="Areas\Administration\AdministrationAreaRegistration.cs" />
     <Compile Include="Areas\Administration\Controllers\Base\KendoGridAdministrationController.cs" />
     <Compile Include="Areas\Administration\Controllers\CategoriesController.cs" />
+    <Compile Include="Areas\Administration\Controllers\CommentsController.cs" />
     <Compile Include="Areas\Administration\Controllers\CoursesController.cs" />
     <Compile Include="Areas\Administration\Controllers\UsersController.cs" />
     <Compile Include="Areas\Administration\ViewModels\Base\AdministrationViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Categories\CategoryViewModel.cs" />
+    <Compile Include="Areas\Administration\ViewModels\Comments\CommentAdministrationViewModel.cs" />
     <Compile Include="Areas\Administration\ViewModels\Courses\CourseAdministrationViewModel.cs" />
     <Compile Include="Areas\Projects\Controllers\CommentsController.cs" />
     <Compile Include="Areas\Projects\Controllers\CreateController.cs" />
@@ -436,6 +438,9 @@
     <Content Include="Areas\Administration\Views\Users\Index.cshtml" />
     <Content Include="Areas\Projects\Views\Settings\Index.cshtml" />
     <Content Include="Areas\Projects\Views\Likes\_LikePartial.cshtml" />
+    <Content Include="Areas\Administration\Views\Comments\Index.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\CategoryDrowDown.cshtml" />
+    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\CourseAdministrationViewModel.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Img\background.jpg" />
     <Content Include="Img\loader.gif" />
@@ -532,7 +537,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administration\Models\" />
-    <Folder Include="Areas\Administration\ViewModels\Comments\" />
     <Folder Include="Areas\Administration\ViewModels\Likes\" />
     <Folder Include="Areas\Administration\ViewModels\Projects\" />
     <Folder Include="Areas\Administration\ViewModels\Users\" />

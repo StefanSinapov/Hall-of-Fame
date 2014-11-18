@@ -1,9 +1,49 @@
-﻿@using HallOfFame.Web.Areas.Administration.ViewModels.Categories
+﻿@using HallOfFame.Web.Areas.Administration.ViewModels.Courses
+@using HallOfFame.Web.Common
 @using HallOfFame.Web.Infrastructure.Helpers.Html
+@using Kendo.Mvc.UI
 @{
-    const string ControllerName = "Categories";
+    const string ControllerName = ControllerNames.Courses;
     ViewBag.Title = ControllerName;
 }
 
-<h2>@ViewBag.Title</h2>
-@(Html.FullFeaturedGrid<CategoryViewModel>(ControllerName, m => m.Id))
+<h2 class="text-center">@ViewBag.Title</h2>
+
+<div>
+    @(Html.Kendo()
+    .DropDownListFor(m => m)
+    .Name("CategoryDropDown")
+    .OptionLabel("Please choose category")
+    .DataTextField("Text")
+    .DataValueField("Value")
+                .BindTo((System.Collections.IEnumerable)ViewBag.Categories)
+          .HtmlAttributes(new { style = "width: 100%;" }))
+    <br/>
+</div>
+
+
+@(Html.FullFeaturedGrid<CourseAdministrationViewModel>(ControllerName, m => m.Id,
+        cols =>
+        {
+            cols.Bound(pr => pr.Id);
+            cols.Bound(pr => pr.Name);
+            cols.Bound(pr => pr.CategoryId).EditorTemplateName("CategoryDropDown");
+            cols.Bound(pr => pr.ProjectsCount);
+            cols.Bound(m => m.CreatedOn).Hidden();
+            cols.Bound(m => m.ModifiedOn).Hidden();
+            cols.Command(com => com.Edit()).Title("Edit");
+            cols.Command(com => com.Destroy()).Title("Delete");
+        }
+    , data =>
+            data
+            .Ajax()
+            .Model(m =>
+            {
+                m.Id(model => model.Id);
+                m.Field(model => model.ProjectsCount).Editable(false);
+            })
+                .Read(read => read.Action("Read", ControllerName))
+                .Create(create => create.Action("Create", ControllerName))
+                .Update(update => update.Action("Update", ControllerName))
+                .Destroy(destroy => destroy.Action("Destroy", ControllerName))
+            ))

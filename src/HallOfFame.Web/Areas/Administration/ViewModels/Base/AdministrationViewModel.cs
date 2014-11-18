@@ -6,6 +6,9 @@
 
     public abstract class AdministrationViewModel
     {
+        [HiddenInput(DisplayValue = false)]
+        public int Id { get; set; }
+
         [Display(Name = "Added on")]
         [HiddenInput(DisplayValue = false)]
         public DateTime CreatedOn { get; set; }

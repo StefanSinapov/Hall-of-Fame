@@ -1,7 +1,6 @@
 ﻿namespace HallOfFame.Web.Areas.Administration.Controllers
 {
     using System.Collections;
-    using System.Linq;
     using System.Web.Mvc;
 
     using AutoMapper.QueryableExtensions;
@@ -11,12 +10,12 @@
 
     using Kendo.Mvc.UI;
 
-    using Model = HallOfFame.Models.Category;
-    using ViewModel = HallOfFame.Web.Areas.Administration.ViewModels.Categories.CategoryViewModel;
+    using Model = HallOfFame.Models.Comment;
+    using ViewModel = HallOfFame.Web.Areas.Administration.ViewModels.Comments.CommentAdministrationViewModel;
 
-    public class CategoriesController : KendoGridAdministrationController
+    public class CommentsController : KendoGridAdministrationController
     {
-        public CategoriesController(IHallOfFameData data)
+        public CommentsController(IHallOfFameData data)
             : base(data)
         {
         }
@@ -48,32 +47,10 @@
         [HttpPost]
         public ActionResult Destroy([DataSourceRequest]DataSourceRequest request, ViewModel model)
         {
-            if (model != null && ModelState.IsValid)
-            {
-                var category = this.Data.Categories.Find(model.Id);
+            var comment = this.Data.Comments.Find(model.Id);
 
-                foreach (var courseId in category.Courses.Select(c => c.Id).ToList())
-                {
-                    foreach (var projectId in this.Data.Courses.Find(courseId).Projects.Select(p => p.Id))
-                    {
-                        foreach (var commentId in this.Data.Projects.Find(projectId).Comments.Select(c => c.Id))
-                        {
-                            this.Data.Comments.Delete(commentId);
-                        }
-
-                        this.Data.SaveChanges();
-                        this.Data.Projects.Delete(projectId);
-                    }
-
-                    this.Data.SaveChanges();
-                    this.Data.Courses.Delete(courseId);
-                }
-
-                this.Data.SaveChanges();
-
-                this.Data.Categories.Delete(category);
-                this.Data.SaveChanges();
-            }
+            this.Data.Comments.Delete(comment);
+            this.Data.SaveChanges();
 
             return this.GridOperation(model, request);
         }
@@ -81,7 +58,7 @@
         protected override IEnumerable GetData()
         {
             return this.Data
-                .Categories
+                .Comments
                 .All()
                 .Project()
                 .To<ViewModel>();
@@ -89,7 +66,7 @@
 
         protected override T GetById<T>(object id)
         {
-            return this.Data.Categories.Find(id) as T;
+            return this.Data.Comments.Find(id) as T;
         }
     }
 }

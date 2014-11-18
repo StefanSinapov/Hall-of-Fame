@@ -1,0 +1,11 @@
+﻿@using Kendo.Mvc.UI
+@model int?
+
+@(Html.Kendo()
+    .DropDownListFor(m => m)
+    .Name("CategoryDropDown")
+    .OptionLabel("Please choose category")
+    .DataTextField("Text")
+    .DataValueField("Value")
+            .BindTo((System.Collections.IEnumerable)ViewBag.Categories)
+    .HtmlAttributes(new { style = "width: 100%;" }))

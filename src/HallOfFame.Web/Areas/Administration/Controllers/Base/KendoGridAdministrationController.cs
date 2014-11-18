@@ -1,5 +1,6 @@
 ﻿namespace HallOfFame.Web.Areas.Administration.Controllers.Base
 {
+    using System;
     using System.Collections;
     using System.Data.Entity;
     using System.Web.Mvc;
@@ -63,11 +64,20 @@
             return this.Json(new[] { model }.ToDataSourceResult(request, this.ModelState));
         }
 
+        protected override IAsyncResult BeginExecute(
+            System.Web.Routing.RequestContext requestContext,
+            AsyncCallback callback,
+            object state)
+        {
+            System.Threading.Thread.CurrentThread.CurrentCulture = System.Globalization.CultureInfo.InvariantCulture;
+            return base.BeginExecute(requestContext, callback, state);
+        }
+
         private void ChangeEntityStateAndSave(object dataModel, EntityState state)
         {
             var entry = this.Data.Context.Entry(dataModel);
             entry.State = state;
             this.Data.SaveChanges();
-        }
+        }     
     }
 }

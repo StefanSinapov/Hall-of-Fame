@@ -13,5 +13,7 @@
         public const string Projects = "Projects";
 
         public const string Messages = "Messages";
+
+        public const string Comments = "Comments";
     }
 }

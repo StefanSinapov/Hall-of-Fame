@@ -1,0 +1,22 @@
+﻿@using HallOfFame.Web.Areas.Administration.ViewModels.Comments
+@using HallOfFame.Web.Common
+@using HallOfFame.Web.Infrastructure.Helpers.Html
+@{
+    const string ControllerName = ControllerNames.Comments;
+    ViewBag.Title = ControllerName;
+}
+
+<h1 class="text-center">@ViewBag.Title</h1>
+
+@(Html.FullFeaturedGrid<CommentAdministrationViewModel>(ControllerName, m => m.Id, cols =>
+      {
+          cols.Bound(m => m.Id);
+          cols.Bound(m => m.AuthorName);
+          cols.Bound(m => m.Content);
+          cols.Bound(m => m.ProjectName);
+          cols.Bound(m => m.CreatedOn).Hidden();
+          cols.Bound(m => m.ModifiedOn).Hidden();
+          cols.Command(c => c.Edit());
+          cols.Command(c => c.Destroy());
+      }
+))
