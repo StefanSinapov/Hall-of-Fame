@@ -674,3 +674,13 @@ li .project {
             height: 30px;
         }
 }
+
+ .content > h2 {
+        border-top: 1px solid #414383;
+        border-top: 1px solid rgba(255,255,255,0.2);
+        background: #000000;
+        background: rgba(0,0,0,0.6);
+        padding: 20px;
+        margin-top: 5px;
+        margin-bottom: 1px;
+    }

@@ -1,0 +1,19 @@
+﻿@model HallOfFame.Web.ViewModels.Shared.TimelineViewModel<HallOfFame.Web.Areas.Projects.ViewModels.ProjectInfoViewModel>
+
+@{
+    var options = new AjaxOptions
+    {
+        HttpMethod = "Get",
+        InsertionMode = InsertionMode.ReplaceWith,
+        UpdateTargetId = "show-more-projects"
+    };
+}
+
+@Html.Partial("_ProjectsTimelinePartial", @Model.Collection.ToList())
+
+<div id="show-more-projects" class="row">
+    <div class="col-md-12 text-center">
+        @Ajax.ActionLink("Show more", "GetHomeTimeline", "Home", new { skip = @Model.CurrentCount }, options,
+            new { @class = "btn btn-primary btn-sm" })
+    </div>    
+</div>

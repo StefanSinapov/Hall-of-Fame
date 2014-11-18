@@ -1,0 +1,54 @@
+﻿@using HallOfFame.Common.ExtensionMethods
+@model HallOfFame.Web.ViewModels.Statistics.StatisticViewModel
+
+<div class="row">
+    <div class="col-md-12 content">
+        <h2>Top rated users:</h2>
+        <div class="content-block">
+            @for (int i = 0; i < Model.Users.Count; i++)
+            {
+                <p>
+                    <strong>@(i + 1).</strong>
+                    <a href="@Url.Action("Index", "Profile", new { name = @Model.Projects[i].Name, area = "Users" })">
+                        @Model.Users[i].UserName
+                    </a>
+                    <span class="small">@string.Format("{0} {1}", @Model.Users[i].FirstName, @Model.Users[i].FirstName).MaxLength(30)</span>
+                </p>
+            }
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 content">
+        <h2>Top rated projects:</h2>
+        <div class="content-block">
+            @for (int i = 0; i < Model.Projects.Count; i++)
+            {
+                <p>
+                    <strong>@(i + 1).</strong>
+                    <a href="@Url.Action("Index", "Details", new { name = @Model.Projects[i].Name, area = "Projects" })">
+                        @Model.Projects[i].Name 
+                    </a>
+                    <span class="small">@Model.Projects[i].Title.MaxLengthWithEllipsis(30)</span>
+                </p>
+            }
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 content">
+        <h2>Most commented projects:</h2>
+        <div class="content-block">
+            @for (int i = 0; i < Model.MostCommented.Count; i++)
+            {
+                <p>
+                    <strong>@(i + 1).</strong>
+                    <a href="@Url.Action("Index", "Details", new { name = @Model.MostCommented[i].Name, area = "Projects" })">
+                        @Model.MostCommented[i].Name 
+                    </a>
+                    <span class="small">@Model.MostCommented[i].Title.MaxLengthWithEllipsis(30)</span>
+                </p>
+            }
+        </div>
+    </div>
+</div>

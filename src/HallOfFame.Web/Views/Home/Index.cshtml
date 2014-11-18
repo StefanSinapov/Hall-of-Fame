@@ -2,11 +2,16 @@
     ViewBag.Title = "Home";
 }
 
+<style>
+   
+</style>
+
 <div class="row">
-    <div class="col-md-4">
-        
+    <div class="col-md-4 ">
+        @Html.Action("GetStatistics")
+
     </div>
     <div class="col-md-8">
-        
+        @Html.Action("GetHomeTimeline")
     </div>
 </div>

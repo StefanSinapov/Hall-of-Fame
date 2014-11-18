@@ -2,7 +2,7 @@
 
 <div class="col-md-12 user-holder">
     <a href="@(string.Format("/users/{0}", @Model.UserName))">
-        <img src="@Model.AvatarUrl" alt="@Model.UserName Avatar" class="img-responsive" width="50" height="50" title="@Model.UserName" />
+        <img src="@Model.AvatarUrl" alt="@Model.UserName Avatar" class="" width="50" height="50" title="@Model.UserName" />
         <div >
             <h3>@Html.DisplayFor(m => m.UserName)</h3>
             <p>@Html.DisplayFor(m => m.FirstName) @Html.DisplayFor(m => m.LastName)</p>

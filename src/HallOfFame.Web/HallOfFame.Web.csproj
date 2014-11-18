@@ -265,12 +265,12 @@
     <Compile Include="Controllers\AccountController.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
-    <Compile Include="Controllers\AdministrationController.cs" />
+    <Compile Include="Areas\Administration\Controllers\Base\AdministrationController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\KendoGridAdministrationController.cs" />
+    <Compile Include="Areas\Administration\Controllers\Base\KendoGridAdministrationController.cs" />
     <Compile Include="Controllers\ManageController.cs">
       <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
     </Compile>
@@ -310,8 +310,10 @@
     <Compile Include="ViewModels\Shared\CourseViewModel.cs" />
     <Compile Include="Areas\Projects\ViewModels\Likes\LikeViewModel.cs" />
     <Compile Include="ViewModels\Shared\PaginationViewModel.cs" />
+    <Compile Include="ViewModels\Shared\TimelineViewModel.cs" />
     <Compile Include="ViewModels\Shared\UserInfoViewModel.cs" />
     <Compile Include="ViewModels\Categories\CategoryCoursesViewModel.cs" />
+    <Compile Include="ViewModels\Statistics\StatisticViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -522,6 +524,8 @@
     <Content Include="Views\Search\_ProjectsSearchPartial.cshtml" />
     <Content Include="Views\Shared\_CourseInfoPartial.cshtml" />
     <Content Include="Views\Search\_CoursesSearchPartial.cshtml" />
+    <Content Include="Views\Home\_TimelinePartial.cshtml" />
+    <Content Include="Views\Home\_StatisticsPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
