@@ -222,7 +222,7 @@ div.user-holder:hover {
         .course-holder div p {
             font-size: 1em;
             padding-top: 5%;
-            padding-bottom: 5%
+            padding-bottom: 5%;
         }
 
 /* 
@@ -675,12 +675,16 @@ li .project {
         }
 }
 
- .content > h2 {
-        border-top: 1px solid #414383;
-        border-top: 1px solid rgba(255,255,255,0.2);
-        background: #000000;
-        background: rgba(0,0,0,0.6);
-        padding: 20px;
-        margin-top: 5px;
-        margin-bottom: 1px;
-    }
+.content > h2 {
+    border-top: 1px solid #414383;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    background: #000000;
+    background: rgba(0,0,0,0.6);
+    padding: 20px;
+    margin-top: 5px;
+    margin-bottom: 1px;
+}
+
+.chat-container {
+    color: #333;
+}

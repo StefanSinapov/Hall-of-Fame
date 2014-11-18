@@ -1,553 +1,118 @@
-﻿@model dynamic
-
-@{
+﻿@{
     ViewBag.Title = "Messages";
 }
 
-<style>
-    div#messagesContainer, div#friendsContainer, div#messageContainer {
-        border: 1px solid #99C341;
-        display: inline-block;
-        margin: 5px;
-    }
-
-    div#messengerContainer {
-        margin: 20px auto;
-        width: auto;
-    }
-
-    div#messagesContainer {
-        width: 620px;
-        height: 400px;
-        overflow-y: auto;
-        overflow-x: hidden;
-    }
-
-    div#friendsContainer {
-        width: 300px;
-        height: 511px;
-        overflow-y: auto;
-    }
-
-    div#messageContainer {
-        width: 620px;
-        height: 95px;
-        overflow: hidden;
-        position: relative;
-    }
-
-    div#messageGroup {
-        width: 630px;
-        display: inline-block;
-    }
-
-    /* Message section*/
-    div#messageContainer #messageToSend {
-        margin: 5px;
-        width: 610px;
-        height: 84px;
-        resize: none;
-        border: none;
-        overflow-y: auto;
-        outline: none;
-    }
-
-    div#messageContainer:hover #submitByEnter {
-        display: block;
-        -webkit-transition: all 0.2s ease;
-        -moz-transition: all 0.2s ease;
-        -ms-transition: all 0.2s ease;
-        -o-transition: all 0.2s ease;
-        transition: all 0.2s ease;
-    }
-
-    div#messageContainer:hover #messageToSend {
-        height: 75px;
-    }
-
-    div#messageContainer #sendButton {
-        height: 85px;
-        position: absolute;
-        right: 5px;
-        text-align: center;
-        top: 5px;
-        width: 100px;
-        background: #99C341;
-        color: #F2F3F0;
-        cursor: pointer;
-        -webkit-transition: all 0.2s ease;
-        -moz-transition: all 0.2s ease;
-        -ms-transition: all 0.2s ease;
-        -o-transition: all 0.2s ease;
-        transition: all 0.2s ease;
-    }
-
-        div#messageContainer #sendButton p {
-            margin-top: 32px;
-        }
-
-
-    div#messageContainer #submitByEnter {
-        position: absolute;
-        bottom: 0;
-        right: 5px;
-        display: none;
-    }
-
-        div#messageContainer #submitByEnter:hover {
-            color: #5C8010;
-        }
-
-        div#messageContainer #submitByEnter label {
-            bottom: 2px;
-            display: inline-block;
-            position: absolute;
-            right: 0;
-            width: 220px;
-        }
-
-    /* Messages section*/
-    div#messagesContainer div.messageContainer {
-        margin: 5px 5px 10px 5px;
-        background: #99C341;
-        padding: 10px;
-        width: 500px;
-        position: relative;
-    }
-
-    div#messagesContainer div.fromMe {
-        left: 90px;
-        background: #B1C08F;
-    }
-
-    div#messagesContainer div.messageContainer div.message {
-        display: inline-block;
-        vertical-align: top;
-        width: 445px;
-        margin: 0 0 0 5px;
-        color: #FFF;
-    }
-
-        div#messagesContainer div.messageContainer div.message strong {
-            font-weight: 800;
-            color: #f2f3f0;
-        }
-
-        div#messagesContainer div.messageContainer div.message p {
-            margin: 0 0 5px 0;
-            -ms-word-wrap: break-word;
-            word-wrap: break-word;
-            position: relative;
-        }
-
-            div#messagesContainer div.messageContainer div.message p span {
-                position: absolute;
-                bottom: -2px;
-                right: 0;
-                font-size: 0.8em;
-                padding: 2px;
-                background: rgb(20, 20, 20);
-                background: rgba(20, 20, 20,0.4);
-                display: none;
-            }
-
-            div#messagesContainer div.messageContainer div.message p:hover span {
-                display: block;
-            }
-
-        div#messagesContainer div.messageContainer div.message .arrow-down {
-            width: 0;
-            height: 0;
-            border-right: 20px solid transparent;
-            border-top: 20px solid #99C341;
-            position: absolute;
-            bottom: -20px;
-            left: 0;
-        }
-
-    div#messagesContainer div.fromMe div.message .arrow-down {
-        border-right: none;
-        border-left: 20px solid transparent;
-        border-top: 20px solid #B1C08F;
-        right: 0;
-        left: auto;
-    }
-
-
-    div.infoMessageSend, div.readMoreMessage, div.errorMessageSend {
-        margin: 5px 0 5px 5px;
-        background: #e99f2c;
-        color: #EEE;
-        padding: 10px;
-        width: 590px;
-        position: relative;
-        text-align: center;
-    }
-
-    div.errorMessageSend {
-        background: #C45656;
-    }
-
-    div.readMoreMessage {
-        color: #FFF;
-        width: 575px;
-        cursor: pointer;
-        background: #5C8010;
-    }
-
-    /* Friends section*/
-    div#friendsContainer div.search {
-        margin: 5px 5px 0 5px;
-        background: #99C341;
-        padding: 10px;
-        text-align: center;
-    }
-
-        div#friendsContainer div.search input#inputQuery {
-            border: none;
-            padding: 5px;
-            font-weight: 300;
-            font-size: 1em;
-            width: 240px;
-        }
-
-    div#friendsContainer div.friend {
-        margin: 5px 5px 0 5px;
-        background: #99C341;
-        padding: 10px;
-        cursor: pointer;
-        -webkit-transition: all 0.2s ease;
-        -moz-transition: all 0.2s ease;
-        -ms-transition: all 0.2s ease;
-        -o-transition: all 0.2s ease;
-        transition: all 0.2s ease;
-    }
-
-        div#friendsContainer div.friend:hover {
-            background: #89AE3A;
-        }
-
-    div#friendsContainer div.unread {
-        background: #5C8010;
-    }
-
-        div#friendsContainer div.unread:hover {
-            background: #789933;
-        }
-
-    div#friendsContainer div.selected {
-        background: #7C9150;
-    }
-
-    div#friendsContainer div.friend div.friendInfo {
-        display: inline-block;
-        position: relative;
-        vertical-align: top;
-        width: 200px;
-    }
-
-        div#friendsContainer div.friend div.friendInfo hr {
-            border: none;
-            background: #EEE;
-            height: 1px;
-            padding: 0;
-            margin: 2px 0 0 5px;
-        }
-
-        div#friendsContainer div.friend div.friendInfo span {
-            font-weight: 400;
-            display: inline-block;
-            margin: 0 5px;
-        }
-
-            div#friendsContainer div.friend div.friendInfo span.friendName {
-                font-size: 1.1em;
-                color: #EEE;
-            }
-
-            div#friendsContainer div.friend div.friendInfo span.friendMessage {
-                font-size: 0.9em;
-                color: #EEE;
-            }
-
-            div#friendsContainer div.friend div.friendInfo span.friendTime {
-                position: absolute;
-                font-size: 0.8em;
-                color: #EEE;
-                right: -5px;
-                top: 26px;
-            }
-</style>
-
 <h2>@ViewBag.Title</h2>
 
-<div id="messengerContainer" class="row">
-    <div class="col-md-9">
-        <div id="messageGroup">
-            <div id="messagesContainer">
+@section styles {
+    <style>
+       
+    </style>
 
+}
+<div class="chat-container">
+    <div id="messengerContainer" class="row">
+        <div class="col-md-9">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    RECENT CHAT HISTORY
+                </div>
+                <div class="panel-body">
+                    <ul class="media-list" id="messagesContainer">
+                        
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="messageToSend" placeholder="Enter Message">
+                        <span class="input-group-btn">
+                            <button class="btn btn-info" type="button" id="sendButton">SEND</button>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
-        <div id="messageContainer" style="/*display: none*/">
-            <textarea id="messageToSend"></textarea>
-            <div id="sendButton"><p>Send</p></div>
-            <div id="submitByEnter"><label for="useEnterKey">Press Enter for send</label> <input type="checkbox" id="useEnterKey" value="yes"></div>
-        </div>
-    </div>
 
-    <div class="col-md-3">
-        <div id="friendsContainer">
-            <div class="search">
-                <input type="text" name="friendQuery" id="inputQuery" placeholder="Търси" class="form-control"/>
+        <div class="col-md-3">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    ONLINE USERS
+                </div>
+                <div class="panel-body">
+                    <ul class="media-list" id="usersContainer">
+                       @* <li class="media">
+
+                            <div class="media-body">
+
+                                <div class="media">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object img-circle" style="max-height:40px;" src="">
+                                    </a>
+                                    <div class="media-body">
+                                        <h5>Alex Deo | User </h5>
+
+                                        <small class="text-muted">Active From 3 hours</small>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>*@
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<script>
-    $(document).ready(function () {
-        var userHashTag = window.location.hash,
-            chat = $.connection.messageHub,
-            chattingWith = 0,
-            chattedWith = 0,
-            partners = Array(),
-            errored = false,
-            useEnter = false,
-            $chatContainer = $('div#messagesContainer'),
-            $friendsContainer = $('#friendsContainer'),
-            $messagesContainer = $("#messagesContainer"),
-            $filterField = $('#inputQuery'),
-            $messageToSend = $('#messageToSend'),
-            $useEnterKey = $('#useEnterKey'),
-            $sendButton = $('#sendButton'),
-            $submitByEnter = $('#submitByEnter'),
-            $window = $(window);
-        var scrollDown = function() {
-                var scrolling = setTimeout(function() {
-                    $chatContainer.scrollTop(
-                        $chatContainer[0].scrollHeight - $chatContainer.height()
-                    );
-                }, 100);
-            },
-            GetConversation = function(userId, showAll) {
-                showAll = typeof showAll !== 'undefined' ? showAll : false;
-                chattedWith = chattingWith;
-                chattingWith = userId;
-                var conversationRequest = $.ajax({
-                    url: "/Messages/GetConversationWith/" + chattingWith + "?showAll=" + showAll,
-                    type: "post"
-                });
 
-                // callback handler that will be called on success
-                conversationRequest.done(function(response, textStatus, jqXHR) {
-                    if ($.trim(response.data)) {
-                        $messagesContainer.html(response.data);
-                    } else {
-                        $messagesContainer.html('<div class="infoMessageSend">Все още нямате съобщения с този потребител.</div>');
-                    }
-                    chat.server.changeGroup(chattingWith, chattedWith);
-                    scrollDown();
-                    fixLeftMargin();
-                    errored = false;
-                    $('div.friend[data-userid=' + chattedWith + ']').removeClass('selected');
-                    $('div.friend[data-userid=' + chattingWith + ']').addClass('selected');
+@section scripts {
+    <!--Script references. -->
+    <!--The jQuery library is required and is referenced by default in _Layout.cshtml. -->
+    <!--Reference the SignalR library. -->
+    <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
+    <!--Reference the autogenerated SignalR hub script. -->
+    <script src="~/signalr/hubs"></script>
+    <!--SignalR script to update the chat page and send messages.-->
 
-                    $("#messageContainer").show();
-                });
-            },
-            GetUrlConversation = function(username) {
-                if ($.trim(username) == "") return false;
-                var userIdRequest = $.ajax({
-                    url: "/Messages/GetUserId?username=" + username,
-                    type: "post"
-                });
+    <script>
 
-                // callback handler that will be called on success
-                userIdRequest.done(function(response, textStatus, jqXHR) {
-                    if (response.userId != null) {
-                        GetConversation(response.userId);
-                    } else {
-                        $messagesContainer.html('<div class="errorMessageSend">Този потребител не съществува.</div>');
-                    }
-                });
-            },
-            fixLeftMargin = function () {
-                if ($chatContainer[0].scrollHeight > $chatContainer.height()) {
-                    $('div#messagesContainer div.fromMe').css('left', '75px');
-                } else {
-                    $('div#messagesContainer div.fromMe').css('left', '90px');
-                }
-            },
-            sendMessage = function () {
-                if (chattingWith == 0) return;
-                if (!$.trim($messageToSend.val())) return;
+        $(function () {
+            window.currentUsernameName = '@User.Identity.Name';
+            var chat = $.connection.chatHub,
+                $messagesContainer = $('#messagesContainer'),
+                $sendButton = $('#sendButton'),
+                $messageToSend = $('#messageToSend');
 
-                var sendMessage = $.ajax({
-                    url: "/Messages/SendMessage/" + $messageToSend.attr('id'),
-                    type: "post",
-                    data: "text=" + encodeURIComponent($messageToSend.val()) + "&userId=" + chattingWith + "&lastMessageId=" + $('div.messageContainer:last').attr('data-id')
-                });
-
-                // callback handler that will be called on success
-                sendMessage.done(function (response, textStatus, jqXHR) {
-                    if (response.error) {
-                        if (!errored) {
-                            $messagesContainer.append('<div class="errorMessageSend">' + response.data + '</div>');
-                        } else {
-                            $('.errorMessageSend').animate({
-                                "margin-left": "0px",
-                            }, 100, function () {
-                                $('.errorMessageSend').animate({
-                                    "margin-left": "10px",
-                                }, 100, function () {
-                                    $('.errorMessageSend').animate({
-                                        "margin-left": "5px",
-                                    }, 100);
-                                });
-                            });
-                        }
-                        errored = true;
-                        scrollDown();
-                    } else {
-                        $("#messageToSend").val('');
-                    }
-                });
-            },
-            getCookieValue = function (key) {
-                currentcookie = document.cookie;
-                if (currentcookie.length > 0) {
-                    firstidx = currentcookie.indexOf(key + "=");
-                    if (firstidx != -1) {
-                        firstidx = firstidx + key.length + 1;
-                        lastidx = currentcookie.indexOf(";", firstidx);
-                        if (lastidx == -1) {
-                            lastidx = currentcookie.length;
-                        }
-                        return unescape(currentcookie.substring(firstidx, lastidx));
-                    }
-                }
-                return "";
-            },
-            showSubmitButton = function () {
-                $sendButton.css('width', "100px");
-                $submitByEnter.css('right', "111px");
-                $messageToSend.css('width', "505px");
-            },
-            hideSubmitButton = function () {
-                $sendButton.css('width', "0");
-                $submitByEnter.css('right', "5px");
-                $messageToSend.css('width', "610px");
+            chat.client.addMessage = function (name, message, avatarUrl, date) {
+                // Add the message to the page.
+                $messagesContainer.append('<li class="media"><div class="media-body col-md-12"><div class="media"><a class="pull-left" href="#"><img class="media-object img-circle" width="60" height="60" src="' + avatarUrl + ' "></a><div class="media-body col-md-10">' + htmlEncode(message) + '<br><small class="text-muted">' + htmlEncode(name) + ' | ' + date + '</small><hr></div></div></div></li>');
             };
 
-        // Get partners names
-        $.each($('div.friend'), function (i, friend) {
-            var partner = Array();
-            partner['name'] = $(this).children('div.friendInfo').children('span.friendName').html().toLowerCase();
-            partner['userid'] = $(this).attr('data-userid');
-            partners.push(partner);
-        });
-        //check if you have to use enter to send message
-        useEnter = (getCookieValue("useEnter") == 'true');
-
-        $.connection.hub.start().fail(function () {
-            console.log("Could not Connect!");
-        });
-        $.connection.hub.start().done(function () {
-
-            //Filter Partners
-            $filterField.on('keyup', function () {
-                var searchTerm = $.trim($filterField.val().toLowerCase());
-                $.each(partners, function (i, project) {
-                    //if user's full name contains the searchterm
-                    if (project['name'].indexOf(searchTerm) === -1 && searchTerm.length > 2) {
-                        $('div.friend[data-userid=' + project['userid'] + ']').css('display', 'none');
-                    } else {
-                        $('div.friend[data-userid=' + project['userid'] + ']').css('display', 'block');
-                    }
+            $.connection.hub.start().done(function () {
+                $sendButton.click(function () {
+                    var name = window.currentUsernameName;
+                    var message = $messageToSend.val();
+                    $messageToSend.val("").focus();
+                    console.log("hello");
+                    chat.server.send(name, message);
                 });
             });
 
-            //Get Conversations
-            userHashTag = userHashTag.replace('#!/', '');
-            GetUrlConversation(userHashTag);
-            $friendsContainer.on('click', 'div.friend', function () {
-                GetConversation($(this).attr('data-userid'));
-                $("#messageToSend").val('');
-                window.location.hash = '!/' + $(this).attr('data-username');
-            });
-
-            //Show the rest of the messages
-            $messagesContainer.on('click', '.readMoreMessage', function () {
-                GetConversation(chattingWith, true);
-            });
-
-            //Receive Message
-            chat.client.send = function (message, lastMessageId, markAsRead) {
-                $('div.messageContainer[data-id=' + lastMessageId + ']').remove();
-                $messagesContainer.append(message);
-                $('div.infoMessageSend').remove();
-                if (markAsRead) {
-                    $.post('/Messages/MarkRead/' + chattingWith);
-                }
-                scrollDown();
-                fixLeftMargin();
+            var entityMap = {
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': '&quot;',
+                "'": '&#39;',
+                "/": '&#x2F;'
             };
 
-            //Change partners list when someone is chatting with me
-            chat.client.unread = function (partnersList) {
-                $('div.friend').remove();
-                $friendsContainer.append(partnersList);
-                $('div.friend[data-userid=' + chattedWith + ']').removeClass('selected');
-                $('div.friend[data-userid=' + chattingWith + ']').addClass('selected');
-            }; //Change url event
-            $window.on('hashchange', function () {
-                userHashTag = window.location.hash;
-                userHashTag = userHashTag.replace('#!/', '');
-                GetUrlConversation(userHashTag);
-            });
-
-            //Send Message
-            $messageToSend.keydown(function (e) {
-                if (e.keyCode == 13 && !e.shiftKey && useEnter) {
-                    e.preventDefault();
-                    sendMessage();
-                }
-            });
-            $sendButton.on('click', function () {
-                if (!useEnter) {
-                    sendMessage();
-                }
-            });
-
-            $useEnterKey.on('change', function () {
-                if ($(this).prop('checked') == true) {
-                    document.cookie = "useEnter=true";
-                    useEnter = true;
-                    hideSubmitButton();
-                } else {
-                    document.cookie = "useEnter=false";
-                    useEnter = false;
-                    showSubmitButton();
-                }
-
-                $messageToSend.trigger("focus");
-            });
-
-            if (useEnter) {
-                hideSubmitButton();
-            } else {
-                showSubmitButton();
-            }
-
-            //Register
-            var t = setTimeout(function () { chat.server.registerUser(); }, 1000);
-
-            $('.importantMessageWarning').remove();
-
+            function htmlEncode(string) {
+                return String(string).replace(/[&<>"'\/]/g, function (s) {
+                    return entityMap[s];
+                });
+            };
         });
-    });
-</script>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/signalr")
+    </script>
 }

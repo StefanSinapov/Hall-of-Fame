@@ -2,15 +2,17 @@
 {
     using System.Web.Mvc;
 
+    using AutoMapper;
+
     using HallOfFame.Data.Contracts;
+    using HallOfFame.Models;
+    using HallOfFame.Web.ViewModels.Shared;
 
-    public class MessagesController : BaseController
+    using Microsoft.AspNet.Identity;
+
+    [Authorize]
+    public class MessagesController : Controller
     {
-        public MessagesController(IHallOfFameData data)
-            : base(data)
-        {
-        }
-
         public ActionResult Index()
         {
             return this.View();

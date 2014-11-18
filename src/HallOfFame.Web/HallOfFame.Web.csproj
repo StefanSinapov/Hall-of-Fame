@@ -286,6 +286,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Hubs\ChatHub.cs" />
     <Compile Include="Hubs\MessageHub.cs" />
     <Compile Include="ViewModels\Account\AddPhoneNumberViewModel.cs" />
     <Compile Include="ViewModels\Account\ChangePasswordViewModel.cs" />
@@ -440,7 +441,6 @@
     <Content Include="Areas\Projects\Views\Likes\_LikePartial.cshtml" />
     <Content Include="Areas\Administration\Views\Comments\Index.cshtml" />
     <Content Include="Areas\Administration\Views\Shared\EditorTemplates\CategoryDrowDown.cshtml" />
-    <Content Include="Areas\Administration\Views\Shared\EditorTemplates\CourseAdministrationViewModel.cshtml" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Img\background.jpg" />
     <Content Include="Img\loader.gif" />
