@@ -12,7 +12,7 @@
                     <a href="@string.Format("/Users/{0}", @Model.Users[i].UserName)">
                         @Model.Users[i].UserName
                     </a>
-                    <span class="small">@string.Format("{0} {1}", @Model.Users[i].FirstName, @Model.Users[i].FirstName).MaxLength(30)</span>
+                    <span class="small">@string.Format("{0} {1}", @Model.Users[i].FirstName, @Model.Users[i].LastName).MaxLength(30)</span>
                 </p>
             }
         </div>
