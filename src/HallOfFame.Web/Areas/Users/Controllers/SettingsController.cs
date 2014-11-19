@@ -5,12 +5,9 @@
     using AutoMapper;
 
     using HallOfFame.Data.Common.Repositories;
-    using HallOfFame.Data.Contracts;
     using HallOfFame.Models;
-    using HallOfFame.Web.Areas.Projects.ViewModels;
     using HallOfFame.Web.Areas.Users.ViewModels;
     using HallOfFame.Web.Common;
-    using HallOfFame.Web.Controllers;
 
     using Microsoft.AspNet.Identity;
 
@@ -44,7 +41,7 @@
                 this.Users.SaveChanges();
 
                 // Todo: add notification for success
-                return this.RedirectToAction(ControllerNames.Index, new { controller = "Profile", area = "Users" });
+                return this.RedirectToAction(ControllerNames.Index, new { controller = ControllerNames.Profile, area = ControllerNames.Users });
             }
 
             return this.View(model);
